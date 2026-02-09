@@ -75,6 +75,18 @@ main {
   font-weight: 700;
 }
 
+.status-strip {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+  color: #4b5563;
+}
+
+.status-strip strong {
+  font-size: 18px;
+  color: #111827;
+}
+
 /* ========== BUTTONS ========== */
 .primary {
   background: #4f46e5;
@@ -120,7 +132,7 @@ main {
 .day-card {
   background: white;
   border-radius: 12px;
-  padding: 16px;
+  padding: 14px;
   border: 1px solid #e5e7eb;
 }
 
@@ -134,7 +146,7 @@ main {
 .post {
   background: #f9fafb;
   border-radius: 8px;
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 8px;
   font-size: 13px;
   cursor: pointer;
