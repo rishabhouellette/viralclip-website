@@ -1,0 +1,212 @@
+/* =====================
+   BASE RESET
+===================== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Inter, sans-serif;
+  background: #F8FAFC;
+  color: #1F2937;
+}
+
+/* =====================
+   LAYOUT
+===================== */
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+/* =====================
+   SIDEBAR
+===================== */
+.sidebar {
+  width: 240px;
+  background: #FFFFFF;
+  border-right: 1px solid #E5E7EB;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.sidebar-nav a:hover {
+  background: #F1F5F9;
+}
+
+.sidebar-nav a.active {
+  background: #EEF2FF;
+  color: #4F46E5;
+  font-weight: 600;
+}
+
+.sidebar-nav a.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.beta-badge {
+  font-size: 12px;
+  background: #EEF2FF;
+  color: #4F46E5;
+  padding: 6px 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+.dashboard-main {
+  flex: 1;
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+
+/* =====================
+   TOP BAR
+===================== */
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.dashboard-top h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #4F46E5;
+  color: white;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =====================
+   CALENDAR GRID
+===================== */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.calendar-day {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 140px;
+}
+
+.calendar-day .date {
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* =====================
+   POST CARD
+===================== */
+.post-card {
+  background: #F1F5F9;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.platform {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4F46E5;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.post-card p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.post-card small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.empty {
+  font-size: 14px;
+  color: #9CA3AF;
+}
+
+/* =====================
+   BETA NOTE
+===================== */
+.beta-note {
+  margin-top: 32px;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 900px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  .calendar {
+    grid-template-columns: 1fr;
+  }
+}
