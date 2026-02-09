@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViralClip Dashboard (Beta)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">ViralClip</div>
+
+    <nav class="sidebar-nav">
+      <a class="active">📅 Calendar</a>
+      <a>✂️ Clips</a>
+      <a>📤 Accounts</a>
+      <a>📊 Analytics</a>
+      <a class="disabled">⚙️ Settings</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="beta-badge">BETA</span>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dashboard-main">
+
+    <!-- TOP BAR -->
+    <header class="dashboard-top">
+      <h1>Content Calendar</h1>
+      <button class="btn btn-primary" disabled>
+        + Create Post
+      </button>
+    </header>
+
+    <!-- CALENDAR GRID -->
+    <section class="calendar">
+
+      <div class="calendar-day">
+        <span class="date">Mon</span>
+        <div class="post-card">
+          <span class="platform">Instagram</span>
+          <p>Reel: Growth tips</p>
+          <small>Scheduled · 6:00 PM</small>
+        </div>
+      </div>
+
+      <div class="calendar-day">
+        <span class="date">Tue</span>
+        <div class="post-card">
+          <span class="platform">TikTok</span>
+          <p>Clip: Podcast highlight</p>
+          <small>Scheduled · 8:30 PM</small>
+        </div>
+      </div>
+
+      <div class="calendar-day">
+        <span class="date">Wed</span>
+        <div class="empty">No posts</div>
+      </div>
+
+      <div class="calendar-day">
+        <span class="date">Thu</span>
+        <div class="empty">No posts</div>
+      </div>
+
+    </section>
+
+    <!-- BETA NOTE -->
+    <div class="beta-note">
+      You're using ViralClip Beta. More features unlock soon.
+    </div>
+
+  </main>
+
+</body>
+</html>
