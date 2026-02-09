@@ -1,0 +1,143 @@
+/* ========== RESET & BASE ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: #f6f7f9;
+  color: #1f2937;
+}
+
+/* ========== APP LAYOUT ========== */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar button {
+  all: unset;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #374151;
+  font-weight: 500;
+}
+
+.sidebar button:hover {
+  background: #f3f4f6;
+}
+
+.sidebar button.active {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+/* ========== MAIN CONTENT ========== */
+main {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+}
+
+/* ========== PAGE HEADER ========== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ========== BUTTONS ========== */
+.primary {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary:hover {
+  background: #4338ca;
+}
+
+/* ========== CALENDAR GRID ========== */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.day-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.day-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* ========== POSTS ========== */
+.post {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.post strong {
+  display: block;
+  font-weight: 600;
+}
+
+.post span {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.instagram {
+  border-left: 4px solid #e1306c;
+}
+
+.tiktok {
+  border-left: 4px solid #000000;
+}
+
+.empty {
+  color: #9ca3af;
+  font-size: 13px;
+}
