@@ -1,85 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ViralClip Dashboard (Beta)</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <title>ViralClip Dashboard</title>
   <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
-<body class="dashboard">
+<body>
 
-  <!-- SIDEBAR -->
+<script src="assets/js/firebase.js"></script>
+<script>
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) window.location.href = "login.html";
+  });
+</script>
+
+<div class="app">
+
   <aside class="sidebar">
-    <div class="sidebar-logo">ViralClip</div>
+    <h2>ViralClip</h2>
+    <button class="active">📅 Calendar</button>
+    <button>✂ Clips</button>
+    <button>👥 Accounts</button>
+    <button>📊 Analytics</button>
+    <button>⚙ Settings</button>
 
-    <nav class="sidebar-nav">
-      <a class="active">📅 Calendar</a>
-      <a>✂️ Clips</a>
-      <a>📤 Accounts</a>
-      <a>📊 Analytics</a>
-      <a class="disabled">⚙️ Settings</a>
-    </nav>
-
-    <div class="sidebar-footer">
-      <span class="beta-badge">BETA</span>
-    </div>
+    <div class="beta">BETA</div>
   </aside>
 
-  <!-- MAIN -->
-  <main class="dashboard-main">
+  <main class="main">
 
-    <!-- TOP BAR -->
-    <header class="dashboard-top">
+    <div class="topbar">
       <h1>Content Calendar</h1>
-      <button class="btn btn-primary" disabled>
-        + Create Post
-      </button>
-    </header>
-
-    <!-- CALENDAR GRID -->
-    <section class="calendar">
-
-      <div class="calendar-day">
-        <span class="date">Mon</span>
-        <div class="post-card">
-          <span class="platform">Instagram</span>
-          <p>Reel: Growth tips</p>
-          <small>Scheduled · 6:00 PM</small>
-        </div>
-      </div>
-
-      <div class="calendar-day">
-        <span class="date">Tue</span>
-        <div class="post-card">
-          <span class="platform">TikTok</span>
-          <p>Clip: Podcast highlight</p>
-          <small>Scheduled · 8:30 PM</small>
-        </div>
-      </div>
-
-      <div class="calendar-day">
-        <span class="date">Wed</span>
-        <div class="empty">No posts</div>
-      </div>
-
-      <div class="calendar-day">
-        <span class="date">Thu</span>
-        <div class="empty">No posts</div>
-      </div>
-
-    </section>
-
-    <!-- BETA NOTE -->
-    <div class="beta-note">
-      You're using ViralClip Beta. More features unlock soon.
+      <button onclick="openModal()">+ Create Post</button>
     </div>
 
+    <div class="calendar">
+      <div class="day">
+        <h4>Mon</h4>
+        <div class="card">
+          <strong>Instagram</strong>
+          <p>Reel: Growth tips</p>
+          <small>6:00 PM</small>
+        </div>
+      </div>
+
+      <div class="day">
+        <h4>Tue</h4>
+        <div class="card">
+          <strong>TikTok</strong>
+          <p>Podcast highlight</p>
+          <small>8:30 PM</small>
+        </div>
+      </div>
+
+      <div class="day"><h4>Wed</h4><span>No posts</span></div>
+      <div class="day"><h4>Thu</h4><span>No posts</span></div>
+    </div>
+
+    <p class="beta-note">
+      Auto-posting is in beta. Posts will be scheduled but not published automatically yet.
+    </p>
+
   </main>
+</div>
+
+<!-- MODAL -->
+<div id="postModal" class="modal hidden">
+  <div class="modal-box">
+    <h3>Create Post</h3>
+    <input placeholder="Caption" />
+    <select>
+      <option>Instagram</option>
+      <option>TikTok</option>
+      <option>YouTube Shorts</option>
+    </select>
+    <button onclick="closeModal()">Save</button>
+  </div>
+</div>
+
+<script src="assets/js/modal.js"></script>
 
 </body>
 </html>

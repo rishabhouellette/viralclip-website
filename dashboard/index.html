@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>ViralClip Dashboard</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
 </head>
 <body>
   <div class="app">
@@ -23,6 +23,44 @@
     </main>
   </div>
 
-  <script src="js/router.js"></script>
+  <!-- Create Post Modal -->
+  <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+
+  <div id="create-post-modal" class="modal hidden">
+    <div class="modal-header">
+      <h2>Create Post</h2>
+      <button id="close-modal" class="icon-btn">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <label class="label">Platforms</label>
+      <div class="pill-group">
+        <button class="pill" data-platform="Instagram">Instagram</button>
+        <button class="pill" data-platform="TikTok">TikTok</button>
+        <button class="pill" data-platform="YouTube">Shorts</button>
+      </div>
+
+      <label class="label">Caption</label>
+      <textarea id="caption" placeholder="Write your caption…"></textarea>
+
+      <div class="row">
+        <div>
+          <label class="label">Date</label>
+          <input type="date" id="post-date" />
+        </div>
+        <div>
+          <label class="label">Time</label>
+          <input type="time" id="post-time" />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button id="schedule-post" class="primary">Schedule post</button>
+    </div>
+  </div>
+
+  <script src="../assets/js/router.js"></script>
+  <script src="../assets/js/modal.js"></script>
 </body>
 </html>

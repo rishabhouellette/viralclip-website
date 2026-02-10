@@ -2,14 +2,12 @@ const content = document.getElementById("content");
 const buttons = document.querySelectorAll("[data-view]");
 
 async function loadView(view) {
-  try {
-    const res = await fetch(`views/${view}.html`);
-    const html = await res.text(); // ✅ TEXT, not JSON
-    content.innerHTML = html;
-  } catch (err) {
-    content.innerHTML = "<p>Error loading view</p>";
-    console.error(err);
-  }
+  const res = await fetch(`dashboard/views/${view}.html`);
+  const html = await res.text();
+  content.innerHTML = html;
+
+  buttons.forEach(btn => btn.classList.remove("active"));
+  document.querySelector(`[data-view="${view}"]`).classList.add("active");
 }
 
 buttons.forEach(btn => {
@@ -18,5 +16,4 @@ buttons.forEach(btn => {
   });
 });
 
-// Load default view
 loadView("calendar");
