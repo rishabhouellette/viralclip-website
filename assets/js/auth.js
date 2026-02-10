@@ -3,8 +3,17 @@ import { auth } from "./firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+onAuthStateChanged(auth, (user) => {
+  const isDashboard = window.location.pathname.includes("dashboard");
+
+  if (isDashboard && !user) {
+    window.location.href = "/login.html";
+  }
+});
 
 const form = document.getElementById("signup-form");
 
