@@ -1,32 +1,37 @@
 import { auth, db } from "./firebase.js";
-import { addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  Timestamp
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-export async function createPost({ platform, title, datetime }) {
-  const user = auth.currentUser;
+const calendarEl = document.getElementById("calendar");
+
+auth.onAuthStateChanged(async (user) => {
   if (!user) return;
 
-  await addDoc(
-    collection(db, "users", user.uid, "posts"),
-    {
-      platform,
-      title,
-      datetime,
-      status: "scheduled",
-      createdAt: new Date()
-    }
-  );
-}
-
-export async function loadPosts() {
-  const user = auth.currentUser;
-  if (!user) return [];
-
-  const snapshot = await getDocs(
-    collection(db, "users", user.uid, "posts")
+  const q = query(
+    collection(db, "posts"),
+    where("uid", "==", user.uid)
   );
 
-  return snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
-}
+  const snapshot = await getDocs(q);
+  calendarEl.innerHTML = "";
+
+  snapshot.forEach(doc => {
+    const post = doc.data();
+
+    const div = document.createElement("div");
+    div.className = "calendar-card";
+    div.innerHTML = `
+      <strong>${post.platform}</strong>
+      <p>${post.caption}</p>
+      <small>${new Date(post.time.seconds * 1000).toLocaleString()}</small>
+    `;
+
+    calendarEl.appendChild(div);
+  });
+});
