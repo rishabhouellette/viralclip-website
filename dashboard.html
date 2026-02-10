@@ -32,7 +32,7 @@
 
     <div class="topbar">
       <h1>Content Calendar</h1>
-      <button onclick="openModal()">+ Create Post</button>
+      <button id="createPostBtn">+ Create Post</button>
       <button id="logoutBtn">Sign out</button>
     </div>
 
@@ -66,21 +66,28 @@
   </main>
 </div>
 
-<!-- MODAL -->
-<div id="postModal" class="modal hidden">
-  <div class="modal-box">
+<!-- Create Post Modal -->
+<div id="postModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4);">
+  <div style="background:#fff; width:400px; margin:10% auto; padding:20px; border-radius:8px;">
     <h3>Create Post</h3>
-    <input placeholder="Caption" />
-    <select>
-      <option>Instagram</option>
-      <option>TikTok</option>
-      <option>YouTube Shorts</option>
+
+    <select id="platform">
+      <option value="Instagram">Instagram</option>
+      <option value="TikTok">TikTok</option>
+      <option value="YouTube Shorts">YouTube Shorts</option>
     </select>
-    <button onclick="closeModal()">Save</button>
+
+    <input id="title" placeholder="Post title" style="width:100%; margin-top:10px;" />
+    <input type="datetime-local" id="schedule" style="width:100%; margin-top:10px;" />
+
+    <div style="margin-top:15px;">
+      <button id="savePost">Save</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
   </div>
 </div>
 
-<script src="assets/js/modal.js"></script>
+<script type="module" src="/assets/js/modal.js"></script>
 
 </body>
 </html>
