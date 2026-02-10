@@ -6,11 +6,12 @@ const firebaseConfig = {
   apiKey: "AIzaSyDD07e_IYaWSGUwybGpZWtZ6cEJzCX6kcc",
   authDomain: "viralcliptech-36846.firebaseapp.com",
   projectId: "viralcliptech-36846",
-  storageBucket: "viralcliptech-36846.firebasestorage.app",
+  storageBucket: "viralcliptech-36846.appspot.com",
   messagingSenderId: "128287408309",
   appId: "1:128287408309:web:776a5f93888d995f54fefc"
 };
 
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);

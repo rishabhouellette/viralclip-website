@@ -6,13 +6,6 @@
 </head>
 <body>
 
-<script src="assets/js/firebase.js"></script>
-<script>
-  firebase.auth().onAuthStateChanged(user => {
-    if (!user) window.location.href = "login.html";
-  });
-</script>
-
 <div class="app">
 
   <aside class="sidebar">
@@ -23,6 +16,8 @@
     <button>📊 Analytics</button>
     <button>⚙ Settings</button>
 
+    <button class="sign-out-btn">Sign out</button>
+
     <div class="beta">BETA</div>
   </aside>
 
@@ -31,7 +26,7 @@
     <div class="topbar">
       <h1>Content Calendar</h1>
       <button id="createPostBtn">+ Create Post</button>
-      <button id="signOutBtn" class="btn-secondary">Sign out</button>
+      <button id="signOutBtn" class="btn-secondary sign-out-btn">Sign out</button>
     </div>
 
     <div class="calendar">
@@ -87,6 +82,8 @@
 
 <script type="module" src="/assets/js/modal.js"></script>
 <script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/firebase.js"></script>
+<script type="module" src="/assets/js/auth.js"></script>
 
 </body>
 </html>
