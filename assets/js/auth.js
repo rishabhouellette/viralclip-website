@@ -2,7 +2,8 @@
 import { auth } from "./firebase.js";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 const form = document.getElementById("signup-form");
@@ -20,5 +21,14 @@ if (form) {
     } catch (err) {
       alert(err.message);
     }
+  });
+}
+
+const signOutBtn = document.getElementById("signout-btn");
+
+if (signOutBtn) {
+  signOutBtn.addEventListener("click", async () => {
+    await signOut(auth);
+    window.location.href = "/login.html";
   });
 }
