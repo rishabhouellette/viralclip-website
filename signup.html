@@ -20,11 +20,14 @@
     <a href="/login.html">Log in</a>
   </p>
 
-  <!-- Firebase SDKs -->
+  <!-- Firebase SDKs (MUST be first) -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
+  <!-- Your Firebase init -->
   <script src="assets/js/firebase.js"></script>
+
+  <!-- Your auth logic (LAST) -->
   <script src="assets/js/auth.js"></script>
 </body>
 </html>
