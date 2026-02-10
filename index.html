@@ -19,7 +19,10 @@
   <header class="nav">
     <div class="container nav-inner">
       <div class="logo">ViralClip</div>
-      <a href="#waitlist" class="btn btn-outline">Join Beta</a>
+      <nav class="nav-actions">
+        <a href="/login.html" class="nav-link">Log in</a>
+        <a href="/signup.html" class="btn-primary">Sign up</a>
+      </nav>
     </div>
   </header>
 
@@ -36,7 +39,7 @@
           and publish Reels, Shorts, and TikToks from one clean dashboard.
         </p>
         <div class="hero-actions">
-          <a href="/dashboard.html" class="btn btn-primary">
+          <a href="/signup.html" class="btn btn-primary">
             Get instant beta access
           </a>
           <a href="#how" class="btn btn-secondary">See how it works</a>
@@ -125,6 +128,25 @@
   <footer class="footer">
     © 2026 ViralClip
   </footer>
+
+  <script type="module">
+    import { auth } from "/assets/js/firebase.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.querySelector(".nav-actions").innerHTML = `
+          <a href="/dashboard.html" class="nav-link">Dashboard</a>
+          <button id="logoutBtn" class="btn-secondary">Sign out</button>
+        `;
+
+        document.getElementById("logoutBtn").onclick = async () => {
+          await auth.signOut();
+          location.reload();
+        };
+      }
+    });
+  </script>
 
 </body>
 </html>
