@@ -1,17 +1,27 @@
-// assets/js/firebase.js
+// Firebase core
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 
-// Firebase SDKs
+// Firebase Auth
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+// (Optional) Analytics
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDDD7e_IYaWSGUwvbGpZWtZcEJzCX6kcc",
+  apiKey: "AIzaSyDD07e_IYaWSGUwybGpZWtZ6cEJzCX6kcc",
   authDomain: "viralcliptech-36846.firebaseapp.com",
   projectId: "viralcliptech-36846",
   storageBucket: "viralcliptech-36846.appspot.com",
   messagingSenderId: "128287408309",
-  appId: "1:128287408309:web:776a5f93888d995f54fefc"
+  appId: "1:128287408309:web:776a5f93888d995f54fefc",
+  measurementId: "G-M8DMS26YDC"
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
-// Make auth available globally
-window.auth = firebase.auth();
+// Initialize Auth (THIS WAS MISSING)
+export const auth = getAuth(app);
+
+// Optional
+export const analytics = getAnalytics(app);
