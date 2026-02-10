@@ -5,29 +5,20 @@ import {
   signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// SIGN UP
-window.signup = async function () {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+const form = document.getElementById("signup-form");
 
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    alert("Account created successfully!");
-    window.location.href = "/dashboard.html";
-  } catch (error) {
-    alert(error.message);
-  }
-};
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-// LOGIN
-window.login = async function () {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+    const email = form.querySelector('input[type="email"]').value;
+    const password = form.querySelector('input[type="password"]').value;
 
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    window.location.href = "/dashboard.html";
-  } catch (error) {
-    alert(error.message);
-  }
-};
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      window.location.href = "/dashboard.html";
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+}

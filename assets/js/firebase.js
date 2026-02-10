@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// Your Firebase config (this one is correct)
+// Firebase config (THIS IS FINE — your key is valid)
 const firebaseConfig = {
   apiKey: "AIzaSyDD07e_IYaWSGUwybGpZWtZ6cEJzCX6kcc",
   authDomain: "viralcliptech-36846.firebaseapp.com",
@@ -15,8 +15,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// ✅ THIS WAS MISSING
-const auth = getAuth(app);
-
-// ✅ Export auth so other files can use it
-export { auth };
+// 🔑 THIS WAS MISSING
+export const auth = getAuth(app);
