@@ -1,89 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>ViralClip Dashboard</title>
-  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <meta charset="UTF-8" />
+  <title>Dashboard – ViralClip</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/dashboard.css" />
 </head>
+
 <body>
+  <div class="app">
 
-<div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2 class="logo">ViralClip</h2>
 
-  <aside class="sidebar">
-    <h2>ViralClip</h2>
-    <button class="active">📅 Calendar</button>
-    <button>✂ Clips</button>
-    <button>👥 Accounts</button>
-    <button>📊 Analytics</button>
-    <button>⚙ Settings</button>
+      <nav>
+        <a class="active">📅 Calendar</a>
+        <a>🎬 Clips</a>
+        <a>👥 Accounts</a>
+        <a>📊 Analytics</a>
+        <a>⚙️ Settings</a>
+      </nav>
 
-    <button class="sign-out-btn">Sign out</button>
+      <!-- ✅ SINGLE SIGN OUT BUTTON -->
+      <button id="signOutBtn" class="signout-btn">Sign out</button>
+    </aside>
 
-    <div class="beta">BETA</div>
-  </aside>
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <h1>Content Calendar</h1>
+        <button id="createPostBtn">+ Create Post</button>
+      </header>
 
-  <main class="main">
+      <section id="calendar"></section>
+    </main>
 
-    <div class="topbar">
-      <h1>Content Calendar</h1>
-      <button id="createPostBtn">+ Create Post</button>
-      <button id="signOutBtn" class="btn-secondary sign-out-btn">Sign out</button>
-    </div>
-
-    <div class="calendar">
-      <div class="day">
-        <h4>Mon</h4>
-        <div class="card">
-          <strong>Instagram</strong>
-          <p>Reel: Growth tips</p>
-          <small>6:00 PM</small>
-        </div>
-      </div>
-
-      <div class="day">
-        <h4>Tue</h4>
-        <div class="card">
-          <strong>TikTok</strong>
-          <p>Podcast highlight</p>
-          <small>8:30 PM</small>
-        </div>
-      </div>
-
-      <div class="day"><h4>Wed</h4><span>No posts</span></div>
-      <div class="day"><h4>Thu</h4><span>No posts</span></div>
-    </div>
-
-    <p class="beta-note">
-      Auto-posting is in beta. Posts will be scheduled but not published automatically yet.
-    </p>
-
-  </main>
-</div>
-
-<!-- Create Post Modal -->
-<div id="postModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4);">
-  <div style="background:#fff; width:400px; margin:10% auto; padding:20px; border-radius:8px;">
-    <h3>Create Post</h3>
-
-    <select id="platform">
-      <option value="Instagram">Instagram</option>
-      <option value="TikTok">TikTok</option>
-      <option value="YouTube Shorts">YouTube Shorts</option>
-    </select>
-
-    <input id="title" placeholder="Post title" style="width:100%; margin-top:10px;" />
-    <input type="datetime-local" id="schedule" style="width:100%; margin-top:10px;" />
-
-    <div style="margin-top:15px;">
-      <button id="savePost">Save</button>
-      <button onclick="closeModal()">Cancel</button>
-    </div>
   </div>
-</div>
 
-<script type="module" src="/assets/js/modal.js"></script>
-<script type="module" src="/assets/js/main.js"></script>
-<script type="module" src="/assets/js/firebase.js"></script>
-<script type="module" src="/assets/js/auth.js"></script>
-
+  <!-- ✅ ONLY MODULE SCRIPTS -->
+  <script type="module" src="/assets/js/auth.js"></script>
+  <script type="module" src="/assets/js/calendar.js"></script>
+  <script type="module" src="/assets/js/modal.js"></script>
 </body>
 </html>
