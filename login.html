@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
   <title>Login – ViralClip</title>
-  <!-- Firebase -->
+
+  <!-- Firebase v9 COMPAT -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script src="assets/js/firebase.js"></script>
 </head>
+
 <body>
   <h1>Login to ViralClip</h1>
 
-  <input id="email" type="email" placeholder="Email" />
+  <input id="email" placeholder="Email" />
   <input id="password" type="password" placeholder="Password" />
   <button id="loginBtn">Login</button>
 
   <p>Don't have an account? <a href="/signup.html">Sign up</a></p>
 
-  <script src="assets/js/firebase.js"></script>
-  <script src="/login.js"></script>
+  <script src="assets/js/login.js"></script>
 </body>
 </html>

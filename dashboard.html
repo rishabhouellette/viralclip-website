@@ -1,65 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>ViralClip Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – ViralClip</title>
 
-  <link rel="stylesheet" href="assets/css/dashboard.css" />
-
-  <!-- Firebase -->
+  <!-- Firebase v9 COMPAT -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script src="assets/js/firebase.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+    }
+
+    nav {
+      width: 220px;
+      background: #0b132b;
+      color: white;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 30px;
+      flex: 1;
+    }
+  </style>
 </head>
+
 <body>
+  <nav>
+    <h2>ViralClip</h2>
+    <a href="#">Calendar</a>
+    <a href="#">Clips</a>
+    <a href="#">Accounts</a>
+    <a href="#">Analytics</a>
+    <a href="#">Settings</a>
+    <br />
+    <button id="logoutBtn">Sign out</button>
+  </nav>
 
-<div class="app">
-  <aside class="sidebar">
-    <h2 class="logo">ViralClip</h2>
-
-    <nav>
-      <button data-page="calendar" class="active">📅 Calendar</button>
-      <button data-page="clips">🎬 Clips</button>
-      <button data-page="accounts">👥 Accounts</button>
-      <button data-page="analytics">📊 Analytics</button>
-      <button data-page="settings">⚙️ Settings</button>
-    </nav>
-
-    <button id="logoutBtn" class="logout">Sign out</button>
-  </aside>
-
-  <main class="content">
-    <!-- CALENDAR -->
-    <section id="calendar" class="page active">
-      <div class="header">
-        <h1>Content Calendar</h1>
-        <button id="openPostModal">+ Create Post</button>
-      </div>
-      <div id="calendarGrid" class="calendar-grid"></div>
-    </section>
-
-    <!-- PLACEHOLDERS -->
-    <section id="clips" class="page">Coming soon</section>
-    <section id="accounts" class="page">Coming soon</section>
-    <section id="analytics" class="page">Coming soon</section>
-    <section id="settings" class="page">Coming soon</section>
+  <main>
+    <h1>Content Calendar</h1>
+    <p>Welcome! Your dashboard is now live.</p>
+    <button>+ Create Post</button>
   </main>
-</div>
 
-<!-- CREATE POST MODAL -->
-<div id="postModal" class="modal hidden">
-  <div class="modal-content">
-    <h3>Create Post</h3>
-    <input type="date" id="postDate" />
-    <input type="text" id="postTitle" placeholder="Post title" />
-    <button id="savePost">Save</button>
-    <button id="closeModal">Cancel</button>
-  </div>
-</div>
-
-<script src="assets/js/firebase.js"></script>
-<script src="assets/js/dashboard.js"></script>
-
+  <script>
+    document.getElementById("logoutBtn").onclick = async () => {
+      await auth.signOut();
+      window.location.replace("/login.html");
+    };
+  </script>
 </body>
 </html>
