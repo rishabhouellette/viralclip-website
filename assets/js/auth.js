@@ -5,18 +5,27 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 /**
- * Protect dashboard
+ * Initialize auth state listener
  */
-onAuthStateChanged(auth, (user) => {
-  const isDashboard = location.pathname.includes("dashboard");
+export function initAuth() {
+  onAuthStateChanged(auth, (user) => {
+    const isDashboard = location.pathname.includes("dashboard");
 
-  if (!user && isDashboard) {
-    location.href = "/login.html";
-  }
-});
+    if (!user && isDashboard) {
+      location.href = "/login.html";
+    }
+  });
+}
 
 /**
- * Sign out handler
+ * Sign out user
+ */
+export async function signOutUser() {
+  await signOut(auth);
+}
+
+/**
+ * Sign out handler (legacy)
  */
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("signOutBtn");
