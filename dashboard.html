@@ -3,12 +3,7 @@
 <head>
   <title>Dashboard – ViralClip</title>
 
-  <!-- Firebase v9 COMPAT -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
-  <script src="assets/js/firebase.js"></script>
+  
 
   <style>
     body {
@@ -48,7 +43,7 @@
     <a href="#">Analytics</a>
     <a href="#">Settings</a>
     <br />
-    <button id="logoutBtn">Sign out</button>
+    <button onclick="logout()">Sign out</button>
   </nav>
 
   <main>
@@ -57,11 +52,20 @@
     <button>+ Create Post</button>
   </main>
 
+  <script src="firebase.js"></script>
+
   <script>
-    document.getElementById("logoutBtn").onclick = async () => {
-      await auth.signOut();
-      window.location.replace("/login.html");
-    };
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    function logout() {
+      auth.signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
   </script>
 </body>
 </html>
