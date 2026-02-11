@@ -20,7 +20,23 @@
     <a href="/login.html">Log in</a>
   </p>
 
-  <script type="module" src="/assets/js/firebase.js"></script>
+  <script type="module">
+    import { auth } from "/assets/js/firebase.js";
+    import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    document.getElementById("signup-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        window.location.href = "/dashboard.html";
+      } catch (error) {
+        alert("Signup failed: " + error.message);
+      }
+    });
+  </script>
   <script type="module" src="/assets/js/auth.js"></script>
 </body>
 </html>

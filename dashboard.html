@@ -8,6 +8,17 @@
 </head>
 
 <body>
+  <script type="module">
+    import { auth } from "/assets/js/firebase.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "/login.html";
+      }
+    });
+  </script>
+
   <div class="app">
 
     <!-- Sidebar -->
