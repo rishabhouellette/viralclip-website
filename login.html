@@ -3,7 +3,13 @@
 <head>
   <title>Login – ViralClip</title>
 
-  
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Your Firebase config -->
+  <script src="firebase.js"></script>
 </head>
 
 <body>
@@ -11,11 +17,9 @@
 
   <input id="email" placeholder="Email" />
   <input id="password" type="password" placeholder="Password" />
-  <button id="loginBtn">Login</button>
+  <button id="loginBtn" onclick="login()">Login</button>
 
   <p>Don't have an account? <a href="/signup.html">Sign up</a></p>
-
-  <script src="firebase.js"></script>
 
   <script>
     function login() {

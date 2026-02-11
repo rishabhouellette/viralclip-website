@@ -2,70 +2,61 @@
 <html>
 <head>
   <title>Dashboard – ViralClip</title>
-
-  
-
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      display: flex;
-    }
-
-    nav {
-      width: 220px;
-      background: #0b132b;
-      color: white;
-      height: 100vh;
-      padding: 20px;
-    }
-
-    nav a {
-      display: block;
-      color: white;
-      margin: 10px 0;
-      text-decoration: none;
-    }
-
-    main {
-      padding: 30px;
-      flex: 1;
-    }
-  </style>
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 
-<body>
-  <nav>
-    <h2>ViralClip</h2>
-    <a href="#">Calendar</a>
-    <a href="#">Clips</a>
-    <a href="#">Accounts</a>
-    <a href="#">Analytics</a>
-    <a href="#">Settings</a>
-    <br />
-    <button onclick="logout()">Sign out</button>
-  </nav>
+<body onload="protectPage()">
+  <aside class="sidebar">
+    <h2 class="logo">ViralClip</h2>
 
-  <main>
-    <h1>Content Calendar</h1>
-    <p>Welcome! Your dashboard is now live.</p>
-    <button>+ Create Post</button>
+    <nav>
+      <a href="#" onclick="showSection('calendar')">📅 Calendar</a>
+      <a href="#" onclick="showSection('clips')">🎬 Clips</a>
+      <a href="#" onclick="showSection('accounts')">👥 Accounts</a>
+      <a href="#" onclick="showSection('analytics')">📊 Analytics</a>
+    </nav>
+
+    <button class="logout" onclick="logout()">Sign out</button>
+  </aside>
+
+  <main class="content">
+    <!-- HEADER -->
+    <header class="header">
+      <h1 id="pageTitle">Content Calendar</h1>
+      <button class="primary" onclick="openModal()">+ Create Post</button>
+    </header>
+
+    <!-- SECTIONS -->
+    <section id="calendar" class="section active">
+      <p>No posts yet. Create your first post.</p>
+    </section>
+
+    <section id="clips" class="section">
+      <p>Your generated clips will appear here.</p>
+    </section>
+
+    <section id="accounts" class="section">
+      <p>Connect Instagram, TikTok, YouTube.</p>
+    </section>
+
+    <section id="analytics" class="section">
+      <p>Analytics coming soon.</p>
+    </section>
   </main>
 
-  <script src="firebase.js"></script>
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Create Post</h2>
+      <input placeholder="Post title" />
+      <textarea placeholder="Caption"></textarea>
+      <button class="primary">Save (UI only)</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
 
-  <script>
-    auth.onAuthStateChanged(user => {
-      if (!user) {
-        window.location.href = "login.html";
-      }
-    });
-
-    function logout() {
-      auth.signOut().then(() => {
-        window.location.href = "login.html";
-      });
-    }
-  </script>
+  <script src="/firebase.js"></script>
+  <script src="/auth.js"></script>
+  <script src="/ui.js"></script>
 </body>
 </html>
