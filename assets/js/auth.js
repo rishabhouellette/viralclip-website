@@ -1,11 +1,14 @@
 import { auth } from "./firebase.js";
-import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
   loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 🔥 THIS IS CRITICAL
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -17,64 +20,9 @@ if (loginForm) {
   });
 }
 
-// ✅ THIS is the ONLY redirect
+// ✅ Single source of truth for redirect
 onAuthStateChanged(auth, (user) => {
-  if (user) {
+  if (user && window.location.pathname.includes("login")) {
     window.location.href = "/dashboard.html";
   }
-});
-
-/**
- * Initialize auth state listener
- */
-export function initAuth() {
-  onAuthStateChanged(auth, (user) => {
-    const isDashboard = location.pathname.includes("dashboard");
-
-    if (!user && isDashboard) {
-      location.href = "/login.html";
-    }
-  });
-}
-
-/**
- * Sign out user
- */
-export async function signOutUser() {
-  await signOut(auth);
-}
-
-/**
- * Sign out handler
- */
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("signOutBtn");
-
-  if (!btn) return;
-
-  btn.addEventListener("click", async () => {
-    await signOut(auth);
-    location.href = "/login.html";
-  });
-});
-
-/**
- * Sign out user
- */
-export async function signOutUser() {
-  await signOut(auth);
-}
-
-/**
- * Sign out handler (legacy)
- */
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("signOutBtn");
-
-  if (!btn) return;
-
-  btn.addEventListener("click", async () => {
-    await signOut(auth);
-    location.href = "/";
-  });
 });
