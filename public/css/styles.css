@@ -22,6 +22,80 @@ body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
+a {
+  color: inherit;
+}
+
+.page {
+  flex: 1;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.hero-content {
+  max-width: 720px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 3rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.hero-content h1 {
+  margin: 1rem 0 0.5rem;
+  font-size: 2.6rem;
+}
+
+.hero-content p {
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.auth-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.auth-card {
+  width: min(420px, calc(100% - 2rem));
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-card label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.auth-card input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem;
+  font: inherit;
+}
+
 .sidebar {
   width: 240px;
   background: var(--sidebar);
@@ -35,6 +109,7 @@ body {
 .logo {
   margin: 0;
   font-size: 1.35rem;
+  font-weight: 700;
 }
 
 .sidebar-nav {
@@ -83,8 +158,7 @@ body {
   margin: 0;
 }
 
-.subtitle,
-.panel-subtitle {
+.subtitle {
   color: var(--muted);
   margin: 0.3rem 0 0;
 }
@@ -92,10 +166,14 @@ body {
 .primary-btn,
 .secondary-btn {
   border: 0;
-  border-radius: 8px;
-  padding: 0.62rem 1rem;
+  border-radius: 10px;
+  padding: 0.65rem 1.1rem;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primary-btn {
@@ -107,126 +185,51 @@ body {
   background: var(--brand-hover);
 }
 
-.primary-btn:disabled {
-  opacity: 0.7;
-  cursor: wait;
-}
-
 .secondary-btn {
   background: #e2e8f0;
   color: #0f172a;
 }
 
-.section {
-  display: none;
-}
-
-.section.active {
-  display: block;
-}
-
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 16px;
+  padding: 1.5rem;
 }
 
-.posts-list {
-  list-style: none;
-  margin: 1rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.empty-post {
-  color: var(--muted);
-  border: 1px dashed var(--border);
-  border-radius: 10px;
-  padding: 0.85rem;
-}
-
-.post-item {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.75rem;
-}
-
-.post-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  align-items: center;
-}
-
-.post-head h4 {
-  margin: 0;
-}
-
-.post-head span {
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.post-item p {
-  margin: 0.5rem 0 0;
-  color: #334155;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal.hidden {
-  display: none;
-}
-
-.modal-content {
-  width: min(520px, calc(100% - 2rem));
-  background: #fff;
-  border-radius: 12px;
-  padding: 1rem;
-}
-
-.modal-content h3 {
-  margin-top: 0;
-}
-
-.modal-content form {
+.calendar-placeholder {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-.modal-content input,
-.modal-content textarea {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.62rem;
-  font: inherit;
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.form-message {
-  min-height: 1.2rem;
-  margin: 0.1rem 0;
-  color: #b91c1c;
+.calendar-header span {
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 0.5rem;
-  margin-top: 0.35rem;
 }
 
-@media (max-width: 860px) {
+.calendar-cell {
+  background: #eef2ff;
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  color: #3730a3;
+}
+
+@media (max-width: 900px) {
   body {
     flex-direction: column;
   }
@@ -236,6 +239,10 @@ body {
   }
 
   .content {
-    padding: 1rem;
+    padding: 1.25rem;
+  }
+
+  .hero-content {
+    padding: 2rem;
   }
 }
