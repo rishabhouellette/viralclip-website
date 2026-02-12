@@ -3,69 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <title>ViralClip — Plan. Post. Grow at Scale</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-
 <body>
 
-  <!-- HERO SCENE -->
-  <section class="hero-scene">
+<header class="nav">
+  <div class="logo">ViralClip</div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#resources">Resources</a>
+    <a href="/login.html">Log in</a>
+    <a class="cta" href="/signup.html">Get started for free</a>
+  </nav>
+</header>
 
-    <!-- Atmospheric layers -->
-    <img src="assets/images/hero-fog-foreground.png" class="fog-layer" alt="" />
-    <img src="assets/images/particle-overlay.png" class="particle-layer" alt="" />
+<section class="hero">
 
-    <!-- Floating platform icons -->
-    <img src="assets/images/platform-instagram-float.png" class="float-icon instagram" />
-    <img src="assets/images/platform-tiktok-float.png" class="float-icon tiktok" />
-    <img src="assets/images/platform-youtube-float.png" class="float-icon youtube" />
+  <!-- atmospheric layers -->
+  <img src="/assets/images/hero-fog-foreground.png" class="fog" />
+  <img src="/assets/images/particle-overlay.png" class="particles" />
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-      <div class="logo">ViralClip</div>
-      <nav>
-        <a href="#">Features</a>
-        <a href="#">Pricing</a>
-        <a href="#">Resources</a>
-        <a href="/login.html" class="link">Log in</a>
-        <a href="/signup.html" class="btn-primary">Get started for free</a>
-      </nav>
-    </header>
+  <!-- floating platform icons -->
+  <img src="/assets/images/platform-instagram-float.png" class="float ig" />
+  <img src="/assets/images/platform-tiktok-float.png" class="float tt" />
+  <img src="/assets/images/platform-youtube-float.png" class="float yt" />
 
-    <!-- HERO CONTENT -->
-    <div class="hero-content">
-      <h1>
-        Plan. Post. <span class="gradient-text">Grow at Scale</span>
-      </h1>
+  <!-- text content -->
+  <div class="hero-content">
+    <h1>
+      Plan. Post. <span>Grow at Scale</span>
+    </h1>
+    <p>
+      Your command center for <strong>Reels, TikToks & Shorts</strong>.
+      Schedule, manage, and analyze all your short-form videos in one powerful dashboard.
+    </p>
 
-      <p>
-        Your command center for <strong>Reels, TikToks & Shorts</strong>.
-        Schedule, manage, and analyze all your short-form videos in one powerful dashboard.
-      </p>
-
-      <div class="hero-cta">
-        <a href="/signup.html" class="btn-primary large">Get started for free</a>
-        <a href="#" class="btn-secondary">Watch how it works</a>
-      </div>
+    <div class="actions">
+      <a href="/signup.html" class="primary">Get started for free</a>
+      <a href="#demo" class="secondary">Watch how it works</a>
     </div>
 
-    <!-- DASHBOARD MOCK -->
-    <img
-      src="assets/images/dashboard-mock-perspective.png"
-      class="dashboard-mock"
-      alt="ViralClip dashboard preview"
-    />
-
-  </section>
-
-  <!-- TRUST LOGOS -->
-  <section class="trust">
-    <p>Trusted by short-form creators around the world</p>
-
-    <div class="platform-logos">
+    <div class="platforms">
       <span>Instagram</span>
       <span>TikTok</span>
       <span>YouTube</span>
@@ -73,7 +52,16 @@
       <span>Pinterest</span>
       <span>Twitter / X</span>
     </div>
-  </section>
+  </div>
+
+  <!-- dashboard preview -->
+  <img
+    src="/assets/images/dashboard-mock-perspective.png"
+    class="dashboard"
+    alt="ViralClip Dashboard Preview"
+  />
+
+</section>
 
 </body>
 </html>
