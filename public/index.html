@@ -3,22 +3,219 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ViralClip</title>
+  <title>ViralClip — Plan. Post. Grow at Scale</title>
   <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #f5f3ff, #f8fafc 60%);
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* NAVBAR */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      background: linear-gradient(90deg, #7c3aed, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #7c3aed, #a855f7);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn-secondary {
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      background: #e5e7eb;
+      color: #111827;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem 4rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #f59e0b, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #475569;
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* TRUST */
+    .trust {
+      text-align: center;
+      margin-top: 4rem;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .platform {
+      background: white;
+      border-radius: 12px;
+      padding: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .stat {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    .stat h2 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .stat p {
+      margin-top: 0.5rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="page">
-    <header class="hero">
-      <div class="hero-content">
+  <div class="container">
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav-left">
         <div class="logo">ViralClip</div>
-        <h1>Plan. Post. Grow at Scale</h1>
-        <p>Organize your content calendar, publish faster, and scale your social presence with clarity.</p>
-        <div class="hero-actions">
-          <a class="primary-btn" href="/signup.html">Get started for free</a>
-          <a class="secondary-btn" href="/login.html">Log in</a>
-        </div>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Resources</a>
       </div>
-    </header>
+      <div class="nav-right">
+        <a href="/login.html">Log in</a>
+        <a href="/signup.html" class="btn-primary">Get started for free</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Plan. Post. <span>Grow at Scale</span></h1>
+      <p>
+        Your command center for Reels, TikToks & Shorts.
+        Schedule, manage, and analyze all your short-form videos
+        in one powerful dashboard.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/signup.html" class="btn-primary">Get started for free</a>
+        <a href="#" class="btn-secondary">Watch how it works</a>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="trust">
+      Trusted by short-form creators around the world
+
+      <div class="platforms">
+        <div class="platform">Instagram</div>
+        <div class="platform">TikTok</div>
+        <div class="platform">YouTube Shorts</div>
+        <div class="platform">LinkedIn</div>
+        <div class="platform">Pinterest</div>
+        <div class="platform">Twitter / X</div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="stat">
+        <h2>191,782</h2>
+        <p>Creators growing</p>
+      </div>
+      <div class="stat">
+        <h2>8,587,229</h2>
+        <p>Posts viralized last month</p>
+      </div>
+      <div class="stat">
+        <h2>3,524</h2>
+        <p>Short-form platforms supported</p>
+      </div>
+    </section>
   </div>
 </body>
 </html>
