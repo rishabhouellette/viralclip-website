@@ -1,161 +1,146 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background: #f6f2fb;
-  color: #1f2937;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f7f3ff;
+  color: #1e1e2f;
   overflow-x: hidden;
 }
 
-/* HERO SCENE */
-.hero-scene {
-  position: relative;
-  min-height: 100vh;
-  padding: 40px 80px 120px;
-  overflow: hidden;
-}
-
-/* ATMOSPHERIC LAYERS */
-.fog-layer {
+/* NAV */
+.nav {
   position: absolute;
-  inset: 0;
+  top: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.particle-layer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* FLOATING ICONS */
-.float-icon {
-  position: absolute;
-  width: 72px;
-  z-index: 4;
-  animation: float 6s ease-in-out infinite;
-}
-
-.instagram { top: 55%; left: 8%; }
-.tiktok    { top: 30%; right: 12%; animation-delay: 1.5s; }
-.youtube   { bottom: 20%; right: 18%; animation-delay: 3s; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
-}
-
-/* NAVBAR */
-.navbar {
-  position: relative;
-  z-index: 5;
+  padding: 24px 64px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  z-index: 10;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 22px;
-  color: #7c3aed;
-}
-
-.navbar nav a {
+.nav nav a {
   margin-left: 24px;
   text-decoration: none;
-  color: #374151;
-  font-weight: 500;
+  color: #333;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #7c3aed, #ec4899);
+.nav .cta {
+  background: linear-gradient(90deg,#7f3af2,#ec4899);
   color: white;
   padding: 10px 18px;
   border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
 }
 
-.btn-primary.large {
-  padding: 14px 26px;
-  font-size: 16px;
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  padding: 140px 80px;
+  overflow: hidden;
 }
 
-.btn-secondary {
-  margin-left: 16px;
-  padding: 14px 26px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.6);
-  color: #111827;
-  text-decoration: none;
-  font-weight: 600;
+/* layers */
+.fog {
+  position: absolute;
+  bottom: -120px;
+  width: 100%;
+  z-index: 1;
 }
 
-/* HERO CONTENT */
+.particles {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  z-index: 2;
+}
+
+/* floating icons */
+.float {
+  position: absolute;
+  width: 64px;
+  animation: float 6s ease-in-out infinite;
+  z-index: 3;
+}
+
+.float.ig { left: 8%; top: 55%; animation-delay: 0s; }
+.float.tt { right: 18%; top: 30%; animation-delay: 2s; }
+.float.yt { right: 8%; top: 50%; animation-delay: 4s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+/* content */
 .hero-content {
   position: relative;
-  z-index: 5;
-  max-width: 640px;
-  margin-top: 140px;
+  max-width: 720px;
+  z-index: 4;
 }
 
 .hero-content h1 {
   font-size: 56px;
   line-height: 1.1;
-  margin-bottom: 24px;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #f59e0b, #ec4899, #8b5cf6);
+.hero-content h1 span {
+  background: linear-gradient(90deg,#f59e0b,#ec4899);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .hero-content p {
+  margin-top: 20px;
   font-size: 18px;
-  color: #4b5563;
-  margin-bottom: 32px;
+  max-width: 560px;
 }
 
-/* DASHBOARD MOCK */
-.dashboard-mock {
-  position: absolute;
-  right: 4%;
-  bottom: -40px;
-  width: 720px;
-  z-index: 4;
-  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.15));
+.actions {
+  margin-top: 32px;
 }
 
-/* TRUST SECTION */
-.trust {
-  text-align: center;
-  padding: 80px 20px;
+.actions a {
+  margin-right: 16px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  text-decoration: none;
 }
 
-.trust p {
-  font-size: 18px;
-  margin-bottom: 24px;
+.actions .primary {
+  background: linear-gradient(90deg,#7f3af2,#ec4899);
+  color: white;
 }
 
-.platform-logos {
+.actions .secondary {
+  background: #eee;
+  color: #333;
+}
+
+/* platforms row */
+.platforms {
+  margin-top: 32px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-  font-weight: 600;
-  color: #6b7280;
+  gap: 12px;
+}
+
+.platforms span {
+  background: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+/* dashboard mock */
+.dashboard {
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  width: 520px;
+  z-index: 3;
+  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.25));
 }
