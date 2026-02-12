@@ -1,0 +1,248 @@
+:root {
+  --bg: #f5f7ff;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --brand: #4f46e5;
+  --brand-hover: #4338ca;
+  --sidebar: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  flex: 1;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.hero-content {
+  max-width: 720px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 3rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.hero-content h1 {
+  margin: 1rem 0 0.5rem;
+  font-size: 2.6rem;
+}
+
+.hero-content p {
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.auth-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.auth-card {
+  width: min(420px, calc(100% - 2rem));
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-card label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.auth-card input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem;
+  font: inherit;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--sidebar);
+  color: #fff;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-btn,
+.logout-btn {
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #cbd5e1;
+  text-align: left;
+  padding: 0.65rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.nav-btn.active,
+.nav-btn:hover,
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.logout-btn {
+  margin-top: auto;
+}
+
+.content {
+  flex: 1;
+  padding: 1.75rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0.3rem 0 0;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 0.65rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary-btn {
+  background: var(--brand);
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: var(--brand-hover);
+}
+
+.secondary-btn {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.calendar-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-header span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.calendar-cell {
+  background: #eef2ff;
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  color: #3730a3;
+}
+
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    padding: 1.25rem;
+  }
+
+  .hero-content {
+    padding: 2rem;
+  }
+}

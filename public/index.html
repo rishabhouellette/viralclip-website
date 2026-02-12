@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ViralClip — Plan. Post. Grow at Scale</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="stylesheet" href="/css/styles.css" />
-
+  <link rel="stylesheet" href="/assets/css/style.css">
   <style>
     :root {
       --purple: #7c3aed;
       --pink: #ec4899;
       --orange: #f59e0b;
-      --bg: #f8f7ff;
-      --text: #0f172a;
-      --muted: #64748b;
+      --bg: #050510;
+      --text: #f8f9fa;
+      --muted: #94a3b8;
     }
-
-    * { box-sizing: border-box; }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       margin: 0;
       font-family: Inter, system-ui, sans-serif;
-      background:
-        radial-gradient(circle at top left, #ede9fe, transparent 40%),
-        radial-gradient(circle at top right, #fce7f3, transparent 45%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
     }
-
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     /* NAV */
@@ -42,210 +36,258 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 0;
+      position: relative;
+      z-index: 10;
     }
-
     .logo {
       font-weight: 800;
       font-size: 1.25rem;
       background: linear-gradient(90deg, var(--purple), var(--pink));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
-    nav a {
-      margin-left: 1.5rem;
+    .nav {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+    .nav a {
+      color: var(--text);
       text-decoration: none;
-      color: var(--muted);
       font-weight: 500;
     }
-
-    .cta {
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      color: white;
-      padding: 0.6rem 1.4rem;
-      border-radius: 999px;
-      text-decoration: none;
+    .nav a:hover {
+      color: var(--purple);
+    }
+    .btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 0.65rem 1.1rem;
       font-weight: 600;
-      box-shadow: 0 15px 40px rgba(124,58,237,0.35);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.5);
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
     }
 
     /* HERO */
     .hero {
+      margin-top: 2rem;
       position: relative;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      padding: 5rem 0 6rem;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 0;
     }
-
-    h1 {
-      font-size: 3.4rem;
-      line-height: 1.05;
-      margin-bottom: 1rem;
+    .fog-foreground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
     }
-
-    h1 span {
-      background: linear-gradient(90deg, var(--orange), var(--pink));
+    .platforms {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .platform-icon {
+      position: absolute;
+      width: 80px;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.8;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    .platform-icon:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+    .platform-icon:nth-child(2) { top: 25%; right: 10%; animation-delay: 1.2s; }
+    .platform-icon:nth-child(3) { bottom: 30%; left: 12%; animation-delay: 2s; }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      margin: 0 0 1rem;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, var(--purple), var(--pink));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
-    p {
+    .hero p {
+      font-size: 1.3rem;
       color: var(--muted);
-      font-size: 1.15rem;
-      max-width: 520px;
-      margin-bottom: 2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
     }
-
     .hero-actions {
       display: flex;
       gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+    .dashboard-preview {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      perspective: 1200px;
+    }
+    .dashboard-mock-img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transform: rotateX(8deg) rotateY(0deg);
+      transition: transform 0.3s;
+    }
+    .dashboard-preview:hover .dashboard-mock-img {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    .particle-overlay {
+      position: absolute;
+      top: -50%;
+      left: -25%;
+      width: 150%;
+      height: 200%;
+      pointer-events: none;
+      opacity: 0.3;
+      z-index: 1;
     }
 
-    .secondary {
-      padding: 0.6rem 1.4rem;
-      border-radius: 999px;
-      background: #e5e7eb;
-      color: #111827;
-      text-decoration: none;
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 5rem 0 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .stat-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      color: var(--muted);
       font-weight: 600;
     }
 
-    /* FLOATING ICONS */
-    .float {
-      position: absolute;
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
-      background: white;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 25px 50px rgba(0,0,0,.18);
-      animation: float 6s ease-in-out infinite;
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 2;
     }
 
-    .float svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    .f1 { top: 10%; left: -20px; animation-delay: 0s; }
-    .f2 { bottom: 20%; left: 10%; animation-delay: 1.5s; }
-    .f3 { top: 15%; right: 5%; animation-delay: 3s; }
-    .f4 { bottom: 25%; right: -25px; animation-delay: 4.5s; }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
-      100% { transform: translateY(0); }
-    }
-
-    /* DASHBOARD MOCK */
-    .mock {
-      background: white;
-      border-radius: 22px;
-      padding: 1rem;
-      box-shadow: 0 40px 80px rgba(0,0,0,.18);
-    }
-
-    .mock-header {
-      display: flex;
-      gap: .4rem;
-      margin-bottom: .8rem;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #e5e7eb;
-    }
-
-    .mock-body {
-      height: 260px;
-      border-radius: 14px;
-      background:
-        linear-gradient(90deg,#eef2ff 28%,#f8fafc 28%),
-        repeating-linear-gradient(
-          to bottom,
-          transparent,
-          transparent 36px,
-          rgba(0,0,0,.05) 36px,
-          rgba(0,0,0,.05) 38px
-        );
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-actions {
-        justify-content: center;
-      }
+    @media (max-width: 800px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1.1rem; }
+      .nav { display: none; }
+      .platform-icon { width: 60px; }
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <header>
       <div class="logo">ViralClip</div>
-      <nav>
-        <a href="#">Features</a>
-        <a href="#">Pricing</a>
-        <a href="#">Resources</a>
-        <a href="/login.html">Log in</a>
-        <a href="/signup.html" class="cta">Get started for free</a>
+      <nav class="nav">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/login.html" class="btn btn-ghost">Sign In</a>
+        <a href="/signup.html" class="btn btn-primary">Get Started</a>
       </nav>
     </header>
 
     <section class="hero">
-      <!-- Floating SVG icons -->
-      <div class="float f1">
-        <!-- TikTok -->
-        <svg viewBox="0 0 24 24" fill="#000"><path d="M12 2v12.3a2.7 2.7 0 1 1-2-2.6V9a5 5 0 1 0 5 5V8.5a6.5 6.5 0 0 0 4 1.3V6.5A4.5 4.5 0 0 1 12 2z"/></svg>
+      <img src="/assets/images/hero-fog-foreground.png" alt="" class="fog-foreground">
+      <img src="/assets/images/particle-overlay.png" alt="" class="particle-overlay">
+
+      <div class="platforms">
+        <img src="/assets/images/platform-instagram-float.png" alt="" class="platform-icon">
+        <img src="/assets/images/platform-tiktok-float.png" alt="" class="platform-icon">
+        <img src="/assets/images/platform-youtube-float.png" alt="" class="platform-icon">
       </div>
 
-      <div class="float f2">
-        <!-- Instagram -->
-        <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/></svg>
-      </div>
-
-      <div class="float f3">
-        <!-- YouTube -->
-        <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5v9a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4a3 3 0 0 0 2.1-2.1v-9zM10 15V9l5 3-5 3z"/></svg>
-      </div>
-
-      <div class="float f4">
-        <!-- Analytics -->
-        <svg viewBox="0 0 24 24" fill="#22c55e"><path d="M3 3h2v18H3V3zm8 6h2v12h-2V9zm8-4h2v16h-2V5z"/></svg>
-      </div>
-
-      <div>
-        <h1>Plan. Post. <span>Grow at Scale</span></h1>
-        <p>
-          Your command center for Reels, TikToks & Shorts.
-          Schedule, manage, and analyze all your short-form videos
-          in one powerful dashboard.
-        </p>
+      <div class="hero-content">
+        <h1>Plan. Post. Grow at Scale.</h1>
+        <p>Automate your TikTok, Instagram & YouTube content calendar with AI-powered scheduling.</p>
 
         <div class="hero-actions">
-          <a href="/signup.html" class="cta">Get started for free</a>
-          <a href="#" class="secondary">Watch how it works</a>
+          <a href="/signup.html" class="btn btn-primary">Start Free Trial</a>
+          <a href="#demo" class="btn btn-ghost">Watch Demo</a>
         </div>
-      </div>
 
-      <div class="mock">
-        <div class="mock-header">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+        <div class="dashboard-preview">
+          <img src="/assets/images/dashboard-mock-perspective.png" alt="Dashboard Preview" class="dashboard-mock-img">
         </div>
-        <div class="mock-body"></div>
       </div>
     </section>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Creators</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">500K+</div>
+        <div class="stat-label">Posts Scheduled</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15M+</div>
+        <div class="stat-label">Views Generated</div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 ViralClip · All rights reserved</p>
+    </footer>
   </div>
 </body>
 </html>
