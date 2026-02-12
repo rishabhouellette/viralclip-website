@@ -36,6 +36,12 @@ a {
   align-items: center;
   justify-content: center;
   padding: 3rem 1.5rem;
+  background-image:
+    url("../images/hero-fog-foreground.png"),
+    url("../images/particle-overlay.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-content {
