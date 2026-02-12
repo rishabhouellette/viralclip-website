@@ -1,28 +1,34 @@
-import { auth } from "./firebase.js";
 import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { auth } from "./firebase.js";
 
-const loginForm = document.getElementById("loginForm");
+export const signupWithEmail = (email, password) =>
+  createUserWithEmailAndPassword(auth, email, password);
 
-if (loginForm) {
-  loginForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // 🔥 THIS IS CRITICAL
+export const loginWithEmail = (email, password) =>
+  signInWithEmailAndPassword(auth, email, password);
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+export const watchAuthState = (callback) => onAuthStateChanged(auth, callback);
 
-    signInWithEmailAndPassword(auth, email, password)
-      .catch((error) => {
-        alert(error.message);
-      });
-  });
+export async function logoutAndRedirect() {
+  await signOut(auth);
+  window.location.href = "/login.html";
 }
 
-// ✅ Single source of truth for redirect
-onAuthStateChanged(auth, (user) => {
-  if (user && window.location.pathname.includes("login")) {
-    window.location.href = "/dashboard.html";
+const path = window.location.pathname;
+const onDashboard = path.endsWith("/dashboard.html");
+const onAuthPages = path.endsWith("/login.html") || path.endsWith("/signup.html");
+
+watchAuthState((user) => {
+  if (!user && onDashboard) {
+    window.location.replace("/login.html");
+  }
+
+  if (user && onAuthPages) {
+    window.location.replace("/dashboard.html");
   }
 });

@@ -7,128 +7,182 @@ import {
   serverTimestamp,
   where
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { db } from "/firebase.js";
-import { logoutUser, watchAuthState } from "/auth.js";
+import { db } from "./firebase.js";
+import { logoutAndRedirect, watchAuthState } from "./auth.js";
 
-const sections = document.querySelectorAll(".section");
-const navButtons = document.querySelectorAll(".nav-btn");
 const pageTitle = document.getElementById("pageTitle");
+const sectionButtons = document.querySelectorAll(".nav-btn");
+const sections = document.querySelectorAll(".section");
+
 const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
-const modal = document.getElementById("modal");
-const createPostForm = document.getElementById("createPostForm");
-const postList = document.getElementById("postList");
+const postModal = document.getElementById("postModal");
+const postForm = document.getElementById("createPostForm");
+const postTitleInput = document.getElementById("postTitle");
+const postCaptionInput = document.getElementById("postCaption");
 const logoutBtn = document.getElementById("logoutBtn");
-const calendarGrid = document.getElementById("calendarGrid");
 
-const titles = {
+const postsList = document.getElementById("postsList");
+const modalMessage = document.getElementById("modalMessage");
+
+const sectionTitles = {
   calendar: "Content Calendar",
-  posts: "My Posts",
   settings: "Settings"
 };
 
-function setActiveSection(id) {
+let currentUid = null;
+let unsubscribePosts = null;
+
+function showSection(targetSectionId) {
   sections.forEach((section) => {
-    section.classList.toggle("active", section.id === id);
+    section.classList.toggle("active", section.id === targetSectionId);
   });
 
-  navButtons.forEach((button) => {
-    button.classList.toggle("active", button.dataset.section === id);
+  sectionButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.section === targetSectionId);
   });
 
-  pageTitle.textContent = titles[id] || "Dashboard";
+  pageTitle.textContent = sectionTitles[targetSectionId] || "Dashboard";
 }
 
 function openModal() {
-  modal.classList.remove("hidden");
-  modal.setAttribute("aria-hidden", "false");
+  postModal.classList.remove("hidden");
+  postModal.setAttribute("aria-hidden", "false");
+  modalMessage.textContent = "";
+  postTitleInput.focus();
 }
 
 function closeModal() {
-  modal.classList.add("hidden");
-  modal.setAttribute("aria-hidden", "true");
-  createPostForm.reset();
-}
-
-function renderCalendarPreview() {
-  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  calendarGrid.innerHTML = days
-    .map((day) => `<div class="calendar-day"><span>${day}</span></div>`)
-    .join("");
+  postModal.classList.add("hidden");
+  postModal.setAttribute("aria-hidden", "true");
+  postForm.reset();
+  modalMessage.textContent = "";
 }
 
 function renderPosts(posts) {
   if (!posts.length) {
-    postList.innerHTML = "<li class='empty-state'>No posts yet. Create your first one.</li>";
+    postsList.innerHTML = `<li class="empty-post">No posts yet. Click "Create Post" to add your first post.</li>`;
     return;
   }
 
-  postList.innerHTML = posts
+  postsList.innerHTML = posts
     .map((post) => {
-      const date = post.scheduledFor?.toDate
-        ? post.scheduledFor.toDate().toLocaleDateString()
-        : "No date";
+      const createdAt = post.createdAt?.toDate
+        ? post.createdAt.toDate().toLocaleString()
+        : "Saving...";
 
       return `
         <li class="post-item">
-          <h4>${post.title}</h4>
-          <p>${post.caption}</p>
-          <small>Scheduled: ${date}</small>
+          <div class="post-head">
+            <h4>${escapeHtml(post.title)}</h4>
+            <span>${createdAt}</span>
+          </div>
+          <p>${escapeHtml(post.caption)}</p>
         </li>
       `;
     })
     .join("");
 }
 
-navButtons.forEach((button) => {
-  button.addEventListener("click", () => setActiveSection(button.dataset.section));
+function escapeHtml(text) {
+  return String(text)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+sectionButtons.forEach((button) => {
+  button.addEventListener("click", () => showSection(button.dataset.section));
 });
 
 openModalBtn.addEventListener("click", openModal);
 closeModalBtn.addEventListener("click", closeModal);
-modal.addEventListener("click", (event) => {
-  if (event.target === modal) {
+postModal.addEventListener("click", (event) => {
+  if (event.target === postModal) {
     closeModal();
   }
 });
 
 logoutBtn.addEventListener("click", async () => {
-  await logoutUser();
-  window.location.href = "/login.html";
+  try {
+    await logoutAndRedirect();
+  } catch (error) {
+    alert(`Sign out failed: ${error.message}`);
+  }
 });
 
-watchAuthState((user) => {
-  if (!user) return;
+postForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-  const postsQuery = query(
-    collection(db, "posts"),
-    where("uid", "==", user.uid),
-    orderBy("scheduledFor", "asc")
-  );
+  if (!currentUid) {
+    modalMessage.textContent = "You must be logged in to create posts.";
+    return;
+  }
 
-  onSnapshot(postsQuery, (snapshot) => {
-    const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    renderPosts(posts);
-  });
+  const title = postTitleInput.value.trim();
+  const caption = postCaptionInput.value.trim();
 
-  createPostForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  if (!title || !caption) {
+    modalMessage.textContent = "Please enter both a title and caption.";
+    return;
+  }
 
-    const formData = new FormData(createPostForm);
-    const title = String(formData.get("title") || "").trim();
-    const caption = String(formData.get("caption") || "").trim();
-    const scheduledFor = String(formData.get("scheduledFor") || "");
+  const saveBtn = postForm.querySelector("button[type='submit']");
+  saveBtn.disabled = true;
+  saveBtn.textContent = "Saving...";
 
+  try {
     await addDoc(collection(db, "posts"), {
-      uid: user.uid,
+      uid: currentUid,
       title,
       caption,
-      scheduledFor: new Date(`${scheduledFor}T12:00:00`),
       createdAt: serverTimestamp()
     });
 
     closeModal();
-  });
+    showSection("calendar");
+  } catch (error) {
+    modalMessage.textContent = `Unable to save post: ${error.message}`;
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.textContent = "Save Post";
+  }
 });
 
-renderCalendarPreview();
+watchAuthState((user) => {
+  if (!user) {
+    currentUid = null;
+
+    if (unsubscribePosts) {
+      unsubscribePosts();
+      unsubscribePosts = null;
+    }
+
+    return;
+  }
+
+  currentUid = user.uid;
+
+  if (unsubscribePosts) {
+    unsubscribePosts();
+  }
+
+  const postsRef = query(
+    collection(db, "posts"),
+    where("uid", "==", user.uid),
+    orderBy("createdAt", "desc")
+  );
+
+  unsubscribePosts = onSnapshot(
+    postsRef,
+    (snapshot) => {
+      const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      renderPosts(posts);
+    },
+    (error) => {
+      postsList.innerHTML = `<li class="empty-post">Unable to load posts: ${error.message}</li>`;
+    }
+  );
+});

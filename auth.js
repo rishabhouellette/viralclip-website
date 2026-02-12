@@ -4,33 +4,31 @@ import {
   signInWithEmailAndPassword,
   signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { auth } from "/firebase.js";
+import { auth } from "./firebase.js";
 
-export async function loginWithEmail(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
+export const signupWithEmail = (email, password) =>
+  createUserWithEmailAndPassword(auth, email, password);
+
+export const loginWithEmail = (email, password) =>
+  signInWithEmailAndPassword(auth, email, password);
+
+export const watchAuthState = (callback) => onAuthStateChanged(auth, callback);
+
+export async function logoutAndRedirect() {
+  await signOut(auth);
+  window.location.href = "/login.html";
 }
 
-export async function signupWithEmail(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
-}
-
-export async function logoutUser() {
-  return signOut(auth);
-}
-
-export function watchAuthState(callback) {
-  return onAuthStateChanged(auth, callback);
-}
-
-const isDashboardPage = window.location.pathname.endsWith("/dashboard.html");
-const isAuthPage = window.location.pathname.endsWith("/login.html") || window.location.pathname.endsWith("/signup.html");
+const path = window.location.pathname;
+const onDashboard = path.endsWith("/dashboard.html");
+const onAuthPages = path.endsWith("/login.html") || path.endsWith("/signup.html");
 
 watchAuthState((user) => {
-  if (!user && isDashboardPage) {
-    window.location.href = "/login.html";
+  if (!user && onDashboard) {
+    window.location.replace("/login.html");
   }
 
-  if (user && isAuthPage) {
-    window.location.href = "/dashboard.html";
+  if (user && onAuthPages) {
+    window.location.replace("/dashboard.html");
   }
 });

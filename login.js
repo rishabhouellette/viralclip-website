@@ -1,14 +1,14 @@
-import { auth } from "./firebase.js";
-import {
-  signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { loginWithEmail, signupWithEmail } from "/auth.js";
 
 const loginBtn = document.getElementById("loginBtn");
+const loginEmailInput = document.getElementById("email");
+const loginPasswordInput = document.getElementById("password");
+const signupForm = document.getElementById("signup-form");
 
-if (loginBtn) {
+if (loginBtn && loginEmailInput && loginPasswordInput) {
   loginBtn.addEventListener("click", async () => {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+    const email = loginEmailInput.value.trim();
+    const password = loginPasswordInput.value;
 
     if (!email || !password) {
       alert("Please enter both email and password.");
@@ -16,11 +16,32 @@ if (loginBtn) {
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await loginWithEmail(email, password);
       window.location.href = "/dashboard.html";
-    } catch (err) {
-      alert(err.message);
-      console.error(err);
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+}
+
+if (signupForm) {
+  signupForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(signupForm);
+    const email = String(formData.get("email") || "").trim();
+    const password = String(formData.get("password") || "");
+
+    if (!email || !password) {
+      alert("Please enter both email and password.");
+      return;
+    }
+
+    try {
+      await signupWithEmail(email, password);
+      window.location.href = "/dashboard.html";
+    } catch (error) {
+      alert(error.message);
     }
   });
 }

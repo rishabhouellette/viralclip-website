@@ -3,68 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard | ViralClip</title>
+  <title>ViralClip Dashboard</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <aside class="sidebar">
     <h1 class="logo">ViralClip</h1>
+
     <nav class="sidebar-nav">
       <button class="nav-btn active" data-section="calendar">📅 Calendar</button>
-      <button class="nav-btn" data-section="posts">📝 My Posts</button>
       <button class="nav-btn" data-section="settings">⚙️ Settings</button>
     </nav>
-    <button id="logoutBtn" class="logout-btn">Sign out</button>
+
+    <button id="logoutBtn" class="logout-btn" type="button">Sign Out</button>
   </aside>
 
   <main class="content">
     <header class="dashboard-header">
       <div>
         <h2 id="pageTitle">Content Calendar</h2>
-        <p class="subtitle">Plan and publish your short-form content.</p>
+        <p class="subtitle">Create and track all your ViralClip posts.</p>
       </div>
-      <button id="openModalBtn" class="primary-btn">+ Create Post</button>
+      <button id="openModalBtn" class="primary-btn" type="button">+ Create Post</button>
     </header>
 
     <section id="calendar" class="section active">
-      <div class="calendar-card">
-        <h3>Publishing Calendar</h3>
-        <p>Use this section to map out when each piece of content should go live.</p>
-        <div class="calendar-grid" id="calendarGrid"></div>
-      </div>
-    </section>
-
-    <section id="posts" class="section">
-      <div class="card">
+      <div class="panel">
         <h3>Your Posts</h3>
-        <ul id="postList" class="post-list"></ul>
+        <p class="panel-subtitle">Only posts from your account are shown here.</p>
+        <ul id="postsList" class="posts-list"></ul>
       </div>
     </section>
 
     <section id="settings" class="section">
-      <div class="card">
+      <div class="panel">
         <h3>Settings</h3>
-        <p>Account and integrations settings are coming soon.</p>
+        <p class="panel-subtitle">Account settings will appear here soon.</p>
       </div>
     </section>
   </main>
 
-  <div id="modal" class="modal hidden" aria-hidden="true">
+  <div id="postModal" class="modal hidden" aria-hidden="true">
     <div class="modal-content">
-      <h3>Create a new post</h3>
+      <h3>Create Post</h3>
+
       <form id="createPostForm">
-        <label for="postTitle">Title</label>
-        <input id="postTitle" name="title" type="text" required />
+        <label for="postTitle">Post Title</label>
+        <input id="postTitle" name="title" type="text" placeholder="Enter post title" required />
 
         <label for="postCaption">Caption</label>
-        <textarea id="postCaption" name="caption" rows="4" required></textarea>
+        <textarea id="postCaption" name="caption" rows="4" placeholder="Write your caption" required></textarea>
 
-        <label for="scheduledFor">Scheduled for</label>
-        <input id="scheduledFor" name="scheduledFor" type="date" required />
+        <p id="modalMessage" class="form-message" aria-live="polite"></p>
 
         <div class="modal-actions">
-          <button type="button" id="closeModalBtn" class="secondary-btn">Cancel</button>
-          <button type="submit" class="primary-btn">Save Post</button>
+          <button id="closeModalBtn" class="secondary-btn" type="button">Cancel</button>
+          <button class="primary-btn" type="submit">Save Post</button>
         </div>
       </form>
     </div>
