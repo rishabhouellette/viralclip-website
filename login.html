@@ -1,39 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login – ViralClip</title>
-
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
-  <!-- Your Firebase config -->
-  <script src="firebase.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | ViralClip</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body { display: grid; place-items: center; }
+    .auth-card { width: min(420px, calc(100% - 2rem)); background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 1.5rem; }
+    .auth-card input { width: 100%; margin-bottom: .8rem; border: 1px solid #d1d5db; border-radius: 8px; padding: .65rem; }
+    .auth-card p { color: #6b7280; }
+  </style>
 </head>
-
 <body>
-  <h1>Login to ViralClip</h1>
+  <div class="auth-card">
+    <h1>Welcome back</h1>
+    <p>Log in to manage your ViralClip content calendar.</p>
+    <input id="email" type="email" placeholder="Email" required />
+    <input id="password" type="password" placeholder="Password" required />
+    <button id="loginBtn" class="primary-btn">Log in</button>
+    <p>Don't have an account? <a href="/signup.html">Create one</a></p>
+  </div>
 
-  <input id="email" placeholder="Email" />
-  <input id="password" type="password" placeholder="Password" />
-  <button id="loginBtn" onclick="login()">Login</button>
-
-  <p>Don't have an account? <a href="/signup.html">Sign up</a></p>
-
-  <script>
-    function login() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
-          window.location.href = "dashboard.html";
-        })
-        .catch(err => {
-          alert(err.message);
-        });
-    }
-  </script>
+  <script type="module" src="/auth.js"></script>
+  <script type="module" src="/login.js"></script>
 </body>
 </html>
