@@ -5,15 +5,22 @@ import {
 
 const loginBtn = document.getElementById("loginBtn");
 
-loginBtn.addEventListener("click", async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+if (loginBtn) {
+  loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    window.location.href = "/dashboard.html";
-  } catch (err) {
-    alert(err.message);
-    console.error(err);
-  }
-});
+    if (!email || !password) {
+      alert("Please enter both email and password.");
+      return;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.href = "/dashboard.html";
+    } catch (err) {
+      alert(err.message);
+      console.error(err);
+    }
+  });
+}
