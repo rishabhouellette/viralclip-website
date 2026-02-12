@@ -1,61 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dashboard – ViralClip</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | ViralClip</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
-
-<body onload="protectPage()">
+<body>
   <aside class="sidebar">
-    <h2 class="logo">ViralClip</h2>
-
-    <nav>
-      <a href="#" onclick="showSection('calendar')">📅 Calendar</a>
-      <a href="#" onclick="showSection('clips')">🎬 Clips</a>
-      <a href="#" onclick="showSection('accounts')">👥 Accounts</a>
-      <a href="#" onclick="showSection('analytics')">📊 Analytics</a>
+    <h1 class="logo">ViralClip</h1>
+    <nav class="sidebar-nav">
+      <button class="nav-btn active" data-section="calendar">📅 Calendar</button>
+      <button class="nav-btn" data-section="posts">📝 My Posts</button>
+      <button class="nav-btn" data-section="settings">⚙️ Settings</button>
     </nav>
-
-    <button class="logout" onclick="logout()">Sign out</button>
+    <button id="logoutBtn" class="logout-btn">Sign out</button>
   </aside>
 
   <main class="content">
-    <!-- HEADER -->
-    <header class="header">
-      <h1 id="pageTitle">Content Calendar</h1>
-      <button class="primary" onclick="openModal()">+ Create Post</button>
+    <header class="dashboard-header">
+      <div>
+        <h2 id="pageTitle">Content Calendar</h2>
+        <p class="subtitle">Plan and publish your short-form content.</p>
+      </div>
+      <button id="openModalBtn" class="primary-btn">+ Create Post</button>
     </header>
 
-    <!-- SECTIONS -->
     <section id="calendar" class="section active">
-      <p>No posts yet. Create your first post.</p>
+      <div class="calendar-card">
+        <h3>Publishing Calendar</h3>
+        <p>Use this section to map out when each piece of content should go live.</p>
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </div>
     </section>
 
-    <section id="clips" class="section">
-      <p>Your generated clips will appear here.</p>
+    <section id="posts" class="section">
+      <div class="card">
+        <h3>Your Posts</h3>
+        <ul id="postList" class="post-list"></ul>
+      </div>
     </section>
 
-    <section id="accounts" class="section">
-      <p>Connect Instagram, TikTok, YouTube.</p>
-    </section>
-
-    <section id="analytics" class="section">
-      <p>Analytics coming soon.</p>
+    <section id="settings" class="section">
+      <div class="card">
+        <h3>Settings</h3>
+        <p>Account and integrations settings are coming soon.</p>
+      </div>
     </section>
   </main>
 
-  <!-- MODAL -->
-  <div id="modal" class="modal hidden">
+  <div id="modal" class="modal hidden" aria-hidden="true">
     <div class="modal-content">
-      <h2>Create Post</h2>
-      <input id="postTitle" placeholder="Post title" />
-      <textarea id="postCaption" placeholder="Caption"></textarea>
-      <button class="primary" onclick="createPost()">Save</button>
-      <button onclick="closeModal()">Cancel</button>
+      <h3>Create a new post</h3>
+      <form id="createPostForm">
+        <label for="postTitle">Title</label>
+        <input id="postTitle" name="title" type="text" required />
+
+        <label for="postCaption">Caption</label>
+        <textarea id="postCaption" name="caption" rows="4" required></textarea>
+
+        <label for="scheduledFor">Scheduled for</label>
+        <input id="scheduledFor" name="scheduledFor" type="date" required />
+
+        <div class="modal-actions">
+          <button type="button" id="closeModalBtn" class="secondary-btn">Cancel</button>
+          <button type="submit" class="primary-btn">Save Post</button>
+        </div>
+      </form>
     </div>
   </div>
 
-  <script type="module" src="/firebase.js"></script>
   <script type="module" src="/auth.js"></script>
   <script type="module" src="/ui.js"></script>
 </body>
