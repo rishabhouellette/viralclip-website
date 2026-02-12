@@ -1,293 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>ViralClip — Plan. Post. Grow at Scale</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    :root {
-      --purple: #7c3aed;
-      --pink: #ec4899;
-      --orange: #f59e0b;
-      --bg: #050510;
-      --text: #f8f9fa;
-      --muted: #94a3b8;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      position: relative;
-      z-index: 1;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    /* NAV */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 0;
-      position: relative;
-      z-index: 10;
-    }
-    .logo {
-      font-weight: 800;
-      font-size: 1.25rem;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .nav {
-      display: flex;
-      gap: 1.25rem;
-      align-items: center;
-    }
-    .nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .nav a:hover {
-      color: var(--purple);
-    }
-    .btn {
-      border: 0;
-      border-radius: 12px;
-      padding: 0.65rem 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.2s;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
-      color: #fff;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.5);
-    }
-    .btn-ghost {
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    /* HERO */
-    .hero {
-      margin-top: 2rem;
-      position: relative;
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 3rem 0;
-    }
-    .fog-foreground {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.6;
-    }
-    .platforms {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .platform-icon {
-      position: absolute;
-      width: 80px;
-      animation: float 6s ease-in-out infinite;
-      opacity: 0.8;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
-    }
-    .platform-icon:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
-    .platform-icon:nth-child(2) { top: 25%; right: 10%; animation-delay: 1.2s; }
-    .platform-icon:nth-child(3) { bottom: 30%; left: 12%; animation-delay: 2s; }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      margin: 0 0 1rem;
-      line-height: 1.1;
-      background: linear-gradient(135deg, #fff 30%, var(--purple), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero p {
-      font-size: 1.3rem;
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 4rem;
-    }
-    .dashboard-preview {
-      position: relative;
-      max-width: 1000px;
-      margin: 0 auto;
-      perspective: 1200px;
-    }
-    .dashboard-mock-img {
-      width: 100%;
-      display: block;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      transform: rotateX(8deg) rotateY(0deg);
-      transition: transform 0.3s;
-    }
-    .dashboard-preview:hover .dashboard-mock-img {
-      transform: rotateX(0deg) rotateY(0deg);
-    }
-    .particle-overlay {
-      position: absolute;
-      top: -50%;
-      left: -25%;
-      width: 150%;
-      height: 200%;
-      pointer-events: none;
-      opacity: 0.3;
-      z-index: 1;
-    }
-
-    /* STATS */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin: 5rem 0 3rem;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-    .stat {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .stat-num {
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .stat-label {
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 3rem 0 2rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    @media (max-width: 800px) {
-      .hero h1 { font-size: 2.5rem; }
-      .hero p { font-size: 1.1rem; }
-      .nav { display: none; }
-      .platform-icon { width: 60px; }
-    }
-  </style>
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
-  <div class="container">
-    <header>
+
+  <!-- HERO SCENE -->
+  <section class="hero-scene">
+
+    <!-- Atmospheric layers -->
+    <img src="assets/images/hero-fog-foreground.png" class="fog-layer" alt="" />
+    <img src="assets/images/particle-overlay.png" class="particle-layer" alt="" />
+
+    <!-- Floating platform icons -->
+    <img src="assets/images/platform-instagram-float.png" class="float-icon instagram" />
+    <img src="assets/images/platform-tiktok-float.png" class="float-icon tiktok" />
+    <img src="assets/images/platform-youtube-float.png" class="float-icon youtube" />
+
+    <!-- NAVBAR -->
+    <header class="navbar">
       <div class="logo">ViralClip</div>
-      <nav class="nav">
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="/login.html" class="btn btn-ghost">Sign In</a>
-        <a href="/signup.html" class="btn btn-primary">Get Started</a>
+      <nav>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Resources</a>
+        <a href="/login.html" class="link">Log in</a>
+        <a href="/signup.html" class="btn-primary">Get started for free</a>
       </nav>
     </header>
 
-    <section class="hero">
-      <img src="assets/images/hero-fog-foreground.png" alt="" class="fog-foreground">
-      <img src="assets/images/particle-overlay.png" alt="" class="particle-overlay">
+    <!-- HERO CONTENT -->
+    <div class="hero-content">
+      <h1>
+        Plan. Post. <span class="gradient-text">Grow at Scale</span>
+      </h1>
 
-      <div class="platforms">
-        <img src="assets/images/platform-instagram-float.png" alt="" class="platform-icon">
-        <img src="assets/images/platform-tiktok-float.png" alt="" class="platform-icon">
-        <img src="assets/images/platform-youtube-float.png" alt="" class="platform-icon">
-      </div>
+      <p>
+        Your command center for <strong>Reels, TikToks & Shorts</strong>.
+        Schedule, manage, and analyze all your short-form videos in one powerful dashboard.
+      </p>
 
-      <div class="hero-content">
-        <h1>Plan. Post. Grow at Scale.</h1>
-        <p>Automate your TikTok, Instagram & YouTube content calendar with AI-powered scheduling.</p>
-
-        <div class="hero-actions">
-          <a href="/signup.html" class="btn btn-primary">Start Free Trial</a>
-          <a href="#demo" class="btn btn-ghost">Watch Demo</a>
-        </div>
-
-        <div class="dashboard-preview">
-          <img src="assets/images/dashboard-mock-perspective.png" alt="Dashboard Preview" class="dashboard-mock-img">
-        </div>
-      </div>
-    </section>
-
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-num">10K+</div>
-        <div class="stat-label">Creators</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">500K+</div>
-        <div class="stat-label">Posts Scheduled</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">15M+</div>
-        <div class="stat-label">Views Generated</div>
+      <div class="hero-cta">
+        <a href="/signup.html" class="btn-primary large">Get started for free</a>
+        <a href="#" class="btn-secondary">Watch how it works</a>
       </div>
     </div>
 
-    <footer>
-      <p>© 2025 ViralClip · All rights reserved</p>
-    </footer>
-  </div>
+    <!-- DASHBOARD MOCK -->
+    <img
+      src="assets/images/dashboard-mock-perspective.png"
+      class="dashboard-mock"
+      alt="ViralClip dashboard preview"
+    />
+
+  </section>
+
+  <!-- TRUST LOGOS -->
+  <section class="trust">
+    <p>Trusted by short-form creators around the world</p>
+
+    <div class="platform-logos">
+      <span>Instagram</span>
+      <span>TikTok</span>
+      <span>YouTube</span>
+      <span>LinkedIn</span>
+      <span>Pinterest</span>
+      <span>Twitter / X</span>
+    </div>
+  </section>
+
 </body>
 </html>
