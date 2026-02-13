@@ -7,50 +7,27 @@
   <link rel="stylesheet" href="/assets/css/dashboard.css" />
 </head>
 <body>
-  <div class="dashboard">
+  <div class="app">
+
     <aside class="sidebar">
       <h1>ViralClip</h1>
-      <nav>
-        <button onclick="location.href='calendar.html'">📅 Calendar</button>
-        <button onclick="location.href='clips.html'">🎬 Clips</button>
-        <button onclick="location.href='accounts.html'">👤 Accounts</button>
-        <button onclick="location.href='analytics.html'">📊 Analytics</button>
-        <button onclick="location.href='settings.html'">⚙️ Settings</button>
-      </nav>
+      <a href="/dashboard/">Calendar</a>
+      <a href="/dashboard/clips.html">Clips</a>
+      <a href="/dashboard/accounts.html">Accounts</a>
+      <a href="/dashboard/analytics.html">Analytics</a>
+      <a href="/dashboard/settings.html">Settings</a>
     </aside>
 
     <main class="main">
+      <h2>Content Calendar</h2>
+
       <div class="card">
-        <h2>Create Post</h2>
-
-        <label>Platforms</label><br />
-        <button>Instagram</button>
-        <button>TikTok</button>
-        <button>Shorts</button>
-
-        <br /><br />
-
-        <label>Caption</label><br />
-        <textarea placeholder="Write your caption..."></textarea>
-
-        <br /><br />
-
-        <label>Date</label><br />
-        <input type="date" />
-
-        <br /><br />
-
-        <label>Time</label><br />
-        <input type="time" />
-
-        <br /><br />
-
-        <button>Schedule post</button>
+        <!-- calendar grid will go here next -->
+        <p>This is where the calendar UI goes.</p>
       </div>
-    </main>
-  </div>
 
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/dashboard.css">
+    </main>
+
+  </div>
 </body>
 </html>
