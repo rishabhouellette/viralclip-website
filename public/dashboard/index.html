@@ -11,15 +11,36 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="brand">ViralClip</div>
+    <div class="brand">
+      <img src="/assets/icons/logo.svg" alt="ViralClip" />
+      <span>ViralClip</span>
+    </div>
 
     <nav>
-      <a class="active">Dashboard</a>
-      <a>Calendar</a>
-      <a>Clips</a>
-      <a>Accounts</a>
-      <a>Analytics</a>
-      <a>Settings</a>
+      <a class="active">
+        <img src="/assets/icons/dashboard.svg" alt="" />
+        <span>Dashboard</span>
+      </a>
+      <a href="/dashboard/calendar.html">
+        <img src="/assets/icons/calendar.svg" alt="" />
+        <span>Calendar</span>
+      </a>
+      <a href="/dashboard/clips.html">
+        <img src="/assets/icons/clips.svg" alt="" />
+        <span>Clips</span>
+      </a>
+      <a href="/dashboard/accounts.html">
+        <img src="/assets/icons/accounts.svg" alt="" />
+        <span>Accounts</span>
+      </a>
+      <a href="/dashboard/analytics.html">
+        <img src="/assets/icons/analytics.svg" alt="" />
+        <span>Analytics</span>
+      </a>
+      <a href="/dashboard/settings.html">
+        <img src="/assets/icons/settings.svg" alt="" />
+        <span>Settings</span>
+      </a>
     </nav>
 
     <div class="profile">
@@ -37,8 +58,13 @@
     <header class="topbar">
       <h1>Dashboard</h1>
       <div class="actions">
-        <input type="search" placeholder="Search" />
-        <button class="primary">+ Create Post</button>
+        <button class="icon-btn" aria-label="Search">
+          <img src="/assets/icons/search.svg" alt="" />
+        </button>
+        <button class="primary-btn">
+          <img src="/assets/icons/plus.svg" alt="" />
+          Create Post
+        </button>
       </div>
     </header>
 
@@ -48,7 +74,9 @@
       <div class="center">
 
         <div class="card greeting">
-          <h2>Good morning, Sarah 👋</h2>
+          <h2>
+            Good morning, <span id="user-name">there</span> 👋
+          </h2>
           <p>You have <strong>5 posts</strong> scheduled today.</p>
         </div>
 
@@ -59,9 +87,18 @@
           </div>
 
           <div class="planner-row">
-            <div class="pill instagram">Instagram · 3:00 PM</div>
-            <div class="pill tiktok">TikTok · 5:00 PM</div>
-            <div class="pill youtube">YouTube · 8:00 PM</div>
+            <div class="pill instagram">
+              <img src="/assets/icons/instagram.svg" alt="" />
+              Instagram · 3:00 PM
+            </div>
+            <div class="pill tiktok">
+              <img src="/assets/icons/tiktok.svg" alt="" />
+              TikTok · 5:00 PM
+            </div>
+            <div class="pill youtube">
+              <img src="/assets/icons/youtube.svg" alt="" />
+              YouTube · 8:00 PM
+            </div>
           </div>
         </div>
 
@@ -110,6 +147,7 @@
   </main>
 </div>
 
+<script type="module" src="/assets/js/dashboard.js"></script>
 </body>
 </html>
           <button class="view-btn active">Month</button>

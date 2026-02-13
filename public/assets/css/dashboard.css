@@ -29,13 +29,33 @@ body {
   margin-bottom: 32px;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.brand img {
+  width: 34px;
+  height: 34px;
+}
+
 .sidebar nav a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 12px;
   border-radius: 12px;
   color: #cbd5f5;
   text-decoration: none;
   margin-bottom: 6px;
+}
+
+.sidebar img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.9;
 }
 
 .sidebar nav a.active,
@@ -84,6 +104,40 @@ body {
   border-radius: 10px;
 }
 
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: #eef2ff;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.primary-btn img {
+  width: 16px;
+  height: 16px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -117,6 +171,17 @@ body {
   border-radius: 999px;
   font-weight: 600;
   font-size: 14px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pill img {
+  width: 14px;
+  height: 14px;
 }
 
 .instagram { background: #fde2f3; color: #c026d3; }
