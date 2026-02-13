@@ -44,6 +44,7 @@ body {
   animation: float 12s ease-in-out infinite;
   z-index: 1;
   pointer-events: none;
+  transition: transform 0.2s ease-out;
 }
 
 /* Floating platform icon positions (around card) */
@@ -149,11 +150,19 @@ body {
   box-shadow: 0 0 0 4px rgba(155, 108, 255, 0.18);
 }
 
-/* Eye icon */
-.input-group .eye {
+.toggle-password {
+  position: absolute;
   right: 16px;
-  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
   cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.toggle-password:hover {
+  opacity: 1;
 }
 
 /* Primary button */

@@ -30,8 +30,18 @@
       </div>
 
       <div class="input-group">
-        <img src="assets/images/icon-lock.png">
-        <input type="password" id="password" placeholder="Create password" required>
+        <img src="assets/images/icon-lock.png" class="input-icon" />
+        <input
+          type="password"
+          id="password"
+          placeholder="Create password"
+          required
+        />
+        <img
+          src="assets/images/icon-eye.png"
+          class="toggle-password"
+          id="togglePassword"
+        />
       </div>
 
       <button type="submit" class="primary-btn">Sign up</button>
@@ -53,6 +63,7 @@
   </div>
 </div>
 
+<script src="assets/js/auth-ui.js"></script>
 <script type="module" src="assets/js/signup.js"></script>
 </body>
 </html>
