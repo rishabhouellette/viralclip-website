@@ -23,23 +23,28 @@ body {
   flex-direction: column;
 }
 
-.brand {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 32px;
+.sidebar {
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: #e5e7eb;
 }
 
-.brand {
+.sidebar-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 600;
+  padding: 24px 20px;
 }
 
-.brand img {
+.logo-icon {
   width: 34px;
   height: 34px;
 }
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 700;
+}
+
 
 .sidebar nav a {
   display: flex;
@@ -64,6 +69,22 @@ body {
   color: white;
 }
 
+.sidebar .active {
+  background: rgba(99,102,241,0.15);
+  border-radius: 10px;
+}
+
+.sidebar svg,
+.sidebar img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.9;
+}
+
+.sidebar svg {
+  fill: #c7d2fe;
+}
+
 .profile {
   margin-top: auto;
   display: flex;
@@ -82,6 +103,32 @@ body {
 .main {
   flex: 1;
   padding: 32px;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 28px;
+}
+
+.top-nav nav a {
+  margin-right: 24px;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.top-nav nav .active {
+  color: #4f46e5;
+  border-bottom: 2px solid #4f46e5;
+  padding-bottom: 6px;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .topbar {
@@ -153,6 +200,11 @@ body {
   margin-bottom: 20px;
 }
 
+.card img {
+  width: 16px;
+  height: 16px;
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -160,33 +212,21 @@ body {
 }
 
 /* PLANNER */
-.planner-row {
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.planner-card {
+  background: linear-gradient(180deg,#ffffff,#f8fafc);
+  border-radius: 14px;
+  padding: 16px;
   display: flex;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.pill {
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.pill {
-  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
 }
-
-.pill img {
-  width: 14px;
-  height: 14px;
-}
-
-.instagram { background: #fde2f3; color: #c026d3; }
-.tiktok { background: #e0f2fe; color: #0284c7; }
-.youtube { background: #fee2e2; color: #dc2626; }
 
 /* TAGS */
 .tags span {

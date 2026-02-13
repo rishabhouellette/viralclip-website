@@ -9,13 +9,10 @@ onAuthStateChanged(auth, (user) => {
     return;
   }
 
-  const nameEl = document.getElementById("user-name");
+  const nameEl = document.getElementById("username");
 
   if (!nameEl) return;
 
-  const displayName =
-    user.displayName ||
-    (user.email ? user.email.split("@")[0] : "there");
-
-  nameEl.textContent = displayName;
+  nameEl.textContent =
+    user.displayName || (user.email ? user.email.split("@")[0] : "there");
 });
