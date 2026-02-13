@@ -7,61 +7,50 @@
   <link rel="stylesheet" href="/assets/css/dashboard.css" />
 </head>
 <body>
-  <div class="app">
+  <div class="dashboard">
     <aside class="sidebar">
-      <h2>ViralClip</h2>
+      <h1>ViralClip</h1>
       <nav>
-        <button data-view="calendar">📅 Calendar</button>
-        <button data-view="clips">✂️ Clips</button>
-        <button data-view="accounts">👥 Accounts</button>
-        <button data-view="analytics">📊 Analytics</button>
-        <button data-view="settings">⚙️ Settings</button>
+        <button onclick="location.href='calendar.html'">📅 Calendar</button>
+        <button onclick="location.href='clips.html'">🎬 Clips</button>
+        <button onclick="location.href='accounts.html'">👤 Accounts</button>
+        <button onclick="location.href='analytics.html'">📊 Analytics</button>
+        <button onclick="location.href='settings.html'">⚙️ Settings</button>
       </nav>
     </aside>
 
-    <main id="content">
-      <!-- Views load here -->
+    <main class="main">
+      <div class="card">
+        <h2>Create Post</h2>
+
+        <label>Platforms</label><br />
+        <button>Instagram</button>
+        <button>TikTok</button>
+        <button>Shorts</button>
+
+        <br /><br />
+
+        <label>Caption</label><br />
+        <textarea placeholder="Write your caption..."></textarea>
+
+        <br /><br />
+
+        <label>Date</label><br />
+        <input type="date" />
+
+        <br /><br />
+
+        <label>Time</label><br />
+        <input type="time" />
+
+        <br /><br />
+
+        <button>Schedule post</button>
+      </div>
     </main>
   </div>
 
-  <!-- Create Post Modal -->
-  <div id="modal-backdrop" class="modal-backdrop hidden"></div>
-
-  <div id="create-post-modal" class="modal hidden">
-    <div class="modal-header">
-      <h2>Create Post</h2>
-      <button id="close-modal" class="icon-btn">✕</button>
-    </div>
-
-    <div class="modal-body">
-      <label class="label">Platforms</label>
-      <div class="pill-group">
-        <button class="pill" data-platform="Instagram">Instagram</button>
-        <button class="pill" data-platform="TikTok">TikTok</button>
-        <button class="pill" data-platform="YouTube">Shorts</button>
-      </div>
-
-      <label class="label">Caption</label>
-      <textarea id="caption" placeholder="Write your caption…"></textarea>
-
-      <div class="row">
-        <div>
-          <label class="label">Date</label>
-          <input type="date" id="post-date" />
-        </div>
-        <div>
-          <label class="label">Time</label>
-          <input type="time" id="post-time" />
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-footer">
-      <button id="schedule-post" class="primary">Schedule post</button>
-    </div>
-  </div>
-/assets/js/router.js"></script>
-  <script src="/assets/js/router.js"></script>
-  <script src="../assets/js/modal.js"></script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css">
 </body>
 </html>

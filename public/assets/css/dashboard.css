@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f7f7fb;
+  color: #1f2937;
+}
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 20px;
+}
+
+.sidebar h1 {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.sidebar nav button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  padding: 32px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 600px;
+}
