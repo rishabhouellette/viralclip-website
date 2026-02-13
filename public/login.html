@@ -3,69 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <title>Log in – ViralClip</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/auth.css" />
 </head>
+<body>
 
-<body class="auth-page">
+<div class="auth-bg">
+  <img src="assets/images/hero-fog-foreground.png" />
+  <img src="assets/images/particle-overlay.png" />
+  <img class="float-icon float-tiktok" src="assets/images/platform-tiktok-float.png">
+  <img class="float-icon float-youtube" src="assets/images/platform-youtube-float.png">
+</div>
 
-  <!-- Floating icons -->
-  <img src="/assets/images/platform-tiktok-float.png" class="float-icon tiktok" alt="TikTok" />
-  <img src="/assets/images/platform-youtube-float.png" class="float-icon youtube" alt="YouTube" />
+<div class="auth-logo">
+  <img src="assets/images/logo.png" alt="ViralClip">
+</div>
 
-  <!-- Background layers -->
-  <div class="auth-bg">
-    <img src="/assets/images/particle-overlay.png" class="particles" alt="" />
-    <img src="/assets/images/hero-fog-foreground.png" class="fog" alt="" />
-  </div>
-
-  <!-- Logo -->
-  <div class="auth-logo">
-    <img src="/assets/images/logo.png" alt="ViralClip" />
-    <span>ViralClip</span>
-  </div>
-
-  <!-- Login Card -->
+<div class="auth-wrapper">
   <div class="auth-card">
-
     <h1>Welcome back!</h1>
-    <p class="subtitle">Log in to access your account.</p>
+    <p>Log in to access your account.</p>
 
     <form id="login-form">
-
       <div class="input-group">
-        <span class="icon">✉️</span>
-        <input type="email" id="email" placeholder="Email" required />
+        <img src="assets/images/icon-mail.png">
+        <input type="email" id="email" placeholder="Email" required>
       </div>
 
       <div class="input-group">
-        <span class="icon">🔒</span>
-        <input type="password" id="password" placeholder="Enter your password" required />
-        <span class="eye" aria-label="Toggle password visibility" role="button" tabindex="0">👁</span>
+        <img src="assets/images/icon-lock.png">
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <img class="eye" src="assets/images/icon-eye.png" alt="Toggle password visibility">
       </div>
 
       <button type="submit" class="primary-btn">Log in</button>
-
     </form>
 
-    <a href="#" class="forgot">Forgot password?</a>
+    <div class="auth-link">
+      <a href="#">Forgot password?</a>
+    </div>
 
-    <div class="divider"><span>or</span></div>
+    <div class="divider">or</div>
 
-    <button class="social-btn google">Log in with Google</button>
-    <button class="social-btn threads">Log in with Threads</button>
-    <button class="social-btn facebook">Log in with Facebook</button>
-    <button class="social-btn twitter">Log in with Twitter / X</button>
+    <div class="social-btn">
+      <img src="assets/images/google.png"> Log in with Google
+    </div>
+    <div class="social-btn">
+      <img src="assets/images/threads.png"> Log in with Threads
+    </div>
+    <div class="social-btn">
+      <img src="assets/images/facebook.png"> Log in with Facebook
+    </div>
+    <div class="social-btn">
+      <img src="assets/images/twitter.png"> Log in with Twitter / X
+    </div>
 
-    <p class="legal">
+    <div class="auth-footer">
       By logging in, you agree to our
       <a href="#">Terms of Service</a> and
       <a href="#">Privacy Policy</a>.
-    </p>
-
+    </div>
   </div>
+</div>
 
-  <script type="module" src="/assets/js/login.js"></script>
+<script type="module" src="assets/js/login.js"></script>
 </body>
 </html>

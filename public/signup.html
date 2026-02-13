@@ -7,35 +7,52 @@
 </head>
 <body>
 
-  <div class="auth-bg">
-    <img src="assets/images/hero-fog-foreground.png" class="fog" />
-    <img src="assets/images/particle-overlay.png" class="particles" />
-  </div>
+<div class="auth-bg">
+  <img src="assets/images/hero-fog-foreground.png" />
+  <img src="assets/images/particle-overlay.png" />
+  <img class="float-icon float-tiktok" src="assets/images/platform-tiktok-float.png">
+  <img class="float-icon float-youtube" src="assets/images/platform-youtube-float.png">
+</div>
 
+<div class="auth-logo">
+  <img src="assets/images/logo.png" alt="ViralClip">
+</div>
+
+<div class="auth-wrapper">
   <div class="auth-card">
-    <h1>Create your account</h1>
+    <h1>Create account</h1>
     <p>Start growing with ViralClip.</p>
 
-    <form id="signupForm">
-      <div class="input">
-        <span>📧</span>
-        <input type="email" placeholder="Email" required />
+    <form id="signup-form">
+      <div class="input-group">
+        <img src="assets/images/icon-mail.png">
+        <input type="email" id="email" placeholder="Email" required>
       </div>
 
-      <div class="input">
-        <span>🔒</span>
-        <input type="password" placeholder="Create password" required />
+      <div class="input-group">
+        <img src="assets/images/icon-lock.png">
+        <input type="password" id="password" placeholder="Create password" required>
       </div>
 
-      <button type="submit" class="primary">Create account</button>
+      <button type="submit" class="primary-btn">Sign up</button>
     </form>
 
-    <p class="switch">
+    <div class="divider">or</div>
+
+    <div class="social-btn">
+      <img src="assets/images/google.png"> Sign up with Google
+    </div>
+    <div class="social-btn">
+      <img src="assets/images/threads.png"> Sign up with Threads
+    </div>
+
+    <div class="auth-footer">
       Already have an account?
       <a href="login.html">Log in</a>
-    </p>
+    </div>
   </div>
+</div>
 
-  <script src="assets/js/auth.js"></script>
+<script type="module" src="assets/js/signup.js"></script>
 </body>
 </html>
