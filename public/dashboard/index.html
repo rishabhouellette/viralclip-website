@@ -2,35 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ViralClip Dashboard</title>
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <title>Dashboard – ViralClip</title>
+
   <link rel="stylesheet" href="/assets/css/dashboard.css" />
 </head>
 <body>
-  <div class="app">
 
-    <aside class="sidebar">
-      <h1>ViralClip</h1>
-      <a href="/dashboard/">Calendar</a>
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">ViralClip</div>
+
+    <nav class="nav">
+      <a class="active">Dashboard</a>
+      <a href="/dashboard/calendar.html">Calendar</a>
       <a href="/dashboard/clips.html">Clips</a>
       <a href="/dashboard/accounts.html">Accounts</a>
       <a href="/dashboard/analytics.html">Analytics</a>
       <a href="/dashboard/settings.html">Settings</a>
-    </aside>
+    </nav>
 
-    <main class="main">
-      <h2>Content Calendar</h2>
+    <div class="sidebar-footer">
+      <span>John Doe</span>
+      <a href="#">Sign out</a>
+    </div>
+  </aside>
 
-      <div class="calendar-header">
-        <button class="primary-btn">+ Create Post</button>
+  <!-- MAIN -->
+  <main class="main">
 
-        <div class="calendar-meta">
-          <span>3 Scheduled</span>
-          <span>1 Draft</span>
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <h1>Dashboard</h1>
+
+      <div class="topbar-actions">
+        <button class="btn-secondary">Search</button>
+        <button class="btn-primary">+ Create Post</button>
+      </div>
+    </header>
+
+    <!-- DASHBOARD GRID -->
+    <section class="dashboard-grid">
+
+      <!-- LEFT / MAIN COLUMN -->
+      <div class="column-main">
+
+        <!-- GREETING -->
+        <div class="card greeting">
+          <h2>Good morning, Sarah 👋</h2>
+          <p>You have <strong>5 posts</strong> scheduled today.</p>
         </div>
 
-        <div class="calendar-view">
-          <button class="view-btn">Week</button>
+        <!-- CONTENT PLANNER PREVIEW -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Content Planner</h3>
+            <a class="link">View full calendar →</a>
+          </div>
+
+          <div class="planner-row">
+            <div class="planner-card">
+              <span class="platform instagram">Instagram</span>
+              <span class="time">3:00 PM</span>
+            </div>
+            <div class="planner-card">
+              <span class="platform tiktok">TikTok</span>
+              <span class="time">5:00 PM</span>
+            </div>
+            <div class="planner-card">
+              <span class="platform youtube">YouTube</span>
+              <span class="time">8:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="column-side">
+
+        <!-- UPCOMING POSTS -->
+        <div class="card">
+          <h3>Upcoming Posts</h3>
+          <ul class="stat-list">
+            <li><strong>5</strong> Today</li>
+            <li><strong>3</strong> Publishing today</li>
+            <li><strong>2</strong> Overdue drafts</li>
+          </ul>
+        </div>
+
+        <!-- AI CAPTIONS -->
+        <div class="card">
+          <h3>AI Caption Suggestions</h3>
+          <div class="tags">
+            <span>#viralvideos</span>
+            <span>#trendalert</span>
+            <span>#fitnessgoals</span>
+          </div>
+          <button class="btn-secondary full">Generate new</button>
+        </div>
+
+        <!-- PERFORMANCE -->
+        <div class="card">
+          <h3>Performance Overview</h3>
+          <ul class="stat-list">
+            <li>Instagram: <strong>12.4k</strong> ↑</li>
+            <li>TikTok: <strong>67.8k</strong> ↑</li>
+            <li>YouTube: <strong>6.3k</strong> ↑</li>
+          </ul>
+        </div>
+
+        <!-- CONNECTED ACCOUNTS -->
+        <div class="card">
+          <h3>Connected Accounts</h3>
+          <ul class="account-list">
+            <li>Instagram ✅</li>
+            <li>TikTok ✅</li>
+            <li>YouTube ⛔</li>
+            <li>Twitter/X ⛔</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
           <button class="view-btn active">Month</button>
         </div>
       </div>

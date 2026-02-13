@@ -1,129 +1,171 @@
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: Inter, system-ui, sans-serif;
   background: #f6f7fb;
+  color: #1f2937;
 }
 
-.app {
+.app-layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
 }
 
+/* SIDEBAR */
 .sidebar {
-  width: 260px;
-  background: linear-gradient(180deg, #0f172a, #111827);
-  color: white;
+  width: 240px;
+  background: linear-gradient(180deg, #0b1220, #111827);
+  color: #fff;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar h1 {
+.logo {
   font-size: 20px;
+  font-weight: 700;
   margin-bottom: 32px;
 }
 
-.sidebar a {
+.nav a {
   display: block;
-  padding: 10px 14px;
-  margin-bottom: 8px;
-  color: #cbd5f5;
-  text-decoration: none;
+  padding: 10px 12px;
+  margin-bottom: 6px;
   border-radius: 8px;
+  color: #c7d2fe;
+  text-decoration: none;
 }
 
-.sidebar a:hover {
-  background: rgba(255,255,255,0.08);
+.nav a.active,
+.nav a:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
 }
 
-.main {
-  flex: 1;
-  padding: 32px;
-}
-
-.card {
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  padding: 24px;
-}
-
-.calendar-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.primary-btn {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.calendar-meta {
-  color: #64748b;
+.sidebar-footer {
+  margin-top: auto;
   font-size: 14px;
 }
 
-.calendar-view {
-  margin-left: auto;
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 24px 32px;
+  overflow-y: auto;
+}
+
+/* TOPBAR */
+.topbar {
   display: flex;
-  gap: 6px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
-.view-btn {
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  background: white;
-  cursor: pointer;
+.topbar-actions button {
+  margin-left: 8px;
 }
 
-.view-btn.active {
-  background: #eef2ff;
-  color: #2563eb;
-  border-color: #2563eb;
-}
-
-.calendar-grid {
+/* GRID */
+.dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* CARDS */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.greeting h2 {
+  margin: 0 0 6px;
+}
+
+/* PLANNER */
+.planner-row {
+  display: flex;
   gap: 12px;
 }
 
-.day {
-  background: #f9fafb;
-  border-radius: 12px;
+.planner-card {
+  flex: 1;
   padding: 12px;
-  min-height: 180px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  font-size: 14px;
 }
 
-.day-title {
+.platform {
+  display: block;
   font-weight: 600;
+}
+
+.instagram { color: #e1306c; }
+.tiktok { color: #000; }
+.youtube { color: #ff0000; }
+
+/* LISTS */
+.stat-list,
+.account-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stat-list li,
+.account-list li {
   margin-bottom: 8px;
 }
 
-.post {
-  background: white;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  font-size: 13px;
+/* TAGS */
+.tags span {
+  display: inline-block;
+  background: #eef2ff;
+  color: #4338ca;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin: 4px 4px 0 0;
 }
 
-.post.instagram {
-  border-left: 4px solid #ec4899;
+/* BUTTONS */
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
 }
 
-.post.tiktok {
-  border-left: 4px solid #000000;
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: #fff;
 }
 
-.empty {
-  font-size: 13px;
-  color: #9ca3af;
+.btn-secondary {
+  background: #e5e7eb;
+}
+
+.btn-secondary.full {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.link {
+  font-size: 14px;
+  color: #6366f1;
+  cursor: pointer;
 }
