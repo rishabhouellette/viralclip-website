@@ -28,7 +28,7 @@ if (form) {
 
     try {
       await signIn(email, password);
-      window.location.href = "/dashboard.html";
+      window.location.href = "/dashboard/";
     } catch (error) {
       alert(error.message);
       console.error("Login failed:", error);
