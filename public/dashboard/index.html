@@ -21,9 +21,48 @@
     <main class="main">
       <h2>Content Calendar</h2>
 
-      <div class="card">
-        <!-- calendar grid will go here next -->
-        <p>This is where the calendar UI goes.</p>
+      <div class="calendar-header">
+        <button class="primary-btn">+ Create Post</button>
+
+        <div class="calendar-meta">
+          <span>3 Scheduled</span>
+          <span>1 Draft</span>
+        </div>
+
+        <div class="calendar-view">
+          <button class="view-btn">Week</button>
+          <button class="view-btn active">Month</button>
+        </div>
+      </div>
+
+      <div class="calendar card">
+        <div class="calendar-grid">
+          <div class="day">
+            <div class="day-title">Monday</div>
+
+            <div class="post instagram">
+              <strong>Instagram Post</strong>
+              <span>3:00 PM</span>
+              <p>New product teaser</p>
+            </div>
+
+            <div class="post tiktok">
+              <strong>TikTok Video</strong>
+              <span>2:00 PM</span>
+            </div>
+          </div>
+
+          <div class="day">
+            <div class="day-title">Tuesday</div>
+            <div class="empty">No posts</div>
+          </div>
+
+          <div class="day"><div class="day-title">Wednesday</div></div>
+          <div class="day"><div class="day-title">Thursday</div></div>
+          <div class="day"><div class="day-title">Friday</div></div>
+          <div class="day"><div class="day-title">Saturday</div></div>
+          <div class="day"><div class="day-title">Sunday</div></div>
+        </div>
       </div>
 
     </main>

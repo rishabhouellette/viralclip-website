@@ -45,3 +45,85 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   padding: 24px;
 }
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.calendar-meta {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.calendar-view {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+}
+
+.view-btn.active {
+  background: #eef2ff;
+  color: #2563eb;
+  border-color: #2563eb;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.day {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 12px;
+  min-height: 180px;
+}
+
+.day-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.post {
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 13px;
+}
+
+.post.instagram {
+  border-left: 4px solid #ec4899;
+}
+
+.post.tiktok {
+  border-left: 4px solid #000000;
+}
+
+.empty {
+  font-size: 13px;
+  color: #9ca3af;
+}
