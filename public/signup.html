@@ -2,24 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up | ViralClip</title>
-  <link rel="stylesheet" href="/assets/css/auth.css" />
+  <title>Sign Up – ViralClip</title>
+  <link rel="stylesheet" href="assets/css/auth.css" />
 </head>
 <body>
-  <div class="auth-page">
-    <form id="signupForm" class="auth-card">
-      <h1>Create account</h1>
-      <p>Sign up to start scheduling and managing your posts.</p>
-      <label for="email">Email</label>
-      <input id="email" type="email" placeholder="Email" required />
-      <label for="password">Password</label>
-      <input id="password" type="password" placeholder="Password" required />
-      <button type="submit" class="primary-btn">Create account</button>
-      <p>Already have an account? <a href="/login.html">Log in</a></p>
-    </form>
+
+  <!-- Floating background -->
+  <div class="auth-bg">
+    <img src="assets/images/hero-fog-foreground.png" class="fog" />
+    <img src="assets/images/particle-overlay.png" class="particles" />
+
+    <img src="assets/images/platform-instagram-float.png" class="float ig" />
+    <img src="assets/images/platform-youtube-float.png" class="float yt" />
   </div>
 
-  <script type="module" src="/assets/js/signup.js"></script>
+  <!-- Auth card -->
+  <div class="auth-card">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="ViralClip" />
+    </div>
+
+    <h1>Get started!</h1>
+    <p>Create your account to manage all your short-form content.</p>
+
+    <form id="signupForm">
+      <div class="input">
+        <span>📧</span>
+        <input type="email" placeholder="Email" required />
+      </div>
+
+      <div class="input">
+        <span>🔒</span>
+        <input type="password" placeholder="Create a password" required />
+      </div>
+
+      <button type="submit" class="primary">Create account</button>
+    </form>
+
+    <div class="divider">OR</div>
+
+    <button class="social google">Sign up with Google</button>
+    <button class="social threads">Sign up with Threads</button>
+    <button class="social facebook">Sign up with Facebook</button>
+    <button class="social twitter">Sign up with Twitter / X</button>
+
+    <p class="terms">
+      By signing up, you agree to our
+      <a href="#">Terms of Service</a> and
+      <a href="#">Privacy Policy</a>.
+    </p>
+
+    <p class="switch">
+      Already have an account?
+      <a href="login.html">Log in</a>
+    </p>
+  </div>
+
+  <script src="assets/js/auth.js"></script>
 </body>
 </html>

@@ -2,24 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login | ViralClip</title>
-  <link rel="stylesheet" href="/assets/css/auth.css" />
+  <title>Login – ViralClip</title>
+  <link rel="stylesheet" href="assets/css/auth.css" />
 </head>
 <body>
-  <div class="auth-page">
-    <form id="loginForm" class="auth-card">
-      <h1>Welcome back</h1>
-      <p>Log in to manage your ViralClip content calendar.</p>
-      <label for="email">Email</label>
-      <input id="email" type="email" placeholder="Email" required />
-      <label for="password">Password</label>
-      <input id="password" type="password" placeholder="Password" required />
-      <button type="submit" class="primary-btn">Log in</button>
-      <p>Don't have an account? <a href="/signup.html">Create one</a></p>
-    </form>
+
+  <!-- Floating background -->
+  <div class="auth-bg">
+    <img src="assets/images/hero-fog-foreground.png" class="fog" />
+    <img src="assets/images/particle-overlay.png" class="particles" />
+
+    <img src="assets/images/platform-tiktok-float.png" class="float tt" />
+    <img src="assets/images/platform-youtube-float.png" class="float yt" />
   </div>
 
-  <script type="module" src="/assets/js/login.js"></script>
+  <!-- Auth card -->
+  <div class="auth-card">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="ViralClip" />
+    </div>
+
+    <h1>Welcome back!</h1>
+    <p>Log in to access your account.</p>
+
+    <form id="loginForm">
+      <div class="input">
+        <span>📧</span>
+        <input type="email" placeholder="Email" required />
+      </div>
+
+      <div class="input">
+        <span>🔒</span>
+        <input type="password" placeholder="Enter your password" required />
+      </div>
+
+      <button type="submit" class="primary">Log in</button>
+    </form>
+
+    <a class="forgot" href="#">Forgot password?</a>
+
+    <div class="divider">OR</div>
+
+    <button class="social google">Log in with Google</button>
+    <button class="social threads">Log in with Threads</button>
+    <button class="social facebook">Log in with Facebook</button>
+    <button class="social twitter">Log in with Twitter / X</button>
+
+    <p class="terms">
+      By logging in, you agree to our
+      <a href="#">Terms of Service</a> and
+      <a href="#">Privacy Policy</a>.
+    </p>
+
+    <p class="switch">
+      Don't have an account?
+      <a href="signup.html">Sign up</a>
+    </p>
+  </div>
+
+  <script src="assets/js/auth.js"></script>
 </body>
 </html>
