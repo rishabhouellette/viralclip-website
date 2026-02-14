@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViralClip — Next-Gen SaaS Platform</title>
+  <link rel="stylesheet" href="/assets/css/amazing.css" />
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader">
+  <div class="logo-preload">
+    <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+      <path d="M5 3C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3H5Z" stroke="#8B5CF6" stroke-width="2"/>
+      <path d="M9.5 8.5L16.5 12L9.5 15.5V8.5Z" fill="#8B5CF6"/>
+    </svg>
+  </div>
+  <div class="preload-bar">
+    <div class="preload-progress"></div>
+  </div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-orb"></div>
+<div class="cursor-trail"></div>
+
+<!-- 3D CANVAS -->
+<canvas id="threejs-canvas"></canvas>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress"></div>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+        <path d="M5 3C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3H5Z" stroke="#8B5CF6" stroke-width="2"/>
+        <path d="M9.5 8.5L16.5 12L9.5 15.5V8.5Z" fill="#8B5CF6"/>
+      </svg>
+      <span>ViralClip</span>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#product" class="nav-link">Product</a>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#resources" class="nav-link">Resources</a>
+    </div>
+    
+    <div class="nav-actions">
+      <button class="sound-toggle" title="Toggle sound">
+        <i class="fas fa-volume-up"></i>
+      </button>
+      <a href="/login.html" class="nav-link">Sign in</a>
+      <a href="/signup.html" class="nav-btn">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-background"></div>
+  
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="hero-word" data-text="Plan">Plan</span>
+      <span class="hero-word" data-text="Post">Post</span>
+      <span class="hero-word gradient" data-text="Grow at Scale">Grow at Scale</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Your Command Center for Reels, TikTok & Shorts
+    </p>
+    
+    <div class="hero-buttons">
+      <button class="btn btn-primary" data-action="signup">
+        <span>Get started for free</span>
+        <div class="btn-particles"></div>
+      </button>
+      <button class="btn btn-secondary" data-action="demo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <span>Watch how it works</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="scroll-indicator">
+    <div class="mouse">
+      <div class="wheel"></div>
+    </div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- DASHBOARD SHOWCASE -->
+<section class="dashboard-showcase" id="product">
+  <div class="section-title">
+    <h2>Your All-in-One Command Center</h2>
+  </div>
+  
+  <div class="dashboard-grid">
+    <!-- CONTENT PLANNER -->
+    <div class="dashboard-card card-planner" data-tilt>
+      <div class="card-header">
+        <h3>Content Planner</h3>
+        <div class="card-glow"></div>
+      </div>
+      
+      <div class="week-view">
+        <div class="day-item">Mon</div>
+        <div class="day-item">Tue</div>
+        <div class="day-item active">Wed</div>
+        <div class="day-item">Thu</div>
+        <div class="day-item">Fri</div>
+        <div class="day-item">Sat</div>
+        <div class="day-item">Sun</div>
+      </div>
+      
+      <div class="video-thumbnails">
+        <div class="video-thumb"></div>
+        <div class="video-thumb"></div>
+        <div class="video-thumb"></div>
+        <div class="video-thumb"></div>
+        <div class="video-thumb"></div>
+      </div>
+      
+      <p class="scheduled">5 videos scheduled</p>
+    </div>
+    
+    <!-- PLATFORMS COLUMN -->
+    <div class="platforms-column">
+      <div class="dashboard-card card-platform" data-tilt>
+        <img src="/assets/images/platform-tiktok.png" alt="TikTok" class="platform-img" />
+        <h3>TikTok</h3>
+        <div class="card-shine"></div>
+      </div>
+      
+      <div class="dashboard-card card-platform" data-tilt>
+        <img src="/assets/images/platform-youtube.png" alt="YouTube" class="platform-img" />
+        <h3>YouTube Shorts</h3>
+        <div class="card-shine"></div>
+      </div>
+      
+      <div class="dashboard-card card-platform" data-tilt>
+        <img src="/assets/images/platform-instagram.png" alt="Instagram" class="platform-img" />
+        <h3>Instagram Reels</h3>
+        <div class="card-shine"></div>
+      </div>
+    </div>
+    
+    <!-- ANALYTICS COLUMN -->
+    <div class="analytics-column">
+      <div class="dashboard-card card-ai" data-tilt>
+        <div class="card-header">
+          <h3>AI Caption Suggestions</h3>
+        </div>
+        
+        <div class="hashtags">
+          <span class="hashtag-chip" data-tag="#viralvideos">#viralvideos</span>
+          <span class="hashtag-chip" data-tag="#trendalert">#trendalert</span>
+          <span class="hashtag-chip trending" data-tag="trending">📈 Trending</span>
+          <span class="hashtag-chip" data-tag="#fitnessgoals">#fitnessgoals</span>
+          <span class="hashtag-chip" data-tag="#content">#content</span>
+        </div>
+      </div>
+      
+      <div class="dashboard-card card-analytics" data-tilt>
+        <div class="card-header">
+          <h3>Performance Analytics</h3>
+        </div>
+        
+        <div class="stats-live">
+          <div class="stat-row">
+            <span class="stat-label">Followers</span>
+            <div class="stat-value-group">
+              <span class="stat-value live-count" data-target="67819">67,819</span>
+              <span class="stat-badge">+12.4k</span>
+            </div>
+          </div>
+          
+          <div class="stat-row">
+            <span class="stat-label">Posts</span>
+            <span class="stat-value live-count" data-target="1585">1,585</span>
+          </div>
+          
+          <div class="stat-row">
+            <span class="stat-label">Shorts</span>
+            <span class="stat-value live-count" data-target="3524">3,524</span>
+          </div>
+        </div>
+        
+        <div class="waveform-chart"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features-section" id="features">
+  <div class="section-title">
+    <h2>Trusted by creators worldwide</h2>
+  </div>
+  
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Multi-Platform</h3>
+      <p>Manage all your short-form platforms from one dashboard</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3>AI-Powered</h3>
+      <p>Smart caption suggestions powered by machine learning</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Analytics</h3>
+      <p>Real-time metrics and insights for better decisions</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="cta-final">
+  <div class="cta-content">
+    <h2>Ready to grow your audience?</h2>
+    <button class="btn btn-primary btn-lg">Start now</button>
+  </div>
+</section>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla.tilt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mojs@1.6.0/lib/mo.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+
+<!-- Main Amazing JS -->
+<script src="/assets/js/amazing.js" type="module"></script>
+
+</body>
+</html>
