@@ -9,12 +9,19 @@ onAuthStateChanged(auth, (user) => {
     return;
   }
 
+  // Update greeting name
   const nameEl = document.getElementById("username");
+  if (nameEl) {
+    nameEl.textContent =
+      user.displayName || (user.email ? user.email.split("@")[0] : "there");
+  }
 
-  if (!nameEl) return;
-
-  nameEl.textContent =
-    user.displayName || (user.email ? user.email.split("@")[0] : "there");
+  // Update profile name in sidebar
+  const profileNameEl = document.getElementById("user-profile-name");
+  if (profileNameEl) {
+    profileNameEl.textContent =
+      user.displayName || (user.email ? user.email.split("@")[0] : "User");
+  }
 });
 
 // Logout functionality
