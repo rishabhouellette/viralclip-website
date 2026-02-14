@@ -81,16 +81,25 @@ function setupLogout() {
   const logoutBtn = document.getElementById('logout-btn');
   
   if (logoutBtn) {
-    logoutBtn.addEventListener('click', async (e) => {
-      e.preventDefault();
-      try {
-        await signOut(auth);
-        window.location.href = '/login.html';
-      } catch (error) {
-        console.error('Logout failed:', error);
-        alert('Failed to log out. Please try again.');
-      }
-    });
+    logoutBtn.removeEventListener('click', handleLogout);
+    logoutBtn.addEventListener('click', handleLogout);
+  } else {
+    console.warn('Logout button not found');
+  }
+}
+
+async function handleLogout(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  
+  try {
+    console.log('Attempting logout...');
+    await signOut(auth);
+    console.log('Logout successful, redirecting to login...');
+    window.location.href = '/login.html';
+  } catch (error) {
+    console.error('Logout failed:', error);
+    alert('Failed to log out. Please try again.');
   }
 }
 
@@ -99,9 +108,12 @@ function setupLogout() {
 // ============================================
 onAuthStateChanged(auth, (user) => {
   if (!user) {
+    console.log('No user authenticated, redirecting to login');
     window.location.href = '/login.html';
     return;
   }
+  
+  console.log('User authenticated:', user.email);
   
   // Update user state
   const userName = user.displayName || (user.email ? user.email.split('@')[0] : 'User');
@@ -114,10 +126,24 @@ onAuthStateChanged(auth, (user) => {
     }
   });
   
-  // Update user name in sidebar
+  // Update user name in sidebar footer
   const userNameEl = document.getElementById('user-name');
   if (userNameEl) {
     userNameEl.textContent = userName;
+    console.log('✅ User name updated:', userName);
+  } else {
+    console.warn('User name element not found');
+  }
+  
+  // Update profile avatar styling
+  const topAvatar = document.getElementById('top-avatar');
+  if (topAvatar) {
+    topAvatar.style.width = '40px';
+    topAvatar.style.height = '40px';
+    topAvatar.style.borderRadius = '50%';
+    topAvatar.style.objectFit = 'contain';
+    topAvatar.style.padding = '4px';
+    console.log('✅ Top avatar styled');
   }
   
   // Initialize app

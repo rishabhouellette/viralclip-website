@@ -283,13 +283,15 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--gradient-primary);
   cursor: pointer;
   transition: transform var(--transition-fast);
+  object-fit: contain;
+  padding: 4px;
+  background: transparent;
 }
 
 #top-avatar:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* ============================================
