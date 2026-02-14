@@ -1,6 +1,6 @@
 import { signUp } from "./auth.js";
 
-const form = document.getElementById("signupForm");
+const form = document.getElementById("signup-form");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -10,7 +10,7 @@ form.addEventListener("submit", async (e) => {
 
   try {
     await signUp(email, password);
-    window.location.href = "/dashboard.html";
+    window.location.href = "/dashboard/";
   } catch (error) {
     alert(error.message);
     console.error("Signup failed:", error);
