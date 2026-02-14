@@ -6,12 +6,13 @@
   /* Colors */
   --bg-primary: #0f0f1e;
   --bg-secondary: #1a1a2e;
+  --bg-tertiary: #252538;
   --bg-card: #1e1e30;
-  --bg-hover: #252538;
+  --bg-hover: #2a2a3e;
   
   --text-primary: #ffffff;
-  --text-secondary: #a0a0b8;
-  --text-muted: #6b6b8a;
+  --text-secondary: #b0b0c8;
+  --text-muted: #7a7a92;
   
   --accent-primary: #8b5cf6;
   --accent-secondary: #ec4899;
@@ -19,16 +20,19 @@
   --accent-warning: #f59e0b;
   --accent-danger: #ef4444;
   
-  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.05);
   --border-medium: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.15);
   
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-  --gradient-card: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+  --gradient-sidebar: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%);
+  --gradient-card: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
   
   /* Spacing */
   --sidebar-width: 240px;
   --topbar-height: 72px;
+  --topnav-height: 64px;
   --spacing-xs: 8px;
   --spacing-sm: 12px;
   --spacing-md: 16px;
@@ -42,9 +46,10 @@
   --radius-full: 999px;
   
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.5);
   
   /* Transitions */
   --transition-fast: 0.15s ease;
@@ -53,6 +58,8 @@
   
   /* Z-index layers */
   --z-sidebar: 100;
+  --z-topnav: 95;
   --z-topbar: 90;
   --z-modal: 1000;
 }
+

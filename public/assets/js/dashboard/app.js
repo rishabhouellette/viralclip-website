@@ -15,10 +15,20 @@ const auth = getAuth();
 // ============================================
 function switchView(viewName) {
   const content = document.getElementById('dashboard-content');
-  const navItems = document.querySelectorAll('.nav-item');
+  const sidebarItems = document.querySelectorAll('.sidebar-item');
+  const topNavItems = document.querySelectorAll('.top-nav-item');
   
-  // Update active state
-  navItems.forEach(item => {
+  // Update sidebar active state
+  sidebarItems.forEach(item => {
+    if (item.dataset.view === viewName) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+  
+  // Update top nav active state
+  topNavItems.forEach(item => {
     if (item.dataset.view === viewName) {
       item.classList.add('active');
     } else {
@@ -42,9 +52,20 @@ function switchView(viewName) {
 // NAVIGATION SETUP
 // ============================================
 function setupNavigation() {
-  const navItems = document.querySelectorAll('.nav-item');
+  const sidebarItems = document.querySelectorAll('.sidebar-item');
+  const topNavItems = document.querySelectorAll('.top-nav-item');
   
-  navItems.forEach(item => {
+  // Sidebar navigation
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const viewName = item.dataset.view;
+      switchView(viewName);
+    });
+  });
+  
+  // Top nav navigation
+  topNavItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       const viewName = item.dataset.view;

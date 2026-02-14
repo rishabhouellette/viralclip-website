@@ -31,11 +31,125 @@
   color: var(--text-primary);
 }
 
+/* Content Planner Grid */
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+
+.platform-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-hover);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-medium);
+  cursor: pointer;
+}
+
+.platform-card:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--border-medium);
+}
+
+.platform-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.platform-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.platform-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.platform-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.platform-time {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Stats List */
+.stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+/* Performance Stats */
+.performance-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.performance-item {
+  padding: var(--spacing-sm) 0;
+}
+
+/* Accounts Grid */
+.accounts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.account-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background: var(--bg-hover);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.account-item:hover {
+  background: var(--bg-tertiary);
+}
+
+/* Hashtags Container */
+.hashtags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 /* ============================================
    BUTTONS
    ============================================ */
 .btn {
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: 10px 16px;
   border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 600;
@@ -64,14 +178,15 @@
 }
 
 .btn-secondary:hover {
-  background: var(--bg-card);
+  background: var(--bg-tertiary);
+  border-color: var(--border-strong);
 }
 
 /* ============================================
    SEARCH INPUT
    ============================================ */
 .search-input {
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: 10px var(--spacing-md);
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -172,10 +287,18 @@
   .grid-4, .grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .planner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .planner-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -242,4 +365,15 @@
 .hashtag-pill:hover {
   background: rgba(139, 92, 246, 0.25);
   transform: translateY(-2px);
+}
+
+/* ============================================
+   HOVER & INTERACTIVE STATES
+   ============================================ */
+.hover-lift {
+  transition: transform var(--transition-medium);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
 }
