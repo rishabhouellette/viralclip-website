@@ -4,248 +4,251 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ViralClip — Plan. Post. Grow at Scale</title>
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/style-premium.css" />
+  <link rel="stylesheet" href="/assets/css/animations-premium.css" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-<!-- BACKGROUND ELEMENTS -->
-<div class="background-orbs"></div>
-<div class="particle-network" id="particleNetwork"></div>
+  <!-- ============================================ -->
+  <!-- HEADER NAVIGATION -->
+  <!-- ============================================ -->
+  <header class="nav">
+    <div class="nav-container">
+      <!-- Logo left -->
+      <div class="nav-logo">
+        <img src="/assets/images/logo.png" alt="ViralClip" class="logo-img" />
+        <span class="logo-text">ViralClip</span>
+      </div>
 
-<!-- HEADER/NAVIGATION -->
-<header class="navbar">
-  <div class="nav-container">
-    <div class="logo">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M5 3C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3H5Z" stroke="currentColor" stroke-width="2"/>
-        <path d="M9.5 8.5L16.5 12L9.5 15.5V8.5Z" fill="currentColor"/>
-      </svg>
-      <span>ViralClip</span>
-    </div>
-    
-    <nav class="nav-links">
-      <a href="#product">Product</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#resources">Resources</a>
-    </nav>
-    
-    <div class="nav-actions">
-      <a href="/login.html" class="nav-link">Sign In</a>
-      <a href="/signup.html" class="nav-cta">Get started</a>
-    </div>
-  </div>
-</header>
+      <!-- Links center -->
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#resources">Resources</a>
+      </nav>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-wrapper">
+      <!-- CTA right -->
+      <!-- DYNAMIC: user auth state -->
+      <div class="nav-actions">
+        <a href="/login.html" class="nav-login">Log in</a>
+        <a href="/signup.html" class="nav-cta">Get started for free</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================ -->
+  <!-- HERO SECTION -->
+  <!-- Layered composition with PNGs, particles, fog -->
+  <!-- ============================================ -->
+  <section class="hero">
+    
+    <!-- Background gradient base -->
+    <div class="hero-bg-gradient"></div>
+
+    <!-- PNG: Atmospheric fog layer (foreground overlay) -->
+    <img 
+      src="/assets/images/fog-overlay.png" 
+      alt="" 
+      class="hero-fog animate-sparkle" 
+      aria-hidden="true"
+      data-speed="0.1"
+    />
+
+    <!-- PNG: Particle overlay (sparkles, glows) -->
+    <img 
+      src="/assets/images/particles-overlay.png" 
+      alt="" 
+      class="hero-particles animate-sparkle" 
+      aria-hidden="true"
+      data-speed="0.3"
+    />
+
+    <!-- PNG: Floating platform icons -->
+    <!-- ANIMATION: Slow vertical sine-wave float -->
+    <img 
+      src="/assets/images/platform-instagram.png" 
+      alt="Instagram" 
+      class="float-icon float-ig animate-float" 
+      data-speed="0.5"
+    />
+    <img 
+      src="/assets/images/platform-tiktok.png" 
+      alt="TikTok" 
+      class="float-icon float-tt animate-float" 
+      data-speed="0.4"
+    />
+    <img 
+      src="/assets/images/platform-youtube.png" 
+      alt="YouTube" 
+      class="float-icon float-yt animate-float" 
+      data-speed="0.6"
+    />
+
+    <!-- Hero content container -->
     <div class="hero-content">
-      <h1 class="hero-title">
-        <span class="word" data-aos="fade-up" data-aos-delay="0">Plan.</span>
-        <span class="word" data-aos="fade-up" data-aos-delay="100">Post.</span>
-        <span class="word gradient" data-aos="fade-up" data-aos-delay="200">Grow at Scale</span>
+      
+      <!-- Headline with staggered entrance animation -->
+      <h1 class="hero-title animate-fade-up stagger-1">
+        Plan. Post. <span class="gradient-text">Grow at Scale</span>
       </h1>
-      
-      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
-        Your Command Center for Reels, TikTok & Shorts. Schedule, manage, and analyze all your short-form videos in one powerful dashboard.
+
+      <!-- Subheadline -->
+      <p class="hero-subtitle animate-fade-up stagger-2">
+        Your command center for <strong>Reels, TikToks & Shorts</strong>.
+        Schedule, manage, and analyze all your short-form videos in one powerful dashboard.
       </p>
-      
-      <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
+
+      <!-- CTA buttons -->
+      <div class="hero-cta animate-fade-up stagger-3">
+        <!-- DYNAMIC: CTA click tracking -->
         <a href="/signup.html" class="btn btn-primary">
-          <span>Get started for free</span>
+          Get started for free <i class="fas fa-arrow-right"></i>
         </a>
         <a href="#demo" class="btn btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-          <span>Watch how it works</span>
+          <i class="fas fa-play"></i> Watch how it works
         </a>
       </div>
-      
-      <div class="hero-platforms" data-aos="fade-up" data-aos-delay="500">
-        <img src="/assets/images/platform-instagram.png" alt="Instagram" />
-        <img src="/assets/images/platform-tiktok.png" alt="TikTok" />
-        <img src="/assets/images/platform-youtube.png" alt="YouTube" />
-        <span>+ 3 more platforms</span>
+
+      <!-- Platform badges -->
+      <div class="hero-platforms animate-fade-up stagger-4">
+        <span class="platform-badge"><i class="fab fa-instagram"></i> Instagram</span>
+        <span class="platform-badge"><i class="fab fa-tiktok"></i> TikTok</span>
+        <span class="platform-badge"><i class="fab fa-youtube"></i> YouTube</span>
       </div>
     </div>
-    
-    <div class="hero-visual" data-aos="zoom-in" data-aos-delay="600">
-      <img src="/assets/images/dashboard-mock-perspective.png" alt="Dashboard Preview" class="dashboard-preview" />
-    </div>
-  </div>
-</section>
 
-<!-- DASHBOARD SHOWCASE SECTION -->
-<section class="dashboard-showcase" id="product">
-  <div class="section-header" data-aos="fade-up">
-    <h2>Powerful Dashboard at Your Fingertips</h2>
-    <p>Everything you need to manage short-form content across all platforms</p>
-  </div>
-  
-  <div class="dashboard-grid">
-    <!-- LEFT COLUMN -->
-    <div class="dashboard-column" data-aos="fade-up" data-aos-delay="100">
-      <div class="glass-card card-lg">
-        <div class="card-header">
+    <!-- PNG: Dashboard mockup with parallax scroll effect -->
+    <!-- Container constrains overflow, absolute positioning inside -->
+    <div class="hero-visual-container animate-slide-right">
+      <img 
+        src="/assets/images/dashboard-mock.png" 
+        alt="ViralClip Dashboard" 
+        class="hero-dashboard"
+        data-speed="0.2"
+      />
+    </div>
+
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TRUST SECTION -->
+  <!-- Stats bar with creator count, posts, platforms -->
+  <!-- ============================================ -->
+  <section class="trust scroll-reveal">
+    <div class="trust-container">
+      <!-- DYNAMIC: stats numbers -->
+      <div class="stat-card">
+        <strong class="stat-number" data-count="191782">191,782</strong>
+        <span class="stat-label">Creators growing</span>
+      </div>
+      <div class="stat-card">
+        <strong class="stat-number" data-count="8587229">8,587,229</strong>
+        <span class="stat-label">Posts viralized last month</span>
+      </div>
+      <div class="stat-card">
+        <strong class="stat-number" data-count="3524">3,524</strong>
+        <span class="stat-label">Platforms supported</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- PRODUCT PREVIEW SECTION -->
+  <!-- Glass cards with UI mockups -->
+  <!-- ============================================ -->
+  <section class="product-preview" id="features">
+    <div class="product-container">
+      
+      <h2 class="section-title scroll-reveal">
+        Everything you need in one place
+      </h2>
+
+      <div class="product-grid">
+        
+        <!-- Feature card 1 -->
+        <div class="product-card glass-card scroll-reveal">
+          <div class="card-icon">📅</div>
           <h3>Content Planner</h3>
+          <p>Schedule posts across all platforms with an intuitive drag-and-drop calendar.</p>
         </div>
-        <div class="calendar-view">
-          <div class="day-item">Mon</div>
-          <div class="day-item">Tue</div>
-          <div class="day-item active">Wed</div>
-          <div class="day-item">Thu</div>
-          <div class="day-item">Fri</div>
-          <div class="day-item">Sat</div>
-          <div class="day-item">Sun</div>
-        </div>
-        <div class="plan-content">
-          <p style="font-size: 12px; color: #94A3B8;">5 videos scheduled</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- MIDDLE COLUMN -->
-    <div class="dashboard-column" data-aos="fade-up" data-aos-delay="200">
-      <div class="glass-card">
-        <div class="card-header">
-          <h3>TikTok</h3>
-        </div>
-        <div class="platform-icon-container">
-          <img src="/assets/images/platform-tiktok.png" alt="TikTok" class="platform-icon" />
-        </div>
-      </div>
-      
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="250">
-        <div class="card-header">
-          <h3>YouTube Shorts</h3>
-        </div>
-        <div class="platform-icon-container">
-          <img src="/assets/images/platform-youtube.png" alt="YouTube Shorts" class="platform-icon" />
-        </div>
-      </div>
-      
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="card-header">
-          <h3>Instagram Reels</h3>
-        </div>
-        <div class="platform-icon-container">
-          <img src="/assets/images/platform-instagram.png" alt="Instagram Reels" class="platform-icon" />
-        </div>
-      </div>
-    </div>
-    
-    <!-- RIGHT COLUMN -->
-    <div class="dashboard-column" data-aos="fade-up" data-aos-delay="300">
-      <div class="glass-card card-lg">
-        <div class="card-header">
-          <h3>AI Caption Suggestions</h3>
-        </div>
-        <div class="ai-tags">
-          <span class="tag">#viralvideos</span>
-          <span class="tag">#trendalert</span>
-          <span class="tag trending">📈 Trending</span>
-          <span class="tag">#fitnessgoals</span>
-          <span class="tag">#content</span>
-        </div>
-      </div>
-      
-      <div class="glass-card card-lg" data-aos="fade-up" data-aos-delay="400">
-        <div class="card-header">
+
+        <!-- Feature card 2 -->
+        <div class="product-card glass-card scroll-reveal">
+          <div class="card-icon">📊</div>
           <h3>Performance Analytics</h3>
+          <p>Track growth, engagement, and ROI with real-time analytics dashboards.</p>
         </div>
-        <div class="stats-list">
-          <div class="stat-item">
-            <div class="stat-label">Followers</div>
-            <div class="stat-value count-up" data-target="67819">0</div>
-            <div class="stat-growth">+12.4k</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Posts</div>
-            <div class="stat-value count-up" data-target="1585">0</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">Shorts</div>
-            <div class="stat-value count-up" data-target="3524">0</div>
-          </div>
+
+        <!-- Feature card 3 -->
+        <div class="product-card glass-card scroll-reveal">
+          <div class="card-icon">🤖</div>
+          <h3>AI Suggestions</h3>
+          <p>Get smart caption ideas, trending hashtags, and optimal posting times.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- STATS SECTION -->
+  <!-- Large rounded glass cards with metrics -->
+  <!-- ============================================ -->
+  <section class="stats" id="pricing">
+    <div class="stats-container">
+      
+      <h2 class="section-title scroll-reveal">
+        Trusted by creators worldwide
+      </h2>
+
+      <div class="stats-grid">
+        <div class="stats-card glass-card scroll-reveal">
+          <div class="stats-icon">🚀</div>
+          <h3>2M+ Posts Scheduled</h3>
+          <p>Join thousands of creators managing their content at scale</p>
+        </div>
+
+        <div class="stats-card glass-card scroll-reveal">
+          <div class="stats-icon">⚡</div>
+          <h3>Save 10+ Hours Weekly</h3>
+          <p>Automate your workflow and focus on creating great content</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- STATS SECTION -->
-<section class="stats-section" id="features">
-  <div class="section-header" data-aos="fade-up">
-    <h2>Trusted by creators worldwide</h2>
-    <p>Join thousands of content creators managing their presence at scale</p>
-  </div>
-  
-  <div class="stats-grid">
-    <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
-      <div class="stat-number">
-        <span class="count-up" data-target="191782">0</span>
-        <span>+</span>
+  <!-- ============================================ -->
+  <!-- FOOTER -->
+  <!-- Cloud fade-out effect -->
+  <!-- ============================================ -->
+  <footer class="footer scroll-reveal">
+    <div class="footer-cloud-fade"></div>
+    <div class="footer-content">
+      <p>&copy; 2026 ViralClip. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact</a>
       </div>
-      <div class="stat-label">Creators Using ViralClip</div>
     </div>
-    
-    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-      <div class="stat-number">
-        <span class="count-up" data-target="8587229">0</span>
-        <span>+</span>
-      </div>
-      <div class="stat-label">Posts Viralized Last Month</div>
-    </div>
-    
-    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-      <div class="stat-number">
-        <span class="count-up" data-target="3524">0</span>
-        <span>+</span>
-      </div>
-      <div class="stat-label">Platforms Supported</div>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<!-- CTA SECTION -->
-<section class="cta-section" data-aos="fade-up">
-  <div class="cta-content">
-    <h2>Ready to grow your audience?</h2>
-    <p>Start creating, scheduling, and analyzing your short-form content today.</p>
-    <a href="/signup.html" class="btn btn-primary btn-lg">Get started for free</a>
-  </div>
-</section>
-
-<!-- SCRIPTS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla.tilt.min.js"></script>
-
-<script>
-  // Initialize AOS
-  AOS.init({
-    duration: 800,
-    once: false,
-    mirror: true,
-    offset: 100
-  });
-  
-  // GSAP animations
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // Register vanilla tilt on cards
-  VanillaTilt.init(document.querySelectorAll(".glass-card"), {
-    max: 5,
-    scale: 1.03,
-    speed: 400
-  });
-</script>
-
-<script src="/assets/js/homepage.js" type="module"></script>
+  <!-- ============================================ -->
+  <!-- JAVASCRIPT -->
+  <!-- Handles scroll parallax, intersection observer, counter animations -->
+  <!-- ============================================ -->
+  <script src="/assets/js/premium-animations.js"></script>
 
 </body>
 </html>
