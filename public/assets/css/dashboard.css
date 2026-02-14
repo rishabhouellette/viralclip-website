@@ -16,16 +16,20 @@ body {
 /* SIDEBAR */
 .sidebar {
   width: 260px;
-  background: linear-gradient(180deg, #0f172a, #020617);
-  color: white;
+  background: linear-gradient(180deg, #1b1f3b 0%, #0f1229 100%);
+  color: #eaeaff;
   padding: 24px;
   display: flex;
   flex-direction: column;
 }
 
-.sidebar {
-  background: linear-gradient(180deg, #0f172a, #020617);
-  color: #e5e7eb;
+.sidebar a,
+.sidebar button {
+  color: #eaeaff;
+}
+
+.sidebar svg {
+  color: #cfd2ff;
 }
 
 .sidebar-brand {
@@ -70,7 +74,7 @@ body {
 }
 
 .sidebar .active {
-  background: rgba(99,102,241,0.15);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
 }
 
@@ -85,8 +89,31 @@ body {
   fill: #c7d2fe;
 }
 
-.profile {
+.sidebar-footer {
   margin-top: auto;
+  padding: 16px;
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  color: #ffb4b4;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 80, 80, 0.15);
+}
+
+.profile {
+  margin-top: 16px;
   display: flex;
   gap: 12px;
   align-items: center;
