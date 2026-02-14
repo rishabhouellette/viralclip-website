@@ -2,81 +2,249 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ViralClip — Plan. Post. Grow at Scale</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
-<header class="nav">
-  <div class="logo">ViralClip</div>
-  <nav>
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#resources">Resources</a>
-    <a href="/login.html">Log in</a>
-    <a class="cta" href="/signup.html">Get started for free</a>
-  </nav>
+<!-- BACKGROUND ELEMENTS -->
+<div class="background-orbs"></div>
+<div class="particle-network" id="particleNetwork"></div>
+
+<!-- HEADER/NAVIGATION -->
+<header class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M5 3C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3H5Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M9.5 8.5L16.5 12L9.5 15.5V8.5Z" fill="currentColor"/>
+      </svg>
+      <span>ViralClip</span>
+    </div>
+    
+    <nav class="nav-links">
+      <a href="#product">Product</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#resources">Resources</a>
+    </nav>
+    
+    <div class="nav-actions">
+      <a href="/login.html" class="nav-link">Sign In</a>
+      <a href="/signup.html" class="nav-cta">Get started</a>
+    </div>
+  </div>
 </header>
 
+<!-- HERO SECTION -->
 <section class="hero">
-
-  <!-- atmospheric layers -->
-  <img src="/assets/images/hero-fog-foreground.png" class="fog" />
-  <img src="/assets/images/particle-overlay.png" class="particles" />
-
-  <!-- floating platform icons -->
-  <img src="/assets/images/platform-instagram-float.png" class="float ig" />
-  <img src="/assets/images/platform-tiktok-float.png" class="float tt" />
-  <img src="/assets/images/platform-youtube-float.png" class="float yt" />
-
-  <!-- text content -->
-  <div class="hero-content">
-    <h1>
-      Plan. Post. <span>Grow at Scale</span>
-    </h1>
-    <p>
-      Your command center for <strong>Reels, TikToks & Shorts</strong>.
-      Schedule, manage, and analyze all your short-form videos in one powerful dashboard.
-    </p>
-
-    <div class="actions">
-      <a href="/signup.html" class="primary">Get started for free</a>
-      <a href="#demo" class="secondary">Watch how it works</a>
+  <div class="hero-wrapper">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="word" data-aos="fade-up" data-aos-delay="0">Plan.</span>
+        <span class="word" data-aos="fade-up" data-aos-delay="100">Post.</span>
+        <span class="word gradient" data-aos="fade-up" data-aos-delay="200">Grow at Scale</span>
+      </h1>
+      
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
+        Your Command Center for Reels, TikTok & Shorts. Schedule, manage, and analyze all your short-form videos in one powerful dashboard.
+      </p>
+      
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
+        <a href="/signup.html" class="btn btn-primary">
+          <span>Get started for free</span>
+        </a>
+        <a href="#demo" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <span>Watch how it works</span>
+        </a>
+      </div>
+      
+      <div class="hero-platforms" data-aos="fade-up" data-aos-delay="500">
+        <img src="/assets/images/platform-instagram.png" alt="Instagram" />
+        <img src="/assets/images/platform-tiktok.png" alt="TikTok" />
+        <img src="/assets/images/platform-youtube.png" alt="YouTube" />
+        <span>+ 3 more platforms</span>
+      </div>
     </div>
-
-    <div class="platforms">
-      <span>Instagram</span>
-      <span>TikTok</span>
-      <span>YouTube</span>
-      <span>LinkedIn</span>
-      <span>Pinterest</span>
-      <span>Twitter / X</span>
+    
+    <div class="hero-visual" data-aos="zoom-in" data-aos-delay="600">
+      <div class="glass-card">
+        <div class="card-content">Dashboard Preview</div>
+      </div>
     </div>
   </div>
-
-  <!-- dashboard preview -->
-  <img
-    src="/assets/images/dashboard-mock-perspective.png"
-    class="dashboard"
-    alt="ViralClip Dashboard Preview"
-  />
-
 </section>
 
-<div class="stats-bar">
-  <div class="stat">
-    <strong>191,782</strong>
-    <span>Creators growing</span>
+<!-- DASHBOARD SHOWCASE SECTION -->
+<section class="dashboard-showcase" id="product">
+  <div class="section-header" data-aos="fade-up">
+    <h2>Powerful Dashboard at Your Fingertips</h2>
+    <p>Everything you need to manage short-form content across all platforms</p>
   </div>
-  <div class="stat">
-    <strong>8,587,229</strong>
-    <span>Posts viralized last month</span>
+  
+  <div class="dashboard-grid">
+    <!-- LEFT COLUMN -->
+    <div class="dashboard-column" data-aos="fade-up" data-aos-delay="100">
+      <div class="glass-card card-lg">
+        <div class="card-header">
+          <h3>Content Planner</h3>
+        </div>
+        <div class="calendar-view">
+          <div class="day-item">Mon</div>
+          <div class="day-item">Tue</div>
+          <div class="day-item active">Wed</div>
+          <div class="day-item">Thu</div>
+          <div class="day-item">Fri</div>
+          <div class="day-item">Sat</div>
+          <div class="day-item">Sun</div>
+        </div>
+        <div class="plan-content">
+          <p style="font-size: 12px; color: #94A3B8;">5 videos scheduled</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- MIDDLE COLUMN -->
+    <div class="dashboard-column" data-aos="fade-up" data-aos-delay="200">
+      <div class="glass-card">
+        <div class="card-header">
+          <h3>TikTok</h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="platform-icon">🎵</div>
+      </div>
+      
+      <div class="glass-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="card-header">
+          <h3>YouTube Shorts</h3>
+        </div>
+        <div class="platform-icon">📹</div>
+      </div>
+      
+      <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-header">
+          <h3>Instagram Reels</h3>
+        </div>
+        <div class="platform-icon">📷</div>
+      </div>
+    </div>
+    
+    <!-- RIGHT COLUMN -->
+    <div class="dashboard-column" data-aos="fade-up" data-aos-delay="300">
+      <div class="glass-card card-lg">
+        <div class="card-header">
+          <h3>AI Caption Suggestions</h3>
+        </div>
+        <div class="ai-tags">
+          <span class="tag">#viralvideos</span>
+          <span class="tag">#trendalert</span>
+          <span class="tag trending">📈 Trending</span>
+          <span class="tag">#fitnessgoals</span>
+          <span class="tag">#content</span>
+        </div>
+      </div>
+      
+      <div class="glass-card card-lg" data-aos="fade-up" data-aos-delay="400">
+        <div class="card-header">
+          <h3>Performance Analytics</h3>
+        </div>
+        <div class="stats-list">
+          <div class="stat-item">
+            <div class="stat-label">Followers</div>
+            <div class="stat-value count-up" data-target="67819">0</div>
+            <div class="stat-growth">+12.4k</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Posts</div>
+            <div class="stat-value count-up" data-target="1585">0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Shorts</div>
+            <div class="stat-value count-up" data-target="3524">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="stat">
-    <strong>3,524</strong>
-    <span>Short-form platforms supported</span>
+</section>
+
+<!-- STATS SECTION -->
+<section class="stats-section" id="features">
+  <div class="section-header" data-aos="fade-up">
+    <h2>Trusted by creators worldwide</h2>
+    <p>Join thousands of content creators managing their presence at scale</p>
   </div>
-</div>
+  
+  <div class="stats-grid">
+    <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="stat-number">
+        <span class="count-up" data-target="191782">0</span>
+        <span>+</span>
+      </div>
+      <div class="stat-label">Creators Using ViralClip</div>
+    </div>
+    
+    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="stat-number">
+        <span class="count-up" data-target="8587229">0</span>
+        <span>+</span>
+      </div>
+      <div class="stat-label">Posts Viralized Last Month</div>
+    </div>
+    
+    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="stat-number">
+        <span class="count-up" data-target="3524">0</span>
+        <span>+</span>
+      </div>
+      <div class="stat-label">Platforms Supported</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section" data-aos="fade-up">
+  <div class="cta-content">
+    <h2>Ready to grow your audience?</h2>
+    <p>Start creating, scheduling, and analyzing your short-form content today.</p>
+    <a href="/signup.html" class="btn btn-primary btn-lg">Get started for free</a>
+  </div>
+</section>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla.tilt.min.js"></script>
+
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    once: false,
+    mirror: true,
+    offset: 100
+  });
+  
+  // GSAP animations
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Register vanilla tilt on cards
+  VanillaTilt.init(document.querySelectorAll(".glass-card"), {
+    max: 5,
+    scale: 1.03,
+    speed: 400
+  });
+</script>
+
+<script src="/assets/js/homepage.js" type="module"></script>
 
 </body>
 </html>
