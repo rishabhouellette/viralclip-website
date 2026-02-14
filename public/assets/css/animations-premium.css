@@ -1,0 +1,403 @@
+/* ============================================
+   VIRALCLIP PREMIUM ANIMATIONS
+   Strong, tasteful animations with Apple polish
+   ============================================ */
+
+/* ============================================
+   FLOATING PLATFORM ICONS
+   Sine-wave vertical motion (slow, organic)
+   ============================================ */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-24px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Stagger delays for natural feel */
+.float-ig {
+  animation-delay: 0s;
+}
+
+.float-tt {
+  animation-delay: 1.2s;
+}
+
+.float-yt {
+  animation-delay: 2.4s;
+}
+
+/* ============================================
+   PARTICLE SPARKLE
+   Fade in/out with scale pulse
+   ============================================ */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 4s ease-in-out infinite;
+}
+
+/* ============================================
+   HERO STAGGERED ENTRANCE
+   Fade up with opacity (entrance only)
+   ============================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Stagger delays for cascading effect */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+
+/* ============================================
+   DASHBOARD MOCKUP ENTRANCE
+   Slide from right with fade
+   ============================================ */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-right {
+  opacity: 0;
+  animation: slideInRight 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+/* ============================================
+   BUTTON HOVER EFFECTS
+   Glow and gradient shift
+   ============================================ */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Gradient shift on hover */
+.btn-primary {
+  background: linear-gradient(90deg, #7f3af2, #ec4899);
+  background-size: 200% 100%;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-primary:hover {
+  background-position: 100% 0;
+}
+
+/* ============================================
+   GLASS CARD REVEAL
+   Scale up with fade on scroll reveal
+   ============================================ */
+@keyframes revealCard {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.glass-card.reveal {
+  opacity: 0;
+  animation: revealCard 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Stagger for grid items */
+.glass-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.glass-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.glass-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.glass-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* ============================================
+   STAT COUNTER ANIMATION
+   Number count-up effect (handled by JS)
+   ============================================ */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   CLOUD BACKGROUND DRIFT
+   Slow horizontal pan (subtle, continuous)
+   ============================================ */
+@keyframes cloudDrift {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-30px);
+  }
+}
+
+.hero-fog {
+  animation: cloudDrift 40s linear infinite;
+}
+
+/* ============================================
+   PLATFORM BADGE PULSE
+   Subtle scale on hover
+   ============================================ */
+.platform-badge {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.platform-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   NAV LOGO BOUNCE
+   Playful hover effect
+   ============================================ */
+.nav-logo {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-logo:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+/* ============================================
+   GLASS CARD TILT
+   3D perspective on hover (optional enhancement)
+   ============================================ */
+.glass-card {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+}
+
+/* ============================================
+   GRADIENT TEXT SHIMMER
+   Animated gradient for emphasis text
+   ============================================ */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #f59e0b, #ec4899, #7f3af2, #f59e0b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+/* ============================================
+   FOOTER FADE ENTRANCE
+   Fade in from bottom on scroll
+   ============================================ */
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer.reveal {
+  opacity: 0;
+  animation: fadeInBottom 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ============================================
+   FLOATING DASHBOARD SHADOW
+   Animated shadow depth for 3D effect
+   ============================================ */
+@keyframes floatShadow {
+  0%, 100% {
+    filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 50px 100px rgba(0, 0, 0, 0.3));
+  }
+}
+
+.hero-dashboard {
+  animation: floatShadow 6s ease-in-out infinite;
+}
+
+/* ============================================
+   ICON GLOW PULSE
+   Soft glow around platform icons
+   ============================================ */
+@keyframes iconGlow {
+  0%, 100% {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 20px 60px rgba(127, 58, 242, 0.4));
+  }
+}
+
+.float-icon {
+  animation: float 6s ease-in-out infinite, iconGlow 4s ease-in-out infinite;
+}
+
+/* ============================================
+   TRUST BAR ENTRANCE
+   Slide up from bottom
+   ============================================ */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.trust.reveal {
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ============================================
+   RESPONSIVE ANIMATION ADJUSTMENTS
+   Reduce motion intensity on mobile
+   ============================================ */
+@media (max-width: 768px) {
+  .animate-float,
+  .float-icon {
+    animation: none;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .hero-fog {
+    animation-duration: 60s;
+  }
+}
+
+/* ============================================
+   PREFERS REDUCED MOTION
+   Accessibility: disable animations if requested
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   SCROLL-TRIGGERED REVEAL CLASS
+   Applied by JavaScript IntersectionObserver
+   ============================================ */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
