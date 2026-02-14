@@ -401,6 +401,15 @@ body {
   perspective: 1000px;
 }
 
+.dashboard-preview {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(139, 92, 246, 0.2));
+  animation: float 4s ease-in-out infinite;
+  border-radius: 16px;
+}
+
 /* GLASS CARDS */
 .glass-card {
   background: rgba(30, 41, 59, 0.5);
@@ -539,6 +548,22 @@ body {
   font-size: 40px;
   text-align: center;
   padding: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.platform-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  min-height: 120px;
+}
+
+.platform-icon-container img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(139, 92, 246, 0.15));
   animation: float 3s ease-in-out infinite;
 }
 
