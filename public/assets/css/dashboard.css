@@ -860,3 +860,11 @@ button.danger {
 .calendar-event.instagram { background: #fde2e7; color: #b91c1c; }
 .calendar-event.tiktok { background: #e0f2fe; color: #0369a1; }
 .calendar-event.youtube { background: #fee2e2; color: #b91c1c; }
+
+.calendar-event.dragging {
+  opacity: 0.5;
+}
+
+.calendar-cell.drop-target {
+  background: rgba(99,102,241,0.08);
+}

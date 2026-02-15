@@ -58,7 +58,11 @@ function renderCell(day, hour) {
   });
 
   return `
-    <div class="calendar-cell">
+    <div
+      class="calendar-cell"
+      data-date="${day.toISOString()}"
+      data-hour="${hour}"
+    >
       ${posts.map(renderEvent).join("")}
     </div>
   `;
@@ -67,7 +71,11 @@ function renderCell(day, hour) {
 function renderEvent(post) {
   const platform = post.platform[0] || "generic";
   return `
-    <div class="calendar-event ${platform}" data-edit="${post.id}">
+    <div
+      class="calendar-event ${platform}"
+      draggable="true"
+      data-post-id="${post.id}"
+    >
       ${platform}
     </div>
   `;
@@ -92,3 +100,57 @@ document.addEventListener("click", e => {
 export function initCalendar() {
   renderCalendar();
 }
+
+// ============================================
+// DRAG & DROP LOGIC
+// ============================================
+let draggedPostId = null;
+
+document.addEventListener("dragstart", (e) => {
+  if (e.target.classList.contains("calendar-event")) {
+    draggedPostId = e.target.dataset.postId;
+    e.target.classList.add("dragging");
+  }
+});
+
+document.addEventListener("dragend", (e) => {
+  if (e.target.classList.contains("calendar-event")) {
+    e.target.classList.remove("dragging");
+  }
+});
+
+document.addEventListener("dragover", (e) => {
+  if (e.target.classList.contains("calendar-cell")) {
+    e.preventDefault(); // REQUIRED
+    e.target.classList.add("drop-target");
+  }
+});
+
+document.addEventListener("dragleave", (e) => {
+  if (e.target.classList.contains("calendar-cell")) {
+    e.target.classList.remove("drop-target");
+  }
+});
+
+document.addEventListener("drop", (e) => {
+  if (!e.target.classList.contains("calendar-cell")) return;
+
+  e.preventDefault();
+  e.target.classList.remove("drop-target");
+
+  const postId = draggedPostId;
+  draggedPostId = null;
+
+  if (!postId) return;
+
+  const date = new Date(e.target.dataset.date);
+  const hour = parseInt(e.target.dataset.hour, 10);
+  date.setHours(hour, 0, 0, 0);
+
+  const post = state.posts.find(p => p.id === postId);
+  if (!post) return;
+
+  post.scheduledAt = date;
+
+  renderCalendar(); // re-render
+});
