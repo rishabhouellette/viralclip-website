@@ -1,19 +1,11 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
     match /posts/{postId} {
-      allow create: if request.auth != null
-        && request.resource.data.uid == request.auth.uid
-        && request.resource.data.title is string
-        && request.resource.data.caption is string
-        && request.resource.data.createdAt is timestamp;
-
-      allow read: if request.auth != null
-        && resource.data.uid == request.auth.uid;
-
-      allow update, delete: if request.auth != null
-        && resource.data.uid == request.auth.uid
-        && request.resource.data.uid == request.auth.uid;
+      allow read, write: if request.auth != null
+        && request.auth.uid == resource.data.uid;
     }
+
   }
 }

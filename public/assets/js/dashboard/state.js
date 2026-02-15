@@ -2,6 +2,12 @@
 // STATE MANAGEMENT
 // ============================================
 
+import {
+  savePost,
+  updatePostFirestore,
+  deletePostFirestore
+} from "./firestore.js";
+
 export const state = {
   user: {
     name: "",
@@ -29,7 +35,8 @@ export function getState() {
 // POSTS MANAGEMENT
 // ============================================
 
-export function addPost(post) {
+export async function addPost(post, uid) {
+  await savePost(post, uid);
   state.posts.push(post);
 }
 
@@ -41,13 +48,18 @@ export function getDrafts() {
   return state.posts.filter(p => p.status === "draft");
 }
 
-export function deletePost(id) {
+export async function deletePost(id) {
+  await deletePostFirestore(id);
   state.posts = state.posts.filter(p => p.id !== id);
 }
 
-export function updatePost(updatedPost) {
+export async function updatePost(updatedPost) {
+  await updatePostFirestore(updatedPost);
   const index = state.posts.findIndex(p => p.id === updatedPost.id);
   if (index !== -1) {
+    state.posts[index] = updatedPost;
+  }
+}
     state.posts[index] = updatedPost;
   }
 }
