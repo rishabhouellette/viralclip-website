@@ -767,3 +767,96 @@ button.danger {
   background: #F9FAFB;
   transform: translateY(-1px);
 }
+
+/* ============================================
+   CALENDAR VIEW
+   ============================================ */
+.calendar-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.calendar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.calendar-actions button:not(.primary-btn) {
+  padding: 8px 12px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.calendar-actions button:not(.primary-btn):hover {
+  background: #e5e7eb;
+}
+
+.calendar {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  height: calc(100vh - 160px);
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.day-col {
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.calendar-grid {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.time-row {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  min-height: 60px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.time-label {
+  padding: 8px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.calendar-cell {
+  padding: 4px;
+  position: relative;
+  border-right: 1px solid #f1f5f9;
+}
+
+.calendar-event {
+  background: #eef2ff;
+  color: #4338ca;
+  border-radius: 8px;
+  padding: 4px 6px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.calendar-event:hover {
+  opacity: 0.8;
+}
+
+/* Platform accents */
+.calendar-event.instagram { background: #fde2e7; color: #b91c1c; }
+.calendar-event.tiktok { background: #e0f2fe; color: #0369a1; }
+.calendar-event.youtube { background: #fee2e2; color: #b91c1c; }

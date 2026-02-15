@@ -1,4 +1,5 @@
 import { views } from "./views.js";
+import { initCalendar } from "./calendar.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import "/assets/js/firebase.js";
 
@@ -37,6 +38,11 @@ function render(viewName) {
 
   // Update content
   dashboardContent.innerHTML = viewConfig.content(appState.user);
+
+  // Initialize calendar if calendar view
+  if (viewName === "calendar") {
+    initCalendar();
+  }
 
   // Update active nav item
   navItems.forEach(btn => {

@@ -81,42 +81,20 @@ export const views = {
 
   calendar: {
     topbar: () => `
-      <h3>Content Planner</h3>
-      <button class="primary-btn">+ Create Post</button>
+      <div class="calendar-topbar">
+        <h3>Calendar</h3>
+        <div class="calendar-actions">
+          <button id="prev-week">←</button>
+          <button id="today-week">Today</button>
+          <button id="next-week">→</button>
+          <button class="primary-btn">+ Create Post</button>
+        </div>
+      </div>
     `,
     content: () => `
-      <section class="planner-card">
-        <div class="planner-header">
-          <h2>Today</h2>
-        </div>
-
-        <div class="planner-grid">
-
-          <div class="platform-card instagram">
-            <img src="/assets/images/platform-instagram-float.png" />
-            <div>
-              <strong>Instagram</strong>
-              <span>3:00 PM</span>
-            </div>
-          </div>
-
-          <div class="platform-card tiktok">
-            <img src="/assets/images/platform-tiktok-float.png" />
-            <div>
-              <strong>TikTok</strong>
-              <span>5:00 PM</span>
-            </div>
-          </div>
-
-          <div class="platform-card youtube">
-            <img src="/assets/images/platform-youtube-float.png" />
-            <div>
-              <strong>YouTube</strong>
-              <span>8:00 PM</span>
-            </div>
-          </div>
-
-        </div>
+      <section class="calendar">
+        <div class="calendar-header" id="calendar-header"></div>
+        <div class="calendar-grid" id="calendar-grid"></div>
       </section>
     `
   },
