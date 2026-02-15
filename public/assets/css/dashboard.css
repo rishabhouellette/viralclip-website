@@ -691,6 +691,50 @@ body {
   margin-top: 20px;
 }
 
+/* ============================================
+   POSTS GRID
+   ============================================ */
+.posts-section {
+  margin-bottom: 32px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.post-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+}
+
+.post-platforms {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.post-caption {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-actions button {
+  font-size: 12px;
+}
+
+button.danger {
+  color: #dc2626;
+}
+
 .modal-actions button {
   padding: 10px 14px;
   border-radius: 10px;

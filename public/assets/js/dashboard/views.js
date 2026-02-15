@@ -1,3 +1,5 @@
+import { state } from "./state.js";
+
 export const views = {
   dashboard: {
     topbar: () => `
@@ -121,59 +123,29 @@ export const views = {
 
   clips: {
     topbar: () => `
-      <h3>Clips</h3>
-      <button class="primary-btn">+ Upload Clip</button>
+      <h3>Posts</h3>
+      <button class="primary-btn">+ Create Post</button>
     `,
-    content: () => `
-      <section class="clips-grid">
+    content: () => {
+      const drafts = state.posts.filter(p => p.status === "draft");
+      const scheduled = state.posts.filter(p => p.status === "scheduled");
 
-        <div class="clip-card">
-          <div class="clip-thumb">
-            <img src="/assets/images/dashboard-mock.png" alt="Clip thumbnail">
-            <div class="play-overlay">▶</div>
-            <span class="duration">0:12</span>
+      return `
+        <section class="posts-section">
+          <h2>Drafts</h2>
+          <div class="posts-grid">
+            ${drafts.length ? drafts.map(renderPostCard).join("") : `<p class="empty">No drafts yet</p>`}
           </div>
-          <div class="clip-meta">
-            <strong>Morning routine reel</strong>
-            <div class="clip-status">
-              <span class="pill unused">Unused</span>
-            </div>
-          </div>
-        </div>
+        </section>
 
-        <div class="clip-card">
-          <div class="clip-thumb">
-            <img src="/assets/images/feature-icon-clips.png">
-            <div class="play-overlay">▶</div>
-            <span class="duration">0:08</span>
+        <section class="posts-section">
+          <h2>Scheduled</h2>
+          <div class="posts-grid">
+            ${scheduled.length ? scheduled.map(renderPostCard).join("") : `<p class="empty">No scheduled posts</p>`}
           </div>
-          <div class="clip-meta">
-            <strong>Product teaser</strong>
-            <div class="clip-status">
-              <span class="pill scheduled">Scheduled</span>
-              <img src="/assets/images/platform-instagram-float.png">
-            </div>
-          </div>
-        </div>
-
-        <div class="clip-card">
-          <div class="clip-thumb">
-            <img src="/assets/images/dashboard-mock-perspective.png">
-            <div class="play-overlay">▶</div>
-            <span class="duration">0:15</span>
-          </div>
-          <div class="clip-meta">
-            <strong>Behind the scenes</strong>
-            <div class="clip-status">
-              <span class="pill published">Published</span>
-              <img src="/assets/images/platform-tiktok-float.png">
-              <img src="/assets/images/platform-youtube-float.png">
-            </div>
-          </div>
-        </div>
-
-      </section>
-    `
+        </section>
+      `;
+    }
   },
 
   accounts: {
@@ -278,3 +250,20 @@ export const views = {
     `
   }
 };
+
+function renderPostCard(post) {
+  return `
+    <div class="post-card">
+      <div class="post-platforms">
+        ${post.platform.map(p => `<span class="pill">${p}</span>`).join("")}
+      </div>
+      <p class="post-caption">${post.caption || "No caption"}</p>
+      <small>${post.scheduledAt ? new Date(post.scheduledAt).toLocaleString() : "Draft"}</small>
+
+      <div class="post-actions">
+        <button data-edit="${post.id}">Edit</button>
+        <button data-delete="${post.id}" class="danger">Delete</button>
+      </div>
+    </div>
+  `;
+}
