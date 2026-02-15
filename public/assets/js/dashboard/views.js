@@ -1,270 +1,217 @@
-// ============================================
-// VIEW TEMPLATES
-// ============================================
-
 export const views = {
-  dashboard: (user) => `
-    <div class="view-enter">
-      <!-- Greeting Card -->
-      <div class="card card-greeting animate-slide-up stagger-1">
-        <h2 style="font-size: 28px; margin-bottom: 8px;">Good morning, ${user.name} 👋</h2>
-        <p style="color: var(--text-secondary); font-size: 15px;">You have <strong>5 posts</strong> scheduled today.</p>
+  dashboard: {
+    topbar: () => `
+      <div style="display: flex; gap: 12px;">
+        <h3 style="margin: 0; font-size: 20px; font-weight: 700;">Dashboard</h3>
       </div>
+      <button class="primary-btn">+ Create Post</button>
+    `,
+    content: (user) => `
+      <section class="card">
+        <h2 style="margin-top: 0;">Welcome, ${user?.name || 'User'}!</h2>
+        <p style="color: #6B7280;">You have 5 posts scheduled today.</p>
+      </section>
 
-      <div class="grid grid-3" style="margin-top: 32px; margin-bottom: 32px;">
-        <!-- Content Planner Card -->
-        <div class="card card-planner animate-slide-up stagger-2" style="grid-column: span 2;">
-          <div class="card-header">
-            <h3 class="card-title">Content Planner</h3>
-            <a href="#" style="color: var(--accent-primary); font-size: 14px; text-decoration: none; font-weight: 500;">
-              View full calendar →
-            </a>
-          </div>
+      <div class="grid-2">
+        <section class="card">
+          <h3>Content Planner</h3>
           <div class="planner-grid">
             <div class="platform-card">
-              <div class="platform-icon">
-                <img src="/assets/images/platform-instagram.png" alt="Instagram" />
-              </div>
+              <div class="platform-icon">📱</div>
               <div class="platform-info">
-                <p class="platform-name">Instagram</p>
-                <p class="platform-time">3:00 PM</p>
+                <div class="platform-name">Instagram</div>
+                <div class="platform-time">2:00 PM Today</div>
               </div>
             </div>
             <div class="platform-card">
-              <div class="platform-icon">
-                <img src="/assets/images/platform-tiktok.png" alt="TikTok" />
-              </div>
+              <div class="platform-icon">🎵</div>
               <div class="platform-info">
-                <p class="platform-name">TikTok</p>
-                <p class="platform-time">5:00 PM</p>
+                <div class="platform-name">TikTok</div>
+                <div class="platform-time">3:30 PM Today</div>
               </div>
             </div>
             <div class="platform-card">
-              <div class="platform-icon">
-                <img src="/assets/images/platform-youtube.png" alt="YouTube" />
-              </div>
+              <div class="platform-icon">▶️</div>
               <div class="platform-info">
-                <p class="platform-name">YouTube</p>
-                <p class="platform-time">8:00 PM</p>
+                <div class="platform-name">YouTube</div>
+                <div class="platform-time">Tomorrow</div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Upcoming Posts -->
-        <div class="card card-upcoming animate-slide-up stagger-3">
-          <h3 class="card-title">Upcoming Posts</h3>
+        <section class="card">
+          <h3>Upcoming Posts</h3>
           <div class="stats-list">
             <div class="stat-row">
-              <span style="color: var(--text-secondary); font-size: 14px;">Today</span>
-              <strong style="color: var(--text-primary); font-size: 18px;">5</strong>
+              <span>Today</span>
+              <strong>3 posts</strong>
             </div>
             <div class="stat-row">
-              <span style="color: var(--text-secondary); font-size: 14px;">Publishing today</span>
-              <strong style="color: var(--text-primary); font-size: 18px;">3</strong>
+              <span>This Week</span>
+              <strong>12 posts</strong>
+            </div>
+            <div class="stat-row">
+              <span>This Month</span>
+              <strong>48 posts</strong>
             </div>
           </div>
-        </div>
+        </section>
       </div>
 
-      <div class="grid grid-2" style="margin-bottom: 32px;">
-        <!-- AI Caption Suggestions -->
-        <div class="card card-captions animate-slide-up stagger-4">
-          <h3 class="card-title" style="margin-bottom: 16px;">AI Caption Suggestions</h3>
-          <div class="hashtags-container" style="margin-bottom: 16px;">
-            <span class="hashtag-pill">#viralvideos</span>
-            <span class="hashtag-pill">#trendalert</span>
-            <span class="hashtag-pill">#fitnessgoals</span>
+      <section class="card">
+        <h3>Performance Overview</h3>
+        <div class="performance-stats">
+          <div class="performance-item">
+            <strong>Total Reach</strong>
+            <div style="font-size: 24px; font-weight: 700; color: #2563EB;">24.5K</div>
+            <div style="font-size: 12px; color: #10B981;">↑ 12% from last week</div>
           </div>
-          <button class="btn btn-secondary" style="width: 100%;">Generate new</button>
+          <div class="performance-item">
+            <strong>Engagement Rate</strong>
+            <div style="font-size: 24px; font-weight: 700; color: #8B5CF6;">6.8%</div>
+            <div style="font-size: 12px; color: #10B981;">↑ 2.3% from last week</div>
+          </div>
         </div>
+      </section>
+    `
+  },
 
-        <!-- Performance Overview -->
-        <div class="card card-performance animate-slide-up stagger-5">
-          <h3 class="card-title" style="margin-bottom: 16px;">Performance Overview</h3>
-          <div class="performance-stats">
-            <div class="performance-item">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <img src="/assets/images/platform-instagram.png" style="width: 20px; height: 20px;" />
-                <span style="color: var(--text-secondary); font-size: 14px;">Instagram</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 18px;">12.4k</strong>
-                <span class="stat-change positive">↑ 12%</span>
-              </div>
-            </div>
-            <div class="performance-item">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <img src="/assets/images/platform-tiktok.png" style="width: 20px; height: 20px;" />
-                <span style="color: var(--text-secondary); font-size: 14px;">TikTok</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 18px;">67.8k</strong>
-                <span class="stat-change positive">↑ 24%</span>
-              </div>
-            </div>
-            <div class="performance-item">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <img src="/assets/images/platform-youtube.png" style="width: 20px; height: 20px;" />
-                <span style="color: var(--text-secondary); font-size: 14px;">YouTube</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <strong style="font-size: 18px;">6.3k</strong>
-                <span class="stat-change positive">↑ 8%</span>
-              </div>
-            </div>
-          </div>
-        </div>
+  calendar: {
+    topbar: () => `
+      <div style="display: flex; gap: 12px;">
+        <h3 style="margin: 0; font-size: 20px; font-weight: 700;">Calendar</h3>
       </div>
+      <button class="primary-btn">+ Schedule Post</button>
+    `,
+    content: () => `
+      <section class="card">
+        <h2 style="margin-top: 0;">Content Calendar</h2>
+        <div class="calendar-placeholder" style="background: #F3F4F6; border-radius: 8px; padding: 40px; text-align: center; color: #9CA3AF;">
+          📅 Calendar view coming soon
+        </div>
+      </section>
+    `
+  },
 
-      <!-- Connected Accounts -->
-      <div class="card card-accounts animate-slide-up stagger-6">
-        <h3 class="card-title">Connected Accounts</h3>
+  clips: {
+    topbar: () => `
+      <div style="display: flex; gap: 12px;">
+        <h3 style="margin: 0; font-size: 20px; font-weight: 700;">Clips</h3>
+      </div>
+      <button class="primary-btn">+ Upload Clip</button>
+    `,
+    content: () => `
+      <section class="card">
+        <h2 style="margin-top: 0;">Your Clips</h2>
+        <div class="grid-3">
+          <div class="clip-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">Clip 1</div>
+          <div class="clip-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 8px; aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">Clip 2</div>
+          <div class="clip-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 8px; aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">Clip 3</div>
+        </div>
+      </section>
+    `
+  },
+
+  accounts: {
+    topbar: () => `
+      <div style="display: flex; gap: 12px;">
+        <h3 style="margin: 0; font-size: 20px; font-weight: 700;">Accounts</h3>
+      </div>
+      <button class="primary-btn">+ Connect Account</button>
+    `,
+    content: () => `
+      <section class="card">
+        <h2 style="margin-top: 0;">Connected Accounts</h2>
         <div class="accounts-grid">
           <div class="account-item">
             <div style="display: flex; align-items: center; gap: 12px;">
-              <img src="/assets/images/platform-instagram.png" style="width: 28px; height: 28px;" />
-              <span style="font-size: 14px; font-weight: 500;">Instagram</span>
+              <div style="font-size: 24px;">📱</div>
+              <span>Instagram</span>
             </div>
-            <span class="badge badge-success">✓</span>
+            <span style="color: #10B981; font-weight: 600;">✅ Connected</span>
           </div>
           <div class="account-item">
             <div style="display: flex; align-items: center; gap: 12px;">
-              <img src="/assets/images/platform-tiktok.png" style="width: 28px; height: 28px;" />
-              <span style="font-size: 14px; font-weight: 500;">TikTok</span>
+              <div style="font-size: 24px;">🎵</div>
+              <span>TikTok</span>
             </div>
-            <span class="badge badge-success">✓</span>
+            <span style="color: #10B981; font-weight: 600;">✅ Connected</span>
           </div>
           <div class="account-item">
             <div style="display: flex; align-items: center; gap: 12px;">
-              <img src="/assets/images/platform-youtube.png" style="width: 28px; height: 28px;" />
-              <span style="font-size: 14px; font-weight: 500;">YouTube</span>
+              <div style="font-size: 24px;">▶️</div>
+              <span>YouTube</span>
             </div>
-            <span class="badge badge-danger">✗</span>
+            <span style="color: #9CA3AF; font-weight: 600;">❌ Not Connected</span>
           </div>
         </div>
-      </div>
-    </div>
-  `,
+      </section>
+    `
+  },
 
-  calendar: () => `
-    <div class="view-enter">
-      <div class="card">
-        <h2 style="font-size: 24px; margin-bottom: 16px;">Calendar View</h2>
-        <p style="color: var(--text-secondary);">Full calendar implementation coming soon...</p>
+  analytics: {
+    topbar: () => `
+      <div style="display: flex; gap: 12px;">
+        <h3 style="margin: 0; font-size: 20px; font-weight: 700;">Analytics</h3>
       </div>
-    </div>
-  `,
+      <select style="padding: 8px 12px; border: 1px solid #D1D5DB; border-radius: 6px; cursor: pointer;">
+        <option>Last 7 days</option>
+        <option>Last 30 days</option>
+        <option>Last 90 days</option>
+      </select>
+    `,
+    content: () => `
+      <section class="card">
+        <h2 style="margin-top: 0;">Performance Metrics</h2>
+        <div class="chart-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; height: 300px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+          📊 Chart visualization coming soon
+        </div>
+      </section>
 
-  clips: () => `
-    <div class="view-enter">
-      <div class="grid grid-3">
-        ${[1, 2, 3, 4, 5, 6].map((i) => `
-          <div class="card card-clip hover-lift animate-scale-in stagger-${i % 6 + 1}">
-            <div style="aspect-ratio: 9/16; background: var(--bg-hover); border-radius: var(--radius-md); margin-bottom: 12px; display: flex; align-items: center; justify-content: center;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                <path d="M8 5v14l11-7z" fill="var(--accent-primary)"/>
-              </svg>
-            </div>
-            <p style="font-size: 14px; font-weight: 600;">Clip ${i}</p>
-            <p style="font-size: 12px; color: var(--text-muted);">0:15 · Instagram</p>
-          </div>
-        `).join('')}
+      <div class="grid-3">
+        <section class="card">
+          <h3>Impressions</h3>
+          <div style="font-size: 28px; font-weight: 700; color: #2563EB;">156.8K</div>
+          <div style="font-size: 12px; color: #10B981;">↑ 28% from last period</div>
+        </section>
+        <section class="card">
+          <h3>Clicks</h3>
+          <div style="font-size: 28px; font-weight: 700; color: #8B5CF6;">12.3K</div>
+          <div style="font-size: 12px; color: #10B981;">↑ 15% from last period</div>
+        </section>
+        <section class="card">
+          <h3>Conversions</h3>
+          <div style="font-size: 28px; font-weight: 700; color: #EC4899;">847</div>
+          <div style="font-size: 12px; color: #10B981;">↑ 8% from last period</div>
+        </section>
       </div>
-    </div>
-  `,
+    `
+  },
 
-  accounts: () => `
-    <div class="view-enter">
-      <div class="grid grid-2">
-        <div class="card card-account hover-lift animate-slide-up stagger-1">
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-            <img src="/assets/images/platform-instagram.png" style="width: 48px; height: 48px;" />
-            <div>
-              <h3 style="font-size: 18px; margin-bottom: 4px;">Instagram</h3>
-              <span class="badge badge-success">Connected</span>
-            </div>
-          </div>
-          <button class="btn btn-secondary" style="width: 100%;">Disconnect</button>
-        </div>
-        <div class="card card-account hover-lift animate-slide-up stagger-2">
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-            <img src="/assets/images/platform-tiktok.png" style="width: 48px; height: 48px;" />
-            <div>
-              <h3 style="font-size: 18px; margin-bottom: 4px;">TikTok</h3>
-              <span class="badge badge-success">Connected</span>
-            </div>
-          </div>
-          <button class="btn btn-secondary" style="width: 100%;">Disconnect</button>
-        </div>
-        <div class="card card-account hover-lift animate-slide-up stagger-3">
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-            <img src="/assets/images/platform-youtube.png" style="width: 48px; height: 48px;" />
-            <div>
-              <h3 style="font-size: 18px; margin-bottom: 4px;">YouTube</h3>
-              <span class="badge badge-danger">Not Connected</span>
-            </div>
-          </div>
-          <button class="btn btn-primary" style="width: 100%;">Connect Account</button>
-        </div>
-      </div>
-    </div>
-  `,
-
-  analytics: () => `
-    <div class="view-enter">
-      <div class="grid grid-4" style="margin-bottom: 32px;">
-        <div class="card card-stat hover-lift animate-scale-in stagger-1">
-          <div class="stat-item">
-            <span class="stat-label">Total Views</span>
-            <span class="stat-value">1.2M</span>
-            <span class="stat-change positive">↑ 23%</span>
-          </div>
-        </div>
-        <div class="card card-stat hover-lift animate-scale-in stagger-2">
-          <div class="stat-item">
-            <span class="stat-label">Engagement</span>
-            <span class="stat-value">8.4%</span>
-            <span class="stat-change positive">↑ 12%</span>
-          </div>
-        </div>
-        <div class="card card-stat hover-lift animate-scale-in stagger-3">
-          <div class="stat-item">
-            <span class="stat-label">New Followers</span>
-            <span class="stat-value">12.3K</span>
-            <span class="stat-change positive">↑ 18%</span>
-          </div>
-        </div>
-        <div class="card card-stat hover-lift animate-scale-in stagger-4">
-          <div class="stat-item">
-            <span class="stat-label">Posts Published</span>
-            <span class="stat-value">142</span>
-            <span class="stat-change positive">↑ 5%</span>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <p style="color: var(--text-secondary);">Detailed analytics charts coming soon...</p>
-      </div>
-    </div>
-  `,
-
-  settings: () => `
-    <div class="view-enter">
-      <div class="card animate-slide-up">
-        <h2 style="font-size: 24px; margin-bottom: 24px;">Settings</h2>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
+  settings: {
+    topbar: () => `
+      <h3 style="margin: 0; font-size: 20px; font-weight: 700;">Settings</h3>
+    `,
+    content: () => `
+      <section class="card">
+        <h2 style="margin-top: 0;">Profile Settings</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
           <div>
-            <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600;">Display Name</label>
-            <input type="text" class="search-input" style="width: 100%;" placeholder="Enter your name" />
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Display Name</label>
+            <input type="text" placeholder="Your name" style="width: 100%; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 6px; font-size: 14px;" />
           </div>
           <div>
-            <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600;">Email</label>
-            <input type="email" class="search-input" style="width: 100%;" placeholder="Enter your email" />
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Email</label>
+            <input type="email" placeholder="your@email.com" style="width: 100%; padding: 10px 12px; border: 1px solid #D1D5DB; border-radius: 6px; font-size: 14px;" />
           </div>
-          <button class="btn btn-primary">Save Changes</button>
+          <div>
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Plan</label>
+            <div style="padding: 10px 12px; background: #F3F4F6; border-radius: 6px; font-weight: 600;">Pro Plan</div>
+          </div>
+          <button class="primary-btn">Save Changes</button>
         </div>
-      </div>
-    </div>
-  `
+      </section>
+    `
+  }
 };

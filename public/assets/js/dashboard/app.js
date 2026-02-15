@@ -1,105 +1,85 @@
-// ============================================
-// MAIN APPLICATION CONTROLLER
-// ============================================
-
-import { state, updateState } from './state.js';
-import { views } from './views.js';
-import { updateTopbar } from './topbar.js';
+import { views } from "./views.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import "/assets/js/firebase.js";
 
 const auth = getAuth();
 
 // ============================================
-// VIEW SWITCHER
+// APP STATE
 // ============================================
-function switchView(viewName) {
-  const content = document.getElementById('dashboard-content');
-  const sidebarItems = document.querySelectorAll('.sidebar-item');
-  const topNavItems = document.querySelectorAll('.top-nav-item');
-  
-  // Update sidebar active state
-  sidebarItems.forEach(item => {
-    if (item.dataset.view === viewName) {
-      item.classList.add('active');
-    } else {
-      item.classList.remove('active');
-    }
-  });
-  
-  // Update top nav active state
-  topNavItems.forEach(item => {
-    if (item.dataset.view === viewName) {
-      item.classList.add('active');
-    } else {
-      item.classList.remove('active');
-    }
-  });
-  
-  // Update state
-  updateState({ activeView: viewName });
-  
+let appState = {
+  user: null,
+  activeView: "dashboard"
+};
+
+// ============================================
+// DOM ELEMENTS
+// ============================================
+const dashboardContent = document.getElementById("dashboard-content");
+const topbarLeft = document.getElementById("topbar-left");
+const topbarRight = document.getElementById("topbar-right");
+const navItems = document.querySelectorAll(".nav-item");
+const userNameEl = document.getElementById("user-name");
+const logoutBtn = document.querySelector('[data-logout-btn]');
+
+// ============================================
+// RENDER FUNCTION - THE MAGIC
+// ============================================
+function render(viewName) {
+  const viewConfig = views[viewName];
+  if (!viewConfig) return;
+
+  appState.activeView = viewName;
+
   // Update topbar
-  updateTopbar(viewName);
-  
-  // Render view content
-  if (content && views[viewName]) {
-    content.innerHTML = views[viewName](state.user);
-  }
+  topbarLeft.innerHTML = viewConfig.topbar();
+  topbarRight.innerHTML = "";
+
+  // Update content
+  dashboardContent.innerHTML = viewConfig.content(appState.user);
+
+  // Update active nav item
+  navItems.forEach(btn => {
+    if (btn.dataset.view === viewName) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+
+  console.log(`📄 Rendered view: ${viewName}`);
 }
 
 // ============================================
 // NAVIGATION SETUP
 // ============================================
 function setupNavigation() {
-  const sidebarItems = document.querySelectorAll('.sidebar-item');
-  const topNavItems = document.querySelectorAll('.top-nav-item');
-  
-  // Sidebar navigation
-  sidebarItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      const viewName = item.dataset.view;
-      switchView(viewName);
+  navItems.forEach(btn => {
+    btn.addEventListener("click", () => {
+      render(btn.dataset.view);
     });
   });
-  
-  // Top nav navigation
-  topNavItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      const viewName = item.dataset.view;
-      switchView(viewName);
-    });
-  });
+  console.log("✅ Navigation setup complete");
 }
 
 // ============================================
-// LOGOUT HANDLER
+// LOGOUT SETUP
 // ============================================
 function setupLogout() {
-  const logoutBtn = document.getElementById('logout-btn');
-  
   if (logoutBtn) {
-    logoutBtn.removeEventListener('click', handleLogout);
-    logoutBtn.addEventListener('click', handleLogout);
-  } else {
-    console.warn('Logout button not found');
-  }
-}
-
-async function handleLogout(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  
-  try {
-    console.log('Attempting logout...');
-    await signOut(auth);
-    console.log('Logout successful, redirecting to login...');
-    window.location.href = '/login.html';
-  } catch (error) {
-    console.error('Logout failed:', error);
-    alert('Failed to log out. Please try again.');
+    logoutBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        console.log("🚪 Logging out...");
+        await signOut(auth);
+        console.log("✅ Logout successful");
+        window.location.href = "/login.html";
+      } catch (error) {
+        console.error("❌ Logout failed:", error);
+        alert("Failed to log out. Please try again.");
+      }
+    });
+    console.log("✅ Logout setup complete");
   }
 }
 
@@ -108,55 +88,30 @@ async function handleLogout(e) {
 // ============================================
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    console.log('No user authenticated, redirecting to login');
-    window.location.href = '/login.html';
+    console.log("❌ No user logged in, redirecting...");
+    window.location.href = "/login.html";
     return;
   }
-  
-  console.log('User authenticated:', user.email);
-  
-  // Update user state
-  const userName = user.displayName || (user.email ? user.email.split('@')[0] : 'User');
-  updateState({
-    user: {
-      name: userName,
-      email: user.email,
-      plan: 'Pro',
-      avatar: user.photoURL
-    }
-  });
-  
-  // Update user name in sidebar footer
-  const userNameEl = document.getElementById('user-name');
+
+  console.log("✅ User authenticated:", user.email);
+
+  // Set user state
+  appState.user = {
+    name: user.displayName || (user.email ? user.email.split("@")[0] : "User"),
+    email: user.email,
+    plan: "Pro"
+  };
+
+  // Update UI with user name
   if (userNameEl) {
-    userNameEl.textContent = userName;
-    console.log('✅ User name updated:', userName);
-  } else {
-    console.warn('User name element not found');
+    userNameEl.textContent = appState.user.name;
+    console.log("✅ User name displayed:", appState.user.name);
   }
-  
-  // Update profile avatar styling
-  const topAvatar = document.getElementById('top-avatar');
-  if (topAvatar) {
-    topAvatar.style.width = '40px';
-    topAvatar.style.height = '40px';
-    topAvatar.style.borderRadius = '50%';
-    topAvatar.style.objectFit = 'contain';
-    topAvatar.style.padding = '4px';
-    console.log('✅ Top avatar styled');
-  }
-  
-  // Initialize app
+
+  // Setup app
   setupNavigation();
   setupLogout();
-  switchView('dashboard'); // Load default view
-  
-  console.log('✅ Dashboard initialized for:', userName);
-});
+  render("dashboard");
 
-// ============================================
-// ERROR HANDLER
-// ============================================
-window.addEventListener('error', (e) => {
-  console.error('Application error:', e.error);
+  console.log("🚀 Dashboard fully initialized");
 });
