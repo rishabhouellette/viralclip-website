@@ -8,11 +8,16 @@ function openModal() {
 
 function closeModal() {
   modal.classList.add("hidden");
+  // Clear form
+  document.getElementById("post-caption").value = "";
+  document.getElementById("post-date").value = "";
+  document.querySelectorAll(".platform-select input").forEach(i => i.checked = false);
 }
 
-document.querySelectorAll(".primary-btn").forEach(btn => {
-  if (btn.textContent.includes("Create")) {
-    btn.addEventListener("click", openModal);
+// Use event delegation on topbar for dynamic buttons
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".primary-btn")?.textContent.includes("Create")) {
+    openModal();
   }
 });
 
@@ -33,6 +38,21 @@ function savePost(status) {
   const caption = document.getElementById("post-caption").value;
   const dateValue = document.getElementById("post-date").value;
 
+  if (platforms.length === 0) {
+    alert("Please select at least one platform");
+    return;
+  }
+
+  if (!caption.trim()) {
+    alert("Please add a caption");
+    return;
+  }
+
+  if (status === "scheduled" && !dateValue) {
+    alert("Please select a schedule date");
+    return;
+  }
+
   addPost({
     id: crypto.randomUUID(),
     platform: platforms,
@@ -41,5 +61,6 @@ function savePost(status) {
     status
   });
 
+  console.log("Post saved:", { platforms, caption, status });
   closeModal();
 }
