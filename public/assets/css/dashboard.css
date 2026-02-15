@@ -477,3 +477,54 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   PLANNER CARD STYLES
+   ============================================ */
+.planner-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.platform-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #f9fafb;
+  transition: all 0.25s ease;
+}
+
+.platform-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+}
+
+.platform-card img {
+  width: 42px;
+  height: 42px;
+}
+
+.platform-card strong {
+  display: block;
+  font-size: 15px;
+}
+
+.platform-card span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Platform accents */
+.platform-card.instagram { border-left: 4px solid #e1306c; }
+.platform-card.tiktok { border-left: 4px solid #000000; }
+.platform-card.youtube { border-left: 4px solid #ff0000; }
