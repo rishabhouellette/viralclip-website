@@ -91,7 +91,7 @@ export const views = {
         <div class="planner-grid">
 
           <div class="platform-card instagram">
-            <img src="/images/platform-instagram-float.png" />
+            <img src="/assets/images/platform-instagram-float.png" />
             <div>
               <strong>Instagram</strong>
               <span>3:00 PM</span>
@@ -99,7 +99,7 @@ export const views = {
           </div>
 
           <div class="platform-card tiktok">
-            <img src="/images/platform-tiktok-float.png" />
+            <img src="/assets/images/platform-tiktok-float.png" />
             <div>
               <strong>TikTok</strong>
               <span>5:00 PM</span>
@@ -107,7 +107,7 @@ export const views = {
           </div>
 
           <div class="platform-card youtube">
-            <img src="/images/platform-youtube-float.png" />
+            <img src="/assets/images/platform-youtube-float.png" />
             <div>
               <strong>YouTube</strong>
               <span>8:00 PM</span>
