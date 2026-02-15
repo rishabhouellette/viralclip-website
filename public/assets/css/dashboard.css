@@ -690,3 +690,36 @@ body {
   justify-content: space-between;
   margin-top: 20px;
 }
+
+.modal-actions button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+#save-draft {
+  background: #F3F4F6;
+  color: #374151;
+  border-color: #E5E7EB;
+}
+
+#save-draft:hover {
+  background: #E5E7EB;
+  transform: translateY(-1px);
+}
+
+.ghost-btn {
+  background: transparent;
+  color: #6B7280;
+  border-color: #E5E7EB;
+}
+
+.ghost-btn:hover {
+  color: #111827;
+  background: #F9FAFB;
+  transform: translateY(-1px);
+}
