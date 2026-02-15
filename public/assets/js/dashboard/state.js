@@ -10,7 +10,8 @@ export const state = {
     avatar: null
   },
   activeView: "dashboard",
-  loading: false
+  loading: false,
+  posts: []
 };
 
 // State update with callback
@@ -22,4 +23,20 @@ export function updateState(updates, callback) {
 // Get current state
 export function getState() {
   return { ...state };
+}
+
+// ============================================
+// POSTS MANAGEMENT
+// ============================================
+
+export function addPost(post) {
+  state.posts.push(post);
+}
+
+export function getScheduledPosts() {
+  return state.posts.filter(p => p.status === "scheduled");
+}
+
+export function getDrafts() {
+  return state.posts.filter(p => p.status === "draft");
 }

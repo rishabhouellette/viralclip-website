@@ -102,5 +102,33 @@
   <!-- Scripts -->
   <script type="module" src="/assets/js/firebase.js"></script>
   <script type="module" src="/assets/js/dashboard/views.js"></script>
-  <script type="module" src="/assets/js/dashboard/app.js"></script></body>
+  <script type="module" src="/assets/js/dashboard/app.js"></script>
+  <script type="module" src="/assets/js/dashboard/createPost.js"></script>
+
+  <!-- Create Post Modal -->
+  <div id="create-post-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Create Post</h2>
+
+      <label>Platform</label>
+      <div class="platform-select">
+        <label><input type="checkbox" value="instagram"> Instagram</label>
+        <label><input type="checkbox" value="tiktok"> TikTok</label>
+        <label><input type="checkbox" value="youtube"> YouTube</label>
+      </div>
+
+      <label>Caption</label>
+      <textarea id="post-caption" placeholder="Write your caption..."></textarea>
+
+      <label>Schedule</label>
+      <input type="datetime-local" id="post-date" />
+
+      <div class="modal-actions">
+        <button id="save-draft">Save Draft</button>
+        <button id="schedule-post" class="primary-btn">Schedule</button>
+        <button id="close-modal" class="ghost-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
