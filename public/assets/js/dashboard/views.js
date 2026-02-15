@@ -129,7 +129,7 @@ export const views = {
 
         <div class="clip-card">
           <div class="clip-thumb">
-            <img src="/assets/images/clip-thumb-1.png" alt="Clip thumbnail">
+            <img src="/assets/images/dashboard-mock.png" alt="Clip thumbnail">
             <div class="play-overlay">▶</div>
             <span class="duration">0:12</span>
           </div>
@@ -143,7 +143,7 @@ export const views = {
 
         <div class="clip-card">
           <div class="clip-thumb">
-            <img src="/assets/images/clip-thumb-2.png">
+            <img src="/assets/images/feature-icon-clips.png">
             <div class="play-overlay">▶</div>
             <span class="duration">0:08</span>
           </div>
@@ -158,7 +158,7 @@ export const views = {
 
         <div class="clip-card">
           <div class="clip-thumb">
-            <img src="/assets/images/clip-thumb-3.png">
+            <img src="/assets/images/dashboard-mock-perspective.png">
             <div class="play-overlay">▶</div>
             <span class="duration">0:15</span>
           </div>
