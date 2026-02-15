@@ -121,19 +121,57 @@ export const views = {
 
   clips: {
     topbar: () => `
-      <div style="display: flex; gap: 12px;">
-        <h3 style="margin: 0; font-size: 20px; font-weight: 700;">Clips</h3>
-      </div>
+      <h3>Clips</h3>
       <button class="primary-btn">+ Upload Clip</button>
     `,
     content: () => `
-      <section class="card">
-        <h2 style="margin-top: 0;">Your Clips</h2>
-        <div class="grid-3">
-          <div class="clip-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">Clip 1</div>
-          <div class="clip-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 8px; aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">Clip 2</div>
-          <div class="clip-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 8px; aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">Clip 3</div>
+      <section class="clips-grid">
+
+        <div class="clip-card">
+          <div class="clip-thumb">
+            <img src="/assets/images/clip-thumb-1.png" alt="Clip thumbnail">
+            <div class="play-overlay">▶</div>
+            <span class="duration">0:12</span>
+          </div>
+          <div class="clip-meta">
+            <strong>Morning routine reel</strong>
+            <div class="clip-status">
+              <span class="pill unused">Unused</span>
+            </div>
+          </div>
         </div>
+
+        <div class="clip-card">
+          <div class="clip-thumb">
+            <img src="/assets/images/clip-thumb-2.png">
+            <div class="play-overlay">▶</div>
+            <span class="duration">0:08</span>
+          </div>
+          <div class="clip-meta">
+            <strong>Product teaser</strong>
+            <div class="clip-status">
+              <span class="pill scheduled">Scheduled</span>
+              <img src="/assets/images/platform-instagram-float.png">
+            </div>
+          </div>
+        </div>
+
+        <div class="clip-card">
+          <div class="clip-thumb">
+            <img src="/assets/images/clip-thumb-3.png">
+            <div class="play-overlay">▶</div>
+            <span class="duration">0:15</span>
+          </div>
+          <div class="clip-meta">
+            <strong>Behind the scenes</strong>
+            <div class="clip-status">
+              <span class="pill published">Published</span>
+              <img src="/assets/images/platform-tiktok-float.png">
+              <img src="/assets/images/platform-youtube-float.png">
+            </div>
+          </div>
+        </div>
+
       </section>
     `
   },
