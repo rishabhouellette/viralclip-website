@@ -27,13 +27,21 @@ onAuthStateChanged(auth, (user) => {
     return;
   }
 
-  console.log("User logged in:", user.email);
+  console.log("User authenticated:", user.email);
+
+  // Set global user object
+  window.appUser = {
+    uid: user.uid,
+    name: user.displayName,
+    email: user.email
+  };
 
   // Update greeting name
   const nameEl = document.getElementById("username");
   if (nameEl) {
     nameEl.textContent =
       user.displayName || (user.email ? user.email.split("@")[0] : "there");
+    console.log("User name displayed");
   }
 
   // Update profile name in sidebar
