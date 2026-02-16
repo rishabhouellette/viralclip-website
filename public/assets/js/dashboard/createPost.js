@@ -53,6 +53,11 @@ function savePost(status) {
     return;
   }
 
+  if (!window.appUser || !window.appUser.uid) {
+    alert("User not authenticated. Please refresh the page.");
+    return;
+  }
+
   (async () => {
     await addPost({
       id: null,
