@@ -66,20 +66,3 @@ function savePost(status) {
     closeModal();
   })();
 }
-
-  if (status === "scheduled" && !dateValue) {
-    alert("Please select a schedule date");
-    return;
-  }
-
-  await addPost({
-    id: null,
-    platform: platforms,
-    caption,
-    scheduledAt: status === "scheduled" ? new Date(dateValue) : null,
-    status
-  }, window.appUser.uid);
-
-  console.log("Post saved:", { platforms, caption, status });
-  closeModal();
-}
