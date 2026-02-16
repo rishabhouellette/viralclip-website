@@ -21,13 +21,13 @@ document.addEventListener("click", (e) => {
   }
 });
 
-document.getElementById("close-modal").addEventListener("click", closeModal);
+document.getElementById("close-modal")?.addEventListener("click", closeModal);
 
-document.getElementById("save-draft").addEventListener("click", () => {
+document.getElementById("save-draft")?.addEventListener("click", () => {
   savePost("draft");
 });
 
-document.getElementById("schedule-post").addEventListener("click", () => {
+document.getElementById("schedule-post")?.addEventListener("click", () => {
   savePost("scheduled");
 });
 
