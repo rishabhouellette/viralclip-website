@@ -60,6 +60,3 @@ export async function updatePost(updatedPost) {
     state.posts[index] = updatedPost;
   }
 }
-    state.posts[index] = updatedPost;
-  }
-}
