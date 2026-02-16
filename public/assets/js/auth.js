@@ -44,15 +44,3 @@ export function signUp(email, password) {
 export function signOutUser() {
   return signOut(auth);
 }
-
-document.getElementById("loginForm")?.addEventListener("submit", e => {
-  e.preventDefault();
-  // Firebase auth will go here
-  window.location.href = "/dashboard.html";
-});
-
-document.getElementById("signupForm")?.addEventListener("submit", e => {
-  e.preventDefault();
-  // Firebase signup will go here
-  window.location.href = "/dashboard.html";
-});
