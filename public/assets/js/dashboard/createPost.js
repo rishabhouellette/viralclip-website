@@ -1,4 +1,5 @@
 import { addPost } from "./state.js";
+import { auth } from "../firebase.js";
 
 const modal = document.getElementById("create-post-modal");
 
@@ -53,7 +54,8 @@ function savePost(status) {
     return;
   }
 
-  if (!window.appUser || !window.appUser.uid) {
+  const currentUser = auth.currentUser;
+  if (!currentUser) {
     alert("User not authenticated. Please refresh the page.");
     return;
   }
@@ -65,7 +67,7 @@ function savePost(status) {
       caption,
       scheduledAt: status === "scheduled" ? new Date(dateValue) : null,
       status
-    }, window.appUser.uid);
+    }, currentUser.uid);
 
     console.log("Post saved:", { platforms, caption, status });
     closeModal();
