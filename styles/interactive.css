@@ -1,0 +1,290 @@
+/* ─────────────────────────────────────────────────────────────────
+   interactive.css - Premium Interactive Dashboard Features
+   ───────────────────────────────────────────────────────────────── */
+
+/* ─── Profile Dropdown ─── */
+.profile-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 20px; /* Adjusted to top-right area for better fit */
+  width: 280px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
+  padding: 8px;
+  animation: slideDownFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top right;
+}
+
+.profile-dropdown.active {
+  display: flex;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 4px;
+}
+
+.profile-header img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-header .name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.profile-header .email {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.05);
+  margin: 6px 0;
+}
+
+.profile-dropdown button {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-dropdown button:hover {
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--color-primary);
+  padding-left: 16px;
+}
+
+.profile-dropdown button.logout {
+  color: #ef4444;
+}
+
+.profile-dropdown button.logout:hover {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.ai-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ─── AI Agent Panel ─── */
+.ai-agent-panel {
+  position: fixed;
+  z-index: 3000;
+  background: white;
+  display: none;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Desktop: Right-side panel */
+@media (min-width: 769px) {
+  .ai-agent-panel {
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Mobile: Bottom-up sheet */
+@media (max-width: 768px) {
+  .ai-agent-panel {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.ai-agent-panel.active {
+  display: flex !important;
+  animation: slidePanelIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: inherit; /* Matches mobile curve */
+}
+
+.ai-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #f8fafc;
+}
+
+.message {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: var(--color-primary);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.ai {
+  align-self: flex-start;
+  background: white;
+  color: var(--color-text-primary);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ai-input {
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 10px;
+  background: white;
+}
+
+.ai-input input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.ai-input input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.ai-input button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ai-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ai-suggestion-btn {
+  background: white;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ai-suggestion-btn:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Overlay for AI Panel */
+.ai-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 2999;
+  display: none;
+}
+
+.ai-overlay.active {
+  display: block;
+}
+
+/* ─── Animations ─── */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slidePanelIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Tablet fixes for AI Panel */
+@media (min-width: 769px) {
+  @keyframes slidePanelIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}

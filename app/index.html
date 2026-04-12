@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ViralClip Dashboard - Social Media Post Management" />
+  <title>ViralClip Dashboard</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/app/styles/layout.css" />
+  <link rel="stylesheet" href="/app/styles/sidebar.css" />
+  <link rel="stylesheet" href="/app/styles/topbar.css" />
+  <link rel="stylesheet" href="/app/styles/dashboard.css" />
+  <link rel="stylesheet" href="/app/styles/components.css" />
+  <link rel="stylesheet" href="/app/styles/activity.css" />
+  <link rel="stylesheet" href="/app/styles/mobile_app.css" />
+  <link rel="stylesheet" href="/app/styles/interactive.css" />
+  
+  <!-- Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="app" class="dashboard-layout">
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="document.getElementById('sidebar').classList.remove('active'); this.classList.remove('active')"></div>
+    
+    <!-- Sidebar Container -->
+    <aside id="sidebar" class="sidebar loading"></aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+      <header id="topbar" class="topbar"></header>
+
+    <!-- Views Container -->
+    <div class="views-container">
+      <!-- Dashboard View -->
+      <div id="view-dashboard" class="view active">
+        <div class="view-header">
+          <h1>Content <span>Calendar</span></h1>
+        </div>
+
+        <!-- Hero Command Center (Moved up for mobile flow) -->
+        <div id="heroCommandCenter" class="hero-card mb-xl">
+          <!-- Background Enhancements -->
+          <div class="hero-card-bg"></div>
+          <img src="/assets/images/dashboard-mock-perspective.png" class="hero-image hero-card-image" />
+          <div class="hero-card-fog"></div>
+          <div class="hero-card-particles"></div>
+
+          <div class="hero-card-content">
+            <div class="hero-card-copy">
+              <h2 id="greetingMsg" class="hero-card-title">Welcome back, Creator</h2>
+              <p class="hero-card-text">Here's your growth command center for today. Monitor performance and schedule new posts in seconds.</p>
+            </div>
+            <button class="btn primary-btn hero-card-action" onclick="document.dispatchEvent(new CustomEvent('TRIGGER_WIZARD'))">
+              <img src="/assets/icons/analytics.svg" class="hero-card-action-icon" /> Auto-Generate Week
+            </button>
+          </div>
+        </div>
+        
+        <div class="view-tabs">
+          <button class="tab-btn active" data-tab="overview">Week</button>
+          <button class="tab-btn" data-tab="drafts">Draft</button>
+          <button class="tab-btn" data-tab="scheduled">Scheduled</button>
+          <button class="tab-btn" data-tab="published">Published</button>
+        </div>
+
+        <div class="tab-content active" data-tab="overview">
+          <!-- AI Coach Upgrade Banner -->
+          <div class="ai-upgrade-card mb-lg" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #bbf7d0; border-radius: 12px; padding: 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);">
+            <div>
+              <h3 style="color: #065f46; margin-bottom: 8px; font-size: 18px; display: flex; align-items: center; gap: 8px;">✨ Try AI Coach</h3>
+              <p style="color: #047857; font-size: 14px; margin: 0; font-weight: 500;">Let AI tell you what to post, where, and when. Switch to a guided experience.</p>
+            </div>
+            <a href="https://viralclip.tech/dashboard/publish" target="_blank" class="btn btn-primary" style="background: #10B981; color: white; border: none; padding: 10px 20px; font-size: 14px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); text-decoration: none; border-radius: 8px;">Open AI Coach ↗</a>
+          </div>
+
+          <!-- Engagement Habit Layer -->
+          <div id="todaysPlanSection" class="mb-lg"></div>
+          <div id="growthActionSection" class="mb-xl"></div>
+
+          <!-- Core Metrics -->
+          <h3 class="section-title">Performance Engine</h3>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">🚀 Total Posts</div>
+              <div class="stat-value" id="totalPosts">0</div>
+              <div class="stat-change positive">↑ 2 this week</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">📅 Scheduled</div>
+              <div class="stat-value" id="scheduledCount">0</div>
+              <div class="stat-change stat-change-info">Next: Today</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">🔥 Reach</div>
+              <div class="stat-value" id="totalReach">0</div>
+              <div class="stat-change positive">↑ 12%</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">📈 Engagement</div>
+              <div class="stat-value" id="engagementRate">0%</div>
+              <div class="stat-change positive">↑ 5%</div>
+            </div>
+          </div>
+
+          <div class="ai-generator-section">
+            <div class="generator-card">
+              <div class="generator-header">
+                <h3><img src="../assets/icons/dashboard.svg" class="generator-title-icon" /> AI Content Engine</h3>
+                <p>Generate & Schedule a full week of viral optimized content</p>
+              </div>
+              <form id="aiPlanForm" class="generator-form flex-between">
+                <input type="text" id="aiNicheInput" placeholder="Enter your niche (e.g., Tech, Fitness)" required />
+                <select id="aiFrequencySelect">
+                  <option value="3">3 posts / week</option>
+                  <option value="5">5 posts / week</option>
+                  <option value="7" selected>7 posts / week</option>
+                  <option value="14">14 posts / week</option>
+                </select>
+                <button type="submit" class="btn btn-primary" id="generatePlanBtn">Generate Plan</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="recent-posts">
+            <h2>Recent Posts</h2>
+            <div id="recentPostsList" class="posts-list"></div>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="drafts">
+          <div id="draftsList" class="posts-list"></div>
+        </div>
+
+        <div class="tab-content" data-tab="scheduled">
+          <div id="scheduledList" class="posts-list"></div>
+        </div>
+
+        <div class="tab-content" data-tab="published">
+          <div id="publishedList" class="posts-list"></div>
+        </div>
+      </div>
+
+      <!-- AI Coach View (Redirect to new tab) -->
+      <div id="view-ai-coach" class="view" style="padding: 40px; display: flex; align-items: center; justify-content: center;">
+        <div style="text-align: center; max-width: 400px;">
+          <div style="font-size: 48px; margin-bottom: 16px;">✨</div>
+          <h2 style="color: #065f46; margin-bottom: 12px;">AI Coach - Smart Publish</h2>
+          <p style="color: #047857; margin-bottom: 24px;">The AI Coach opens in a new tab for the best experience.</p>
+          <a href="https://viralclip.tech/dashboard/publish" target="_blank" style="display: inline-block; background: #10B981; color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px;">Open Smart Publish ↗</a>
+        </div>
+      </div>
+
+      <!-- Calendar View -->
+      <div id="view-calendar" class="view">
+        <div class="view-header">
+          <h1>Calendar</h1>
+        </div>
+        <div id="calendarContainer" class="calendar-container"></div>
+      </div>
+
+      <!-- Accounts View -->
+      <div id="view-accounts" class="view">
+        <div class="view-header">
+          <h1>Connected Accounts</h1>
+        </div>
+        <div class="accounts-grid" id="accountsGrid"></div>
+      </div>
+
+      <!-- Analytics View -->
+      <div id="view-analytics" class="view">
+        <div class="view-header">
+          <h1>Analytics</h1>
+        </div>
+        <div class="analytics-grid" id="analyticsGrid"></div>
+      </div>
+
+      <!-- Clips View -->
+      <div id="view-clips" class="view">
+        <!-- Rendered by clips.js -->
+      </div>
+
+      <!-- Activity View -->
+      <div id="view-activity" class="view">
+        <!-- Rendered by activity.js -->
+      </div>
+      
+    </div>
+  </main>
+  
+  <!-- Right Insights Panel -->
+  <aside id="insights-panel" class="right-panel"></aside>
+  </div>
+
+  <!-- Auth Modal -->
+  <div id="authModal" class="modal">
+    <div class="modal-content auth-modal">
+      <div class="auth-container">
+        <div class="auth-logo">
+          <img src="../assets/images/logo.png" alt="ViralClip Logo" class="auth-logo-image" />
+          <h1>ViralClip</h1>
+        </div>
+
+        <div id="loginForm" class="auth-form">
+          <h2>Sign In</h2>
+          <div class="social-auth-row">
+            <button id="googleLoginBtn" class="btn social-auth-btn" title="Sign in with Google"><img src="../assets/images/google.png" class="social-auth-icon" /></button>
+            <button id="facebookLoginBtn" class="btn social-auth-btn" title="Sign in with Facebook"><img src="../assets/images/facebook.png" class="social-auth-icon" /></button>
+            <button id="twitterLoginBtn" class="btn social-auth-btn" title="Sign in with X"><img src="../assets/images/twitter.png" class="social-auth-icon" /></button>
+          </div>
+          <div class="auth-divider">OR</div>
+          <input type="email" id="loginEmail" placeholder="Email" required />
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <button id="loginBtn" class="btn btn-primary btn-block">Sign In</button>
+          <button id="switchToSignupBtn" class="btn btn-text btn-block">Don't have an account? Sign up</button>
+        </div>
+
+        <div id="signupForm" class="auth-form hidden">
+          <h2>Sign Up</h2>
+          <div class="social-auth-row">
+            <button id="googleSignupBtn" class="btn social-auth-btn" title="Sign up with Google"><img src="../assets/images/google.png" class="social-auth-icon" /></button>
+            <button id="facebookSignupBtn" class="btn social-auth-btn" title="Sign up with Facebook"><img src="../assets/images/facebook.png" class="social-auth-icon" /></button>
+            <button id="twitterSignupBtn" class="btn social-auth-btn" title="Sign up with X"><img src="../assets/images/twitter.png" class="social-auth-icon" /></button>
+          </div>
+          <div class="auth-divider">OR</div>
+          <input type="text" id="signupName" placeholder="Full Name" required />
+          <input type="email" id="signupEmail" placeholder="Email" required />
+          <input type="password" id="signupPassword" placeholder="Password" required />
+          <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required />
+          <button id="signupBtn" class="btn btn-primary btn-block">Create Account</button>
+          <button id="switchToLoginBtn" class="btn btn-text btn-block">Already have an account? Sign in</button>
+        </div>
+
+        <div id="authError" class="auth-error"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Post Modal Container -->
+  <div id="createPostModalContainer"></div>
+
+  <!-- Toast Notifications -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html#dashboard" class="nav-item active" data-view="dashboard">
+      <img src="../assets/icons/dashboard.svg" alt="Dash" />
+      <span>Dashboard</span>
+    </a>
+    <a href="https://viralclip.tech/dashboard/publish" target="_blank" class="nav-item">
+      <span style="font-size: 20px;">✨</span>
+      <span style="color: #10B981; font-weight: bold;">AI Coach ↗</span>
+    </a>
+    <a href="index.html#calendar" class="nav-item" data-view="calendar">
+      <img src="../assets/icons/calendar.svg" alt="Cal" />
+      <span>Calendar</span>
+    </a>
+    <a href="index.html#analytics" class="nav-item" data-view="analytics">
+      <img src="../assets/icons/analytics.svg" alt="Stat" />
+      <span>Analytics</span>
+    </a>
+    <a href="index.html#accounts" class="nav-item" data-view="accounts">
+      <img src="../assets/icons/accounts.svg" alt="User" />
+      <span>Accounts</span>
+    </a>
+  </nav>
+
+  <!-- Floating Action Button -->
+  <button id="mobileFab" class="fab">
+    <i class="fas fa-plus"></i>
+  </button>
+
+  <!-- Loading Spinner -->
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Main App Script -->
+  <script type="module" src="/app/js/app.js"></script>
+</body>
+</html>

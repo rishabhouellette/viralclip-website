@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViralClip — Plan. Post. Grow at Scale</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/style-premium.css" />
+  <link rel="stylesheet" href="/assets/css/animations-premium.css" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <!-- ============================================ -->
+  <!-- HEADER NAVIGATION -->
+  <!-- ============================================ -->
+  <header class="nav">
+    <div class="nav-container">
+      <!-- Logo left -->
+      <div class="nav-logo">
+        <img src="/assets/images/logo.png" alt="ViralClip" class="logo-img" />
+        <span class="logo-text">ViralClip</span>
+      </div>
+
+      <!-- Links center -->
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <!-- CTA right -->
+      <!-- DYNAMIC: user auth state -->
+      <div class="nav-actions">
+        <a href="/login.html" class="nav-login">Log in</a>
+        <a href="/signup.html" class="nav-cta">Get started for free</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================ -->
+  <!-- HERO SECTION -->
+  <!-- Layered composition with PNGs, particles, fog -->
+  <!-- ============================================ -->
+  <section class="hero">
+    
+    <!-- Background gradient base -->
+    <div class="hero-bg-gradient"></div>
+
+    <!-- PNG: Atmospheric fog layer (foreground overlay) -->
+    <img 
+      src="/assets/images/fog-overlay.png" 
+      alt="" 
+      class="hero-fog animate-sparkle" 
+      aria-hidden="true"
+      data-speed="0.1"
+    />
+
+    <!-- PNG: Particle overlay (sparkles, glows) -->
+    <img 
+      src="/assets/images/particles-overlay.png" 
+      alt="" 
+      class="hero-particles animate-sparkle" 
+      aria-hidden="true"
+      data-speed="0.3"
+    />
+
+    <!-- PNG: Floating platform icons -->
+    <!-- ANIMATION: Slow vertical sine-wave float -->
+    <img 
+      src="/assets/images/platform-instagram.png" 
+      alt="Instagram" 
+      class="float-icon float-ig animate-float" 
+      data-speed="0.5"
+    />
+    <img 
+      src="/assets/images/platform-tiktok.png" 
+      alt="TikTok" 
+      class="float-icon float-tt animate-float" 
+      data-speed="0.4"
+    />
+    <img 
+      src="/assets/images/platform-youtube.png" 
+      alt="YouTube" 
+      class="float-icon float-yt animate-float" 
+      data-speed="0.6"
+    />
+
+    <!-- Hero content container -->
+    <div class="hero-content">
+      
+      <!-- Headline with staggered entrance animation -->
+      <h1 class="hero-title animate-fade-up stagger-1">
+        Plan. Post. <span class="gradient-text">Grow at Scale</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="hero-subtitle animate-fade-up stagger-2">
+        Your command center for <strong>Reels, TikToks & Shorts</strong>.
+        Schedule, manage, and analyze all your short-form videos in one powerful dashboard.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="hero-cta animate-fade-up stagger-3">
+        <!-- DYNAMIC: CTA click tracking -->
+        <a href="/signup.html" class="btn btn-primary">
+          Get started for free <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#demo" class="btn btn-secondary">
+          <i class="fas fa-play"></i> Watch how it works
+        </a>
+      </div>
+
+      <!-- Platform badges -->
+      <div class="hero-platforms animate-fade-up stagger-4">
+        <span class="platform-badge"><i class="fab fa-instagram"></i> Instagram</span>
+        <span class="platform-badge"><i class="fab fa-tiktok"></i> TikTok</span>
+        <span class="platform-badge"><i class="fab fa-youtube"></i> YouTube</span>
+      </div>
+    </div>
+
+    <!-- PNG: Dashboard mockup with parallax scroll effect -->
+    <!-- Container constrains overflow, absolute positioning inside -->
+    <div class="hero-visual-container animate-slide-right">
+      <img 
+        src="/assets/images/dashboard-mock.png" 
+        alt="ViralClip Dashboard" 
+        class="hero-dashboard"
+        data-speed="0.2"
+      />
+    </div>
+
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TRUST SECTION -->
+  <!-- Stats bar with creator count, posts, platforms -->
+  <!-- ============================================ -->
+  <section class="trust scroll-reveal">
+    <div class="trust-container">
+      <!-- DYNAMIC: stats numbers -->
+      <div class="stat-card">
+        <strong class="stat-number" data-count="191782">191,782</strong>
+        <span class="stat-label">Creators growing</span>
+      </div>
+      <div class="stat-card">
+        <strong class="stat-number" data-count="8587229">8,587,229</strong>
+        <span class="stat-label">Posts viralized last month</span>
+      </div>
+      <div class="stat-card">
+        <strong class="stat-number" data-count="3524">3,524</strong>
+        <span class="stat-label">Platforms supported</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- PRODUCT PREVIEW SECTION -->
+  <!-- Glass cards with UI mockups -->
+  <!-- ============================================ -->
+  <section class="product-preview" id="features">
+    <div class="product-container">
+      
+      <h2 class="section-title scroll-reveal">
+        Everything you need in one place
+      </h2>
+
+      <div class="product-grid">
+        
+        <!-- Feature card 1 -->
+        <div class="product-card glass-card scroll-reveal">
+          <div class="card-icon">📅</div>
+          <h3>Content Planner</h3>
+          <p>Schedule posts across all platforms with an intuitive drag-and-drop calendar.</p>
+        </div>
+
+        <!-- Feature card 2 -->
+        <div class="product-card glass-card scroll-reveal">
+          <div class="card-icon">📊</div>
+          <h3>Performance Analytics</h3>
+          <p>Track growth, engagement, and ROI with real-time analytics dashboards.</p>
+        </div>
+
+        <!-- Feature card 3 -->
+        <div class="product-card glass-card scroll-reveal">
+          <div class="card-icon">🤖</div>
+          <h3>AI Suggestions</h3>
+          <p>Get smart caption ideas, trending hashtags, and optimal posting times.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- STATS SECTION -->
+  <!-- Large rounded glass cards with metrics -->
+  <!-- ============================================ -->
+  <section class="stats" id="pricing">
+    <div class="stats-container">
+      
+      <h2 class="section-title scroll-reveal">
+        Trusted by creators worldwide
+      </h2>
+
+      <div class="stats-grid">
+        <div class="stats-card glass-card scroll-reveal">
+          <div class="stats-icon">🚀</div>
+          <h3>2M+ Posts Scheduled</h3>
+          <p>Join thousands of creators managing their content at scale</p>
+        </div>
+
+        <div class="stats-card glass-card scroll-reveal">
+          <div class="stats-icon">⚡</div>
+          <h3>Save 10+ Hours Weekly</h3>
+          <p>Automate your workflow and focus on creating great content</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FOOTER -->
+  <!-- Cloud fade-out effect -->
+  <!-- ============================================ -->
+  <footer class="footer scroll-reveal">
+    <div class="footer-cloud-fade"></div>
+    <div class="footer-content">
+      <p>&copy; 2026 ViralClip. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================ -->
+  <!-- JAVASCRIPT -->
+  <!-- Handles scroll parallax, intersection observer, counter animations -->
+  <!-- ============================================ -->
+  <script src="/assets/js/premium-animations.js"></script>
+
+</body>
+</html>
